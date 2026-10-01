@@ -1,6 +1,6 @@
-/**
+﻿/**
  * Central API Client for FastAPI Backend
- * SIH26086 - Koraput Mausam Intelligence
+ * SIH26086 - MONSOON-X
  * 
  * Configured with VITE_API_BASE_URL with graceful fallback, timeout management,
  * offline awareness, and standardized error normalization.

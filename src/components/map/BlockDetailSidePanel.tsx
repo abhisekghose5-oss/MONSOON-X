@@ -235,7 +235,7 @@ export function BlockDetailSidePanel({
       {/* Footer */}
       <div className="p-3 border-t border-[#E2E8F0] bg-[#F5F7FA] flex items-center justify-between text-[10px] font-mono text-[#6E7F94]">
         <span>Boundary: Revenue Blocks</span>
-        <span className="text-[#0B1F33] font-semibold">Koraput Mausam DSS</span>
+        <span className="text-[#0B1F33] font-semibold">MONSOON-X DSS</span>
       </div>
     </aside>
   );

@@ -1,5 +1,5 @@
-/**
- * KORAPUT MAUSAM INTELLIGENCE (SIH26086)
+﻿/**
+ * MONSOON-X (SIH26086)
  * Climate Signal: Madden-Julian Oscillation (MJO) (Step 5 - Section 4 & 18)
  * 
  * Source: Australian Bureau of Meteorology (BoM) / Wheeler-Hendon Real-time Multivariate MJO (RMM)

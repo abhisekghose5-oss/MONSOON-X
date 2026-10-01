@@ -1,7 +1,7 @@
-/**
+﻿/**
  * Central API Endpoint Registry
  * Maps to FastAPI v1 backend microservice routes
- * SIH26086 - Koraput Mausam Intelligence
+ * SIH26086 - MONSOON-X
  */
 export const API_ENDPOINTS = {
   // 7 Core Required FastAPI v1 Routes

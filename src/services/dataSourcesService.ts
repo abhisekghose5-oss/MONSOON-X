@@ -5,7 +5,7 @@ import type {
 
 export class DataSourcesService {
   /**
-   * Complete inventory of multi-source feeds assimilated into KORAPUT MAUSAM INTELLIGENCE
+   * Complete inventory of multi-source feeds assimilated into MONSOON-X
    */
   static getAllDataSources(): DataSourceItem[] {
     return [
@@ -400,8 +400,8 @@ export class DataSourcesService {
       },
       {
         id: 'kmi-sih26086-inference-engine',
-        name: 'KORAPUT MAUSAM INTELLIGENCE Bayesian Coupled Physics Inference Engine',
-        source: 'SIH26086 Decision Support System (Koraput Mausam Intelligence)',
+        name: 'MONSOON-X Bayesian Coupled Physics Inference Engine',
+        source: 'SIH26086 Decision Support System (MONSOON-X)',
         agency: 'Smart India Hackathon 2026 Innovation Team',
         category: 'agricultural',
         variable: 'Downscaled Hyperlocal Monsoon Onset Probability, Break Spell Risk (%), False Onset Classification',

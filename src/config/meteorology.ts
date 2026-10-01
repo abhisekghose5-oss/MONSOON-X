@@ -1,5 +1,5 @@
-/**
- * KORAPUT MAUSAM INTELLIGENCE (SIH26086)
+﻿/**
+ * MONSOON-X (SIH26086)
  * Meteorological Standards & Configuration
  * 
  * Configurable scientific thresholds for Koraput precipitation analysis,

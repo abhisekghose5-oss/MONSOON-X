@@ -111,7 +111,7 @@ export function ClimateExplanationPanel({
             Terminology standard: All teleconnections are described as "model inputs", "potential influences", or "statistical relationships".
           </span>
           <span className="text-[#0B1F33] font-semibold">
-            Koraput Mausam Intelligence v2.4
+            MONSOON-X v2.4
           </span>
         </div>
       </div>

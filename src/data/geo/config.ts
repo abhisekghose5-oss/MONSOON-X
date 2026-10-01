@@ -1,5 +1,5 @@
-/**
- * KORAPUT MAUSAM INTELLIGENCE - GEOGRAPHIC CONFIGURATION
+﻿/**
+ * MONSOON-X - GEOGRAPHIC CONFIGURATION
  * SIH26086: Hyperlocal Monsoon Onset & Break Prediction System
  */
 

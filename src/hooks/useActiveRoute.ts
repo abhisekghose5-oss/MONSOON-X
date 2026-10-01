@@ -16,7 +16,7 @@ export function useActiveRoute(): {
   return {
     currentPath,
     activeItem,
-    pageTitle: activeItem ? activeItem.name : 'Koraput Mausam Intelligence',
+    pageTitle: activeItem ? activeItem.name : 'MONSOON-X',
     pageDescription: activeItem ? activeItem.description : '',
   };
 }

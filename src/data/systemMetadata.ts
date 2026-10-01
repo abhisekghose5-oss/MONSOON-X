@@ -1,6 +1,6 @@
 export const SYSTEM_METADATA = {
-  projectTitle: 'KORAPUT MAUSAM INTELLIGENCE',
-  projectAcronym: 'KMI-DSS',
+  projectTitle: 'MONSOON-X',
+  projectAcronym: 'MX-DSS',
   tagline: 'From climate signals to crop decisions.',
   sihProblemId: 'SIH26086',
   sihTitle: 'Hyperlocal Monsoon Onset & Break Prediction System',

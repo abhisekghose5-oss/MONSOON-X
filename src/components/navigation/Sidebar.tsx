@@ -34,13 +34,13 @@ export function Sidebar({ className, onNavigate }: SidebarProps) {
           </div>
           <div className="flex flex-col min-w-0">
             <div className="flex items-center gap-1.5">
-              <span className="font-extrabold text-sm tracking-wider text-white">KORAPUT</span>
+              <span className="font-extrabold text-sm tracking-wider text-white">MONSOON-X</span>
               <span className="text-[10px] font-mono font-bold px-1.5 py-0.2 rounded-sm bg-[#1479C9] text-white">
                 DSS
               </span>
             </div>
             <span className="text-[10px] font-mono tracking-widest text-[#A4BCDA] uppercase">
-              Mausam Intelligence
+              Koraput Intelligence
             </span>
           </div>
         </div>

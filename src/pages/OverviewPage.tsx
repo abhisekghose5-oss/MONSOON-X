@@ -99,7 +99,7 @@ export function OverviewPage() {
             </div>
 
             <h1 className="text-xl lg:text-2xl font-extrabold tracking-tight text-[#0B1F33] uppercase">
-              KORAPUT MAUSAM INTELLIGENCE
+              MONSOON-X
             </h1>
 
             <p className="text-xs text-[#4B5B6D] max-w-3xl leading-relaxed">

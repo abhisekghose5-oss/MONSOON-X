@@ -2,7 +2,7 @@ import type { FarmerTranslations } from '../types';
 
 export const enTranslations: FarmerTranslations = {
   meta: {
-    appTitle: 'Koraput Mausam Assistant',
+    appTitle: 'MONSOON-X Assistant',
     subTitle: 'Simple weather advice for your fields and crops',
     farmerModeTag: 'FARMER MODE',
     switchToOfficerMode: 'Switch to Full Meteorological Dashboard',

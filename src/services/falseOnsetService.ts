@@ -179,8 +179,8 @@ export class FalseOnsetService {
       recommendedAction,
       diagnosticCriteria,
       metadata: {
-        serviceName: 'FalseOnsetService (Koraput Mausam Intelligence)',
-        modelVersion: 'KMI-FalseOnsetDetector v2.2',
+        serviceName: 'FalseOnsetService (MONSOON-X)',
+        modelVersion: 'MX-FalseOnsetDetector v2.2',
         lastEvaluated: new Date().toISOString(),
         isDemoModelOutput: true,
       },

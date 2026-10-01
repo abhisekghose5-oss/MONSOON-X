@@ -1,7 +1,7 @@
-/**
+﻿/**
  * Central Services Index
  * Exposes core domain services with Real/Mock API adapter pattern
- * SIH26086 - Koraput Mausam Intelligence
+ * SIH26086 - MONSOON-X
  */
 
 export * from './forecastService';

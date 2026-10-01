@@ -338,7 +338,7 @@ export function DataSourcesTable({ sources, className = '' }: DataSourcesTablePr
           Showing {filteredSources.length} of {sources.length} Cataloged Feeds · Click row to view latency & scientific citations
         </span>
         <span className="text-[#0B1F33] font-bold">
-          Zero Fabricated Telemetry · SIH26086 Koraput Mausam Intelligence
+          Zero Fabricated Telemetry · SIH26086 MONSOON-X
         </span>
       </div>
     </div>

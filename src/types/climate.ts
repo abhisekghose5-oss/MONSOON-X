@@ -1,6 +1,6 @@
-/**
+﻿/**
  * Climate Signal Intelligence Contracts
- * SIH26086 - Koraput Mausam Intelligence
+ * SIH26086 - MONSOON-X
  */
 
 export type EnsoPhase = 'El Niño' | 'La Niña' | 'ENSO-Neutral';

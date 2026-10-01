@@ -1,5 +1,5 @@
-/**
- * KORAPUT MAUSAM INTELLIGENCE (SIH26086)
+﻿/**
+ * MONSOON-X (SIH26086)
  * Dry Spell & Precipitation Mathematical Analytics Engine
  * 
  * Implements rigorous meteorology algorithms conforming to:

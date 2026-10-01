@@ -1,5 +1,5 @@
-/**
- * KORAPUT MAUSAM INTELLIGENCE (SIH26086)
+﻿/**
+ * MONSOON-X (SIH26086)
  * Rainfall Anomaly Calculation Engine (Step 5 - Section 7)
  * 
  * Standard IMD Anomaly Formula:

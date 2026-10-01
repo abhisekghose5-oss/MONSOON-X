@@ -18,7 +18,7 @@ export function NotFoundPage() {
             Atmospheric Coordinate Not Found
           </h2>
           <p className="text-xs text-[#4B5B6D] leading-relaxed">
-            The requested meteorological route does not exist within the Koraput Mausam Intelligence decision support system.
+            The requested meteorological route does not exist within the MONSOON-X decision support system.
           </p>
         </div>
 

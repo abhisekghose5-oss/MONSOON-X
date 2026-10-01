@@ -1,6 +1,6 @@
-/**
+﻿/**
  * Hyperlocal Monsoon Forecast Contracts
- * SIH26086 - Koraput Mausam Intelligence
+ * SIH26086 - MONSOON-X
  */
 
 export type ForecastHorizon = '7d' | '14d' | '21d' | '30d';

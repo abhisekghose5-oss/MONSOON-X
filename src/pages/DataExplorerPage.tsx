@@ -81,7 +81,7 @@ export function DataExplorerPage() {
 
             <p className="text-xs text-[#4B5B6D] max-w-3xl leading-relaxed">
               Transparent operational audit of every meteorological baseline, geospatial polygon,
-              climatological normal, and numerical model feed ingested by Koraput Mausam Intelligence.
+              climatological normal, and numerical model feed ingested by MONSOON-X.
             </p>
           </div>
 

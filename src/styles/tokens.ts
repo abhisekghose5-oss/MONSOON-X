@@ -1,5 +1,5 @@
-/**
- * KORAPUT MAUSAM INTELLIGENCE - DESIGN SYSTEM TOKENS
+﻿/**
+ * MONSOON-X - DESIGN SYSTEM TOKENS
  * 
  * Aesthetic: Indian Meteorological Operations Centre + Government Agro-DSS + GIS Platform
  * High clarity, WCAG AA/AAA compliant contrast, authoritative institutional palette.
