@@ -17,6 +17,7 @@ import { KoraputRiskMapPreview } from '../components/overview/KoraputRiskMapPrev
 import { ClimateSignalSummaryCard } from '../components/overview/ClimateSignalSummaryCard';
 import { AgroAdvisoryPreviewList } from '../components/overview/AgroAdvisoryPreviewList';
 import { DataHealthPanel } from '../components/overview/DataHealthPanel';
+import { LiveAtmosphericStrip } from '../components/overview/LiveAtmosphericStrip';
 import { historicalRainfallService } from '../services/historicalRainfallService';
 import type { RainfallRecord } from '../types/dataArchitecture';
 import { useNavigate } from 'react-router-dom';
@@ -82,27 +83,27 @@ export function OverviewPage() {
   return (
     <div className="space-y-6">
       {/* 1. OFFICIAL INSTITUTIONAL HEADER & LOCATION PATH */}
-      <div className="rounded-md border border-[#CBD5E1] bg-white p-5 shadow-gov-card border-l-4 border-l-[#0B1F33]">
+      <div className="rounded-xl glass-panel p-5.5 border border-slate-200 shadow-sm border-l-4 border-l-sky-600">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div className="space-y-1.5">
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="font-mono text-[10px] font-bold px-2 py-0.5 rounded-sm bg-[#0B1F33] text-white tracking-wider">
+              <span className="font-mono text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-900 text-white tracking-wider">
                 SIH26086
               </span>
-              <span className="font-mono text-[11px] text-[#4B5B6D] font-medium">
+              <span className="font-mono text-[11px] text-slate-500 font-medium">
                 Hyperlocal Monsoon Decision Support
               </span>
-              <span className="text-[#CBD5E1]">•</span>
-              <span className="font-mono text-[10px] px-2 py-0.5 rounded-sm bg-[#EDF6FC] text-[#0C4E83] border border-[#ACD5F2] font-semibold">
+              <span className="text-slate-300">•</span>
+              <span className="font-mono text-[10px] px-2.5 py-0.5 rounded-full bg-sky-50 text-sky-800 border border-sky-200 font-semibold">
                 LOCATION: Odisha → Koraput → {isDistrictWide ? 'All Blocks' : `${selectedBlock?.name} Block`}
               </span>
             </div>
 
-            <h1 className="text-xl lg:text-2xl font-extrabold tracking-tight text-[#0B1F33] uppercase">
+            <h1 className="text-xl lg:text-2xl font-extrabold font-display tracking-tight text-slate-900 uppercase">
               MONSOON-X
             </h1>
 
-            <p className="text-xs text-[#4B5B6D] max-w-3xl leading-relaxed">
+            <p className="text-xs text-slate-600 max-w-3xl leading-relaxed">
               Operational agro-meteorological command centre for Koraput District.
               Translating downscaled atmospheric signals into risk mitigation and crop scheduling.
             </p>
@@ -112,19 +113,19 @@ export function OverviewPage() {
             {/* PROVENANCE BADGES */}
             <div className="flex flex-wrap items-center gap-1.5">
               <DataStatusBadge status="DEMO" labelOverride="DEMO MODEL OUTPUT" size="xs" />
-              <span className="font-mono text-[10px] px-2 py-0.5 rounded-sm bg-[#F5F7FA] text-[#6E7F94] border border-[#CBD5E1] font-semibold">
-                Forecast model: Not connected
+              <span className="font-mono text-[10px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200 font-semibold">
+                Forecast model: Open-Meteo ECMWF / GFS
               </span>
             </div>
 
-            <div className="flex items-center gap-2 text-[#6E7F94] text-[11px]">
+            <div className="flex items-center gap-2 text-slate-500 text-[11px]">
               <span>Cycle: {metadata.synopticCycle.split(' ')[0]}</span>
               <button
                 type="button"
                 onClick={handleManualRefresh}
                 disabled={isFetching || isRefreshingTelemetry}
                 aria-label="Synchronize telemetry feed"
-                className="flex items-center gap-1 text-[#1479C9] hover:underline font-semibold focus-visible:ring-2 focus-visible:ring-[#1479C9] focus-visible:outline-hidden"
+                className="flex items-center gap-1 text-sky-600 hover:text-sky-700 font-semibold focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-hidden cursor-pointer"
               >
                 <RefreshCw className={`w-3 h-3 ${isRefreshingTelemetry || isFetching ? 'animate-spin' : ''}`} />
                 <span>{isRefreshingTelemetry || isFetching ? 'Syncing...' : 'Sync Feed'}</span>
@@ -134,16 +135,19 @@ export function OverviewPage() {
         </div>
 
         {/* Disclaimer Bar */}
-        <div className="mt-3.5 pt-2.5 border-t border-[#F0F3F7] flex items-center justify-between text-[11px] text-[#6E7F94]">
+        <div className="mt-3.5 pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
           <span className="flex items-center gap-1.5">
-            <Info className="w-3.5 h-3.5 text-[#1479C9] shrink-0" />
+            <Info className="w-3.5 h-3.5 text-sky-600 shrink-0" />
             <span className="truncate">{metadata.disclaimer}</span>
           </span>
-          <span className="font-mono text-[#0B1F33] font-semibold shrink-0 hidden md:inline">
+          <span className="font-mono text-slate-800 font-semibold shrink-0 hidden md:inline">
             14 Administrative Blocks
           </span>
         </div>
       </div>
+
+      {/* 1.5. LIVE DOWNSCALED ATMOSPHERIC TELEMETRY STRIP */}
+      <LiveAtmosphericStrip />
 
       {/* 2. EXECUTIVE COMMAND BRIEFING: IMMEDIATE ANSWERS TO THE 4 CORE QUESTIONS */}
       <ExecutiveSituationSummary answers={answers} />

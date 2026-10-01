@@ -5,7 +5,7 @@
 @layer base {
   :root {
     --color-bg-app: #F5F7FA;
-    --color-text-app: #16202A;
+    --color-text-app: #111827;
     --color-navy-deep: #0B1F33;
     --color-monsoon-blue: #1479C9;
     --color-agri-green: #247A4A;
@@ -18,24 +18,25 @@
   body {
     background-color: var(--color-bg-app);
     color: var(--color-text-app);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
     overflow-x: hidden;
+    letter-spacing: -0.011em;
   }
 
-  /* Institutional Precision Scrollbars */
+  /* High-Tech Precision Scrollbars */
   ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: #EAF0F6;
+    background: transparent;
   }
   ::-webkit-scrollbar-thumb {
     background: #CBD5E1;
-    border-radius: 3px;
+    border-radius: 9999px;
   }
   ::-webkit-scrollbar-thumb:hover {
     background: #94A3B8;
@@ -43,17 +44,65 @@
 }
 
 @layer utilities {
-  /* Subtle operational grid for GIS and analytics panels */
+  /* Subtle atmospheric operational grid for GIS and analytics panels */
   .gov-grid {
-    background-size: 24px 24px;
+    background-size: 28px 28px;
     background-image: 
-      linear-gradient(to right, rgba(11, 31, 51, 0.04) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(11, 31, 51, 0.04) 1px, transparent 1px);
+      linear-gradient(to right, rgba(11, 31, 51, 0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(11, 31, 51, 0.035) 1px, transparent 1px);
+  }
+
+  /* Modern Glassmorphic Card Styles */
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(226, 232, 240, 0.85);
+    box-shadow: 0 4px 20px -2px rgba(11, 31, 51, 0.04), 0 2px 6px -1px rgba(11, 31, 51, 0.02);
+  }
+
+  .glass-panel-dark {
+    background: rgba(11, 31, 51, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
   }
 
   .im-card {
     background-color: #FFFFFF;
     border: 1px solid #E2E8F0;
     box-shadow: 0 1px 3px 0 rgba(11, 31, 51, 0.04), 0 1px 2px 0 rgba(11, 31, 51, 0.02);
+    border-radius: 10px;
+    transition: all 0.2s ease-in-out;
+  }
+  .im-card:hover {
+    border-color: #CBD5E1;
+    box-shadow: 0 6px 20px -3px rgba(11, 31, 51, 0.07);
+  }
+
+  /* Live Radar Pulse Animation */
+  @keyframes radarPulse {
+    0% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(20, 121, 201, 0.6);
+    }
+    70% {
+      transform: scale(1);
+      box-shadow: 0 0 0 8px rgba(20, 121, 201, 0);
+    }
+    100% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(20, 121, 201, 0);
+    }
+  }
+
+  .radar-pulse-live {
+    animation: radarPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Atmospheric Sky & Troposphere Gradient */
+  .weather-gradient-subtle {
+    background: linear-gradient(135deg, rgba(237, 246, 252, 0.6) 0%, rgba(255, 255, 255, 0.9) 100%);
   }
 }

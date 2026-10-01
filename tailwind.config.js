@@ -87,13 +87,18 @@ export default {
       },
       fontFamily: {
         sans: [
+          '"Plus Jakarta Sans"',
           'Inter',
           '-apple-system',
           'BlinkMacSystemFont',
           'Segoe UI',
           'Roboto',
-          'Oxygen',
-          'Ubuntu',
+          'sans-serif',
+        ],
+        display: [
+          'Outfit',
+          '"Plus Jakarta Sans"',
+          'Inter',
           'sans-serif',
         ],
         mono: [
@@ -109,11 +114,17 @@ export default {
       boxShadow: {
         'gov-card': '0 1px 3px 0 rgba(11, 31, 51, 0.05), 0 1px 2px 0 rgba(11, 31, 51, 0.03)',
         'gov-elevated': '0 4px 6px -1px rgba(11, 31, 51, 0.07), 0 2px 4px -1px rgba(11, 31, 51, 0.04)',
+        'glow-blue': '0 0 25px -4px rgba(20, 121, 201, 0.35)',
+        'glow-cyan': '0 0 25px -4px rgba(6, 182, 212, 0.35)',
+        'glow-emerald': '0 0 25px -4px rgba(36, 122, 74, 0.35)',
+        'glass': '0 8px 32px 0 rgba(11, 31, 51, 0.08)',
+        'card-hover': '0 12px 24px -6px rgba(11, 31, 51, 0.1), 0 4px 8px -4px rgba(11, 31, 51, 0.06)',
       },
       borderRadius: {
-        'gov-sm': '4px',
-        'gov-md': '6px',
-        'gov-lg': '8px',
+        'gov-sm': '6px',
+        'gov-md': '10px',
+        'gov-lg': '14px',
+        'gov-xl': '20px',
       },
     },
   },

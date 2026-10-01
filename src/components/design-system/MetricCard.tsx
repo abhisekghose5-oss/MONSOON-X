@@ -32,32 +32,32 @@ export function MetricCard({
 }: MetricCardProps) {
   // Border and accent indicators based on operational domain
   const statusAccents = {
-    normal: 'border-t-[#0B1F33] bg-white',
-    monsoon: 'border-t-[#1479C9] bg-white',
-    agriculture: 'border-t-[#247A4A] bg-white',
-    warning: 'border-t-[#D99000] bg-white',
-    risk: 'border-t-[#C43D3D] bg-white',
+    normal: 'border-t-slate-800 hover:border-slate-400 hover:shadow-card-hover',
+    monsoon: 'border-t-sky-500 hover:border-sky-400 hover:shadow-glow-blue',
+    agriculture: 'border-t-emerald-600 hover:border-emerald-400 hover:shadow-glow-emerald',
+    warning: 'border-t-amber-500 hover:border-amber-400',
+    risk: 'border-t-rose-500 hover:border-rose-400',
   };
 
   const statusIcons = {
-    normal: 'text-[#0B1F33] bg-[#EAF0F6]',
-    monsoon: 'text-[#1479C9] bg-[#EDF6FC]',
-    agriculture: 'text-[#247A4A] bg-[#EDF7F1]',
-    warning: 'text-[#D99000] bg-[#FDF7EB]',
-    risk: 'text-[#C43D3D] bg-[#FCEDEC]',
+    normal: 'text-slate-800 bg-slate-100',
+    monsoon: 'text-sky-600 bg-sky-50',
+    agriculture: 'text-emerald-700 bg-emerald-50',
+    warning: 'text-amber-700 bg-amber-50',
+    risk: 'text-rose-700 bg-rose-50',
   };
 
   return (
     <div
       className={cn(
-        'rounded-md border border-[#E2E8F0] border-t-4 p-4 shadow-gov-card transition-all',
+        'rounded-xl border border-slate-200/90 border-t-[3px] p-4.5 bg-white shadow-gov-card transition-all duration-200 hover:-translate-y-0.5',
         statusAccents[status],
         className
       )}
       {...props}
     >
       <div className="flex items-start justify-between gap-2 mb-2">
-        <span className="text-xs font-semibold uppercase tracking-wider text-[#4B5B6D]">
+        <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 font-sans">
           {title}
         </span>
         {Icon && (

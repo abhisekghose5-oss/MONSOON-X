@@ -13,3 +13,4 @@ export * from './FilterBar';
 export * from './LocationSelector';
 export * from './EmptyState';
 export * from './LoadingSkeleton';
+export * from './LiveWeatherTicker';
