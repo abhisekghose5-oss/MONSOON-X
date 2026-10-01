@@ -1,0 +1,21 @@
+export const SYSTEM_METADATA = {
+  projectTitle: 'KORAPUT MAUSAM INTELLIGENCE',
+  projectAcronym: 'KMI-DSS',
+  tagline: 'From climate signals to crop decisions.',
+  sihProblemId: 'SIH26086',
+  sihTitle: 'Hyperlocal Monsoon Onset & Break Prediction System',
+  pilotRegion: {
+    district: 'Koraput',
+    state: 'Odisha',
+    country: 'India',
+    headquarters: 'Koraput',
+    blocksCount: 14,
+    totalAreaSqKm: 8807,
+    elevationRangeMeters: '380m - 1672m (Deomali Peak)',
+    primaryAgroEcologicalZone: 'Eastern Ghat High Altitude and Undulating Highlands',
+    predominantCrops: ['Kharif Paddy', 'Mandia (Finger Millet)', 'Suan (Little Millet)', 'Maize', 'Niger', 'Coffee'],
+  },
+  engineVersion: 'v1.0.0-rc',
+  spatialResolution: '1.2 km² Downscaled Grid',
+  temporalUpdateFrequency: '3-Hourly Telemetry / 12-Hourly NWP Ensemble',
+};

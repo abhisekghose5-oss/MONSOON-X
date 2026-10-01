@@ -1,0 +1,13 @@
+{
+  "type": "FeatureCollection",
+  "name": "koraput_panchayats",
+  "metadata": {
+    "status": "unavailable",
+    "district": "Koraput",
+    "state": "Odisha",
+    "country": "India",
+    "message": "Panchayat-level boundary data unavailable",
+    "reason": "Cadastral Gram Panchayat polygon boundary datasets are not yet published in open GeoJSON format. Architecture is ready to ingest cadastral boundaries once released by ORSAC / Revenue Department."
+  },
+  "features": []
+}
