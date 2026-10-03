@@ -24,7 +24,7 @@ export function BlockDetailModal({ block, onClose, onViewPanchayats }: BlockDeta
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0B1F33]/70 backdrop-blur-xs"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
       role="dialog"
       aria-modal="true"
       aria-labelledby="block-detail-title"
@@ -32,18 +32,18 @@ export function BlockDetailModal({ block, onClose, onViewPanchayats }: BlockDeta
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="bg-white rounded-md border border-[#CBD5E1] shadow-2xl max-w-xl w-full max-h-[90vh] overflow-y-auto space-y-4 animate-in fade-in duration-200">
+      <div className="bg-[#0A192F] text-white rounded-lg border border-[#1E354D] shadow-[0_0_50px_rgba(0,0,0,0.8)] max-w-xl w-full max-h-[90vh] overflow-y-auto space-y-4 animate-in fade-in duration-200">
         {/* Header */}
-        <div className="p-4 bg-[#0B1F33] text-white flex items-center justify-between sticky top-0 z-10">
+        <div className="p-4 bg-[#071324] text-white flex items-center justify-between border-b border-[#1E354D] sticky top-0 z-10">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xs bg-[#1479C9] flex items-center justify-center text-white shrink-0">
-              <MapPin className="w-4 h-4" />
+            <div className="w-8 h-8 rounded-sm bg-[#0284C7]/20 border border-[#0284C7]/40 flex items-center justify-center text-[#38BDF8] shrink-0">
+              <MapPin className="w-4 h-4 text-[#38BDF8]" />
             </div>
             <div>
               <h3 id="block-detail-title" className="text-base font-bold font-mono uppercase tracking-wider text-white">
                 {block.blockName} BLOCK PROFILE
               </h3>
-              <span className="text-[11px] text-[#A4BCDA] font-mono">
+              <span className="text-[11px] text-slate-400 font-mono">
                 HQ: {block.headquarters} · Koraput District, Odisha
               </span>
             </div>
@@ -52,7 +52,7 @@ export function BlockDetailModal({ block, onClose, onViewPanchayats }: BlockDeta
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 rounded-xs text-[#A4BCDA] hover:text-white hover:bg-white/10 transition-colors focus-visible:ring-2 focus-visible:ring-[#1479C9] focus-visible:outline-hidden"
+            className="p-1.5 rounded-sm text-slate-400 hover:text-white hover:bg-white/10 transition-colors focus-visible:ring-2 focus-visible:ring-[#0284C7] focus-visible:outline-hidden cursor-pointer"
             aria-label="Close block profile modal"
           >
             <X className="w-5 h-5" />
@@ -63,93 +63,93 @@ export function BlockDetailModal({ block, onClose, onViewPanchayats }: BlockDeta
         <div className="p-5 space-y-4 text-xs">
           {/* Top Quick Attributes */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-            <div className="p-2.5 rounded-xs bg-[#F8FAFC] border border-[#E2E8F0]">
-              <span className="text-[10px] font-mono uppercase text-[#6E7F94] block">Elevation</span>
-              <span className="text-sm font-bold font-mono text-[#0B1F33] block mt-0.5">{block.elevationMeters}m</span>
+            <div className="p-2.5 rounded-lg bg-[#071324]/90 border border-[#1E354D]">
+              <span className="text-[10px] font-mono uppercase text-slate-400 block">Elevation</span>
+              <span className="text-sm font-bold font-mono text-white block mt-0.5">{block.elevationMeters}m</span>
             </div>
 
-            <div className="p-2.5 rounded-xs bg-[#F8FAFC] border border-[#E2E8F0]">
-              <span className="text-[10px] font-mono uppercase text-[#6E7F94] block">Kharif Area</span>
-              <span className="text-sm font-bold font-mono text-[#0B1F33] block mt-0.5">{block.kharifAcreageHa.toLocaleString()} ha</span>
+            <div className="p-2.5 rounded-lg bg-[#071324]/90 border border-[#1E354D]">
+              <span className="text-[10px] font-mono uppercase text-slate-400 block">Kharif Area</span>
+              <span className="text-sm font-bold font-mono text-white block mt-0.5">{block.kharifAcreageHa.toLocaleString()} ha</span>
             </div>
 
-            <div className="p-2.5 rounded-xs bg-[#F8FAFC] border border-[#E2E8F0]">
-              <span className="text-[10px] font-mono uppercase text-[#6E7F94] block">Panchayats</span>
-              <span className="text-sm font-bold font-mono text-[#0B1F33] block mt-0.5">{block.panchayatCount} GPs</span>
+            <div className="p-2.5 rounded-lg bg-[#071324]/90 border border-[#1E354D]">
+              <span className="text-[10px] font-mono uppercase text-slate-400 block">Panchayats</span>
+              <span className="text-sm font-bold font-mono text-white block mt-0.5">{block.panchayatCount} GPs</span>
             </div>
 
-            <div className="p-2.5 rounded-xs bg-[#F8FAFC] border border-[#E2E8F0]">
-              <span className="text-[10px] font-mono uppercase text-[#6E7F94] block">Risk Level</span>
-              <span className="text-sm font-bold font-mono uppercase text-[#C43D3D] block mt-0.5">{block.overallRiskLevel}</span>
+            <div className="p-2.5 rounded-lg bg-[#071324]/90 border border-[#1E354D]">
+              <span className="text-[10px] font-mono uppercase text-slate-400 block">Risk Level</span>
+              <span className="text-sm font-bold font-mono uppercase text-rose-400 block mt-0.5">{block.overallRiskLevel}</span>
             </div>
           </div>
 
           {/* Agro-Ecological Zone */}
-          <div className="p-3 rounded-xs bg-[#F8FAFC] border border-[#E2E8F0]">
-            <span className="text-[10px] font-mono font-bold uppercase text-[#6E7F94] block">
+          <div className="p-3 rounded-lg bg-[#071324]/90 border border-[#1E354D]">
+            <span className="text-[10px] font-mono font-bold uppercase text-slate-400 block">
               Agro-Ecological Classification:
             </span>
-            <span className="text-xs font-semibold text-[#0B1F33] mt-0.5 block">
+            <span className="text-xs font-semibold text-white mt-0.5 block font-mono">
               {block.agroEcologicalZone}
             </span>
           </div>
 
           {/* Hazard Summary */}
-          <div className="p-3.5 rounded-xs bg-white border border-[#CBD5E1] space-y-2">
-            <span className="text-[11px] font-mono font-bold uppercase text-[#0B1F33] flex items-center gap-1.5">
-              <AlertOctagon className="w-3.5 h-3.5 text-[#C43D3D]" />
+          <div className="p-3.5 rounded-lg bg-[#071324]/90 border border-[#1E354D] space-y-2.5">
+            <span className="text-[11px] font-mono font-bold uppercase text-[#38BDF8] flex items-center gap-1.5">
+              <AlertOctagon className="w-3.5 h-3.5 text-rose-400" />
               Hydrometeorological Risk Assessment:
             </span>
 
             <div className="grid grid-cols-2 gap-2 text-[11px]">
-              <div className="flex justify-between p-2 rounded-xs bg-[#F8FAFC]">
-                <span className="text-[#4B5B6D]">Dry Spell Probability:</span>
-                <strong className="font-mono text-[#C43D3D]">{block.drySpellProbability}% ({block.drySpellSeverity})</strong>
+              <div className="flex justify-between p-2 rounded-xs bg-[#0A192F] border border-[#1E354D]">
+                <span className="text-slate-400">Dry Spell Probability:</span>
+                <strong className="font-mono text-rose-400">{block.drySpellProbability}% ({block.drySpellSeverity})</strong>
               </div>
-              <div className="flex justify-between p-2 rounded-xs bg-[#F8FAFC]">
-                <span className="text-[#4B5B6D]">Heavy Rain Risk:</span>
-                <strong className="font-mono text-[#0B1F33]">{block.heavyRainProbability}%</strong>
+              <div className="flex justify-between p-2 rounded-xs bg-[#0A192F] border border-[#1E354D]">
+                <span className="text-slate-400">Heavy Rain Risk:</span>
+                <strong className="font-mono text-white">{block.heavyRainProbability}%</strong>
               </div>
-              <div className="flex justify-between p-2 rounded-xs bg-[#F8FAFC]">
-                <span className="text-[#4B5B6D]">False Onset Alert:</span>
-                <strong className="font-mono text-[#802626]">{block.isFalseOnsetAlert ? 'ACTIVE WATCH' : 'NONE'}</strong>
+              <div className="flex justify-between p-2 rounded-xs bg-[#0A192F] border border-[#1E354D]">
+                <span className="text-slate-400">False Onset Alert:</span>
+                <strong className="font-mono text-rose-400">{block.isFalseOnsetAlert ? 'ACTIVE WATCH' : 'NONE'}</strong>
               </div>
-              <div className="flex justify-between p-2 rounded-xs bg-[#F8FAFC]">
-                <span className="text-[#4B5B6D]">Soil Moisture Deficit:</span>
-                <strong className="font-mono text-[#D99000]">-{block.soilMoistureDeficitPercent}%</strong>
+              <div className="flex justify-between p-2 rounded-xs bg-[#0A192F] border border-[#1E354D]">
+                <span className="text-slate-400">Soil Moisture Deficit:</span>
+                <strong className="font-mono text-amber-400">-{block.soilMoistureDeficitPercent}%</strong>
               </div>
             </div>
           </div>
 
           {/* Administrative Directive */}
-          <div className="p-3.5 rounded-xs bg-[#FDF7EB] border border-[#F4D79C] text-[#8C5D00] space-y-1">
-            <strong className="block text-xs font-mono uppercase text-[#D99000]">
+          <div className="p-3.5 rounded-lg bg-[#1C1608]/70 border border-amber-500/30 text-amber-200/90 space-y-1">
+            <strong className="block text-xs font-mono uppercase text-amber-400">
               MANDATORY EXTENSION DIRECTIVE (BAO ACTION):
             </strong>
-            <p className="text-xs leading-relaxed text-[#0B1F33]">
+            <p className="text-xs leading-relaxed text-slate-200">
               {block.recommendedDirective}
             </p>
           </div>
         </div>
 
         {/* Footer Actions */}
-        <div className="p-4 bg-[#F5F7FA] border-t border-[#E2E8F0] flex items-center justify-between">
+        <div className="p-4 bg-[#071324] border-t border-[#1E354D] flex items-center justify-between">
           <button
             type="button"
             onClick={() => {
               onClose();
               onViewPanchayats(block);
             }}
-            className="px-3.5 py-1.5 rounded-xs bg-[#1479C9] hover:bg-[#0E63A8] text-white text-xs font-bold font-mono transition-all flex items-center gap-1.5 focus-visible:ring-2 focus-visible:ring-[#0B1F33] focus-visible:outline-hidden"
+            className="px-3.5 py-1.5 rounded-sm bg-[#0284C7] hover:bg-[#0369A1] text-white text-xs font-bold font-mono transition-all flex items-center gap-1.5 shadow-xs border border-[#38BDF8]/40 cursor-pointer"
           >
-            <Layers className="w-3.5 h-3.5" />
+            <Layers className="w-3.5 h-3.5 text-[#38BDF8]" />
             <span>VIEW PANCHAYATS ({block.panchayatCount})</span>
           </button>
 
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-1.5 rounded-xs bg-white hover:bg-slate-100 text-[#4B5B6D] text-xs font-bold font-mono transition-all border border-[#CBD5E1] focus-visible:ring-2 focus-visible:ring-[#1479C9] focus-visible:outline-hidden"
+            className="px-4 py-1.5 rounded-sm bg-[#0B1F33] hover:bg-white/10 text-slate-300 hover:text-white text-xs font-bold font-mono transition-all border border-[#1E354D] cursor-pointer"
           >
             CLOSE
           </button>

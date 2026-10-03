@@ -30,8 +30,8 @@ export function ModelPerformancePage() {
         subtitle="Empirical verification, probabilistic reliability calibration, and retrospective backtesting across Koraput District in compliance with WMO-No. 485."
         accentColor="navy"
         badge={
-          <span className="font-mono text-[10px] font-bold px-2 py-0.5 rounded-sm bg-[#EDF7F1] text-[#154D2F] border border-[#ABD7C0] uppercase flex items-center gap-1">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#247A4A]" />
+          <span className="font-mono text-[10px] font-bold px-2 py-0.5 rounded-sm bg-emerald-950/60 text-[#4ADE80] border border-emerald-500/40 uppercase flex items-center gap-1 shadow-xs">
+            <ShieldCheck className="w-3.5 h-3.5 text-[#4ADE80]" />
             WMO / IMD VALIDATED
           </span>
         }
@@ -44,16 +44,16 @@ export function ModelPerformancePage() {
       />
 
       {/* Institutional Transparency Banner */}
-      <div className="p-3.5 rounded-md bg-white border border-[#CBD5E1] shadow-2xs flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs">
+      <div className="p-3.5 rounded-md bg-[#0A192F]/85 backdrop-blur-md border border-[#1E354D] shadow-command-panel flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs">
         <div className="flex items-center gap-2.5">
-          <div className="p-1 rounded-xs bg-[#EAF0F6] text-[#1479C9] shrink-0">
+          <div className="p-1 rounded-xs bg-[#071324] text-[#38BDF8] border border-[#1E354D] shrink-0">
             <Info className="w-4 h-4" />
           </div>
-          <p className="text-[#334155] leading-relaxed">
-            <strong>Scientific Integrity Statement:</strong> All evaluation statistics are derived from 55-year retrospective leave-one-season-out cross-validation (1970–2024). Operational predictions lacking completed ground validation strictly display <em>"Awaiting model evaluation"</em>.
+          <p className="text-slate-300 leading-relaxed">
+            <strong className="text-white">Scientific Integrity Statement:</strong> All evaluation statistics are derived from 55-year retrospective leave-one-season-out cross-validation (1970–2024). Operational predictions lacking completed ground validation strictly display <em className="text-[#38BDF8]">"Awaiting model evaluation"</em>.
           </p>
         </div>
-        <span className="text-[11px] font-mono text-[#6E7F94] bg-[#F5F7FA] px-2.5 py-1 rounded border border-[#E2E8F0] shrink-0">
+        <span className="text-[11px] font-mono text-[#38BDF8] bg-[#071324] px-2.5 py-1 rounded border border-[#1E354D] shrink-0 font-semibold">
           SIH26086 Model Hub
         </span>
       </div>

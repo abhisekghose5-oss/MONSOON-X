@@ -50,14 +50,43 @@ export const RISK_MAP_LAYERS: Record<RiskLayer, RiskMapLayerConfig> = {
     unit: '%',
     description: 'Departure of precipitation forecast against 30-year IMD Long Period Average (LPA) baseline.',
     colorScale: [
-      { min: -100, max: -60, label: '< -60%', subLabel: 'Strong Deficit', color: '#C43D3D', textColor: '#FFFFFF' },
-      { min: -60, max: -20, label: '-59% to -20%', subLabel: 'Deficit', color: '#D99000', textColor: '#FFFFFF' },
-      { min: -20, max: 20, label: '-19% to +19%', subLabel: 'Near Normal', color: '#247A4A', textColor: '#FFFFFF' },
-      { min: 20, max: 60, label: '+20% to +59%', subLabel: 'Above Normal', color: '#1479C9', textColor: '#FFFFFF' },
-      { min: 60, max: 200, label: '> +60%', subLabel: 'Strong Excess', color: '#0B1F33', textColor: '#FFFFFF' },
+      { min: -100, max: -60, label: '< -60%', subLabel: 'Strong Deficit', color: '#DC2626', textColor: '#FFFFFF' },
+      { min: -60, max: -20, label: '-59% to -20%', subLabel: 'Deficit', color: '#D97706', textColor: '#FFFFFF' },
+      { min: -20, max: 20, label: '-19% to +19%', subLabel: 'Near Normal', color: '#15803D', textColor: '#FFFFFF' },
+      { min: 20, max: 60, label: '+20% to +59%', subLabel: 'Above Normal', color: '#0284C7', textColor: '#FFFFFF' },
+      { min: 60, max: 200, label: '> +60%', subLabel: 'Strong Excess', color: '#0A192F', textColor: '#FFFFFF' },
+    ],
+  },
+  falseOnset: {
+    id: 'falseOnset',
+    name: 'False Onset Risk',
+    shortName: 'False Onset',
+    unit: '%',
+    description: 'Probability of transient wetting rains followed by a persistent dry spell causing seedling mortality.',
+    colorScale: [
+      { min: 0, max: 20, label: '0–20%', subLabel: 'Minimal', color: '#F0FDF4', textColor: '#166534', borderColor: '#BBF7D0' },
+      { min: 20, max: 40, label: '20–40%', subLabel: 'Low Watch', color: '#FEF3C7', textColor: '#92400E' },
+      { min: 40, max: 60, label: '40–60%', subLabel: 'Moderate', color: '#FCD34D', textColor: '#78350F' },
+      { min: 60, max: 80, label: '60–80%', subLabel: 'High', color: '#F59E0B', textColor: '#FFFFFF' },
+      { min: 80, max: 100, label: '80–100%', subLabel: 'Critical', color: '#EA580C', textColor: '#FFFFFF' },
+    ],
+  },
+  pestRisk: {
+    id: 'pestRisk',
+    name: 'Agro-Pest & Disease Vulnerability',
+    shortName: 'Pest Risk',
+    unit: '%',
+    description: 'Microclimatic risk index for paddy blast, gall midge, and ragi finger blast based on humidity and wet spells.',
+    colorScale: [
+      { min: 0, max: 20, label: '0–20%', subLabel: 'Low', color: '#F0FDF4', textColor: '#166534', borderColor: '#BBF7D0' },
+      { min: 20, max: 40, label: '20–40%', subLabel: 'Mild', color: '#DCFCE7', textColor: '#166534' },
+      { min: 40, max: 60, label: '40–60%', subLabel: 'Elevated', color: '#FEF08A', textColor: '#854D0E' },
+      { min: 60, max: 80, label: '60–80%', subLabel: 'High Threat', color: '#FB923C', textColor: '#FFFFFF' },
+      { min: 80, max: 100, label: '80–100%', subLabel: 'Severe Outbreak', color: '#DC2626', textColor: '#FFFFFF' },
     ],
   },
 };
+
 
 /**
  * Maps a numerical metric value to the corresponding color in the layer scale

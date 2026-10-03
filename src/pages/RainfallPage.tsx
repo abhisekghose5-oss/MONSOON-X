@@ -86,7 +86,7 @@ export function RainfallPage() {
             <button
               onClick={() => refetch()}
               disabled={isFetching}
-              className="p-1.5 rounded-xs border border-[#CBD5E1] bg-white hover:bg-[#F8FAFC] text-[#475569] transition-colors"
+              className="p-1.5 rounded-xs border border-[#1E354D] bg-[#0A192F] hover:bg-[#132844] text-slate-300 hover:text-white transition-colors"
               title="Refresh Telemetry"
             >
               <RefreshCw className={`w-3.5 h-3.5 ${isFetching ? 'animate-spin' : ''}`} />

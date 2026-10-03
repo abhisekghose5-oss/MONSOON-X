@@ -83,25 +83,25 @@ export function MonthlyProfileChart({
         <div className="flex flex-wrap items-center justify-between w-full text-xs font-mono">
           <div className="flex items-center gap-4 flex-wrap">
             <span className="flex items-center gap-1.5">
-              <span className="w-3 h-3 bg-[#94A3B8] rounded-xs" />
-              <span className="text-[#0B1F33] font-semibold">Historical Normal (1971–2020)</span>
+              <span className="w-3 h-3 bg-slate-600 rounded-xs" />
+              <span className="text-slate-200 font-semibold">Historical Normal (1971–2020)</span>
             </span>
             <span className="flex items-center gap-1.5">
-              <span className="w-3 h-3 bg-[#0284C7] rounded-xs" />
-              <span className="text-[#0B1F33] font-semibold">Observed ({selectedYear})</span>
+              <span className="w-3 h-3 bg-[#38BDF8] rounded-xs shadow-[0_0_6px_rgba(56,189,248,0.5)]" />
+              <span className="text-slate-200 font-semibold">Observed ({selectedYear})</span>
             </span>
             <span className="flex items-center gap-1.5">
               <span className="w-3 h-3 border-2 border-[#F59E0B] rounded-xs" />
-              <span className="text-[#D97706] font-bold">SW Monsoon Window (JJAS)</span>
+              <span className="text-[#F59E0B] font-bold">SW Monsoon Window (JJAS)</span>
             </span>
           </div>
-          <span className="text-[#64748B] text-[11px]">
+          <span className="text-slate-400 text-[11px]">
             Annual LPA: 1538.8 mm
           </span>
         </div>
       }
       footer={
-        <div className="text-[11px] text-[#64748B] font-mono">
+        <div className="text-[11px] text-slate-400 font-mono">
           June to September accounts for approximately 78.8% of Koraput&apos;s total annual precipitation.
         </div>
       }
@@ -111,7 +111,7 @@ export function MonthlyProfileChart({
           data={data}
           margin={{ top: 12, right: 16, left: -8, bottom: 4 }}
         >
-          <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" vertical={false} />
+          <CartesianGrid strokeDasharray="3 3" stroke="#1E354D" vertical={false} />
 
           <XAxis
             dataKey="month"
@@ -123,7 +123,7 @@ export function MonthlyProfileChart({
                   x={x}
                   y={Number(y) + 12}
                   textAnchor="middle"
-                  fill={isMonsoon ? '#0284C7' : '#64748B'}
+                  fill={isMonsoon ? '#38BDF8' : '#94A3B8'}
                   fontWeight={isMonsoon ? 'bold' : 'normal'}
                   fontSize={10}
                   fontFamily="monospace"
@@ -133,13 +133,13 @@ export function MonthlyProfileChart({
               );
             }}
             tickLine={false}
-            axisLine={{ stroke: '#CBD5E1' }}
+            axisLine={{ stroke: '#1E354D' }}
           />
 
           <YAxis
-            tick={{ fontSize: 10, fill: '#64748B', fontFamily: 'monospace' }}
+            tick={{ fontSize: 10, fill: '#94A3B8', fontFamily: 'monospace' }}
             tickLine={false}
-            axisLine={{ stroke: '#CBD5E1' }}
+            axisLine={{ stroke: '#1E354D' }}
             domain={[0, (dataMax: number) => Math.ceil(dataMax / 50) * 50]}
           />
 
@@ -149,7 +149,7 @@ export function MonthlyProfileChart({
           <Bar
             dataKey="normalMm"
             name="Historical Normal"
-            fill="#94A3B8"
+            fill="#475569"
             radius={[2, 2, 0, 0]}
             maxBarSize={18}
           />

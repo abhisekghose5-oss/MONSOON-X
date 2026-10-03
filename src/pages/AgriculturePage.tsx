@@ -67,7 +67,7 @@ export function AgriculturePage() {
             <button
               onClick={() => refetch()}
               disabled={isFetching}
-              className="p-1.5 rounded-sm border border-[#CBD5E1] bg-white hover:bg-[#F5F7FA] text-[#4B5B6D] transition-colors focus-visible:ring-2 focus-visible:ring-[#247A4A] focus-visible:outline-hidden"
+              className="p-1.5 rounded-sm border border-[#1E354D] bg-[#0A192F] hover:bg-[#132844] text-slate-300 hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-[#10B981] focus-visible:outline-hidden"
               title="Refresh Agricultural Telemetry"
               aria-label="Refresh Agricultural Telemetry"
             >

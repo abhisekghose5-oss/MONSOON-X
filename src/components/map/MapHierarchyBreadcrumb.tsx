@@ -18,23 +18,23 @@ export function MapHierarchyBreadcrumb({
   return (
     <nav
       aria-label="Administrative Hierarchy"
-      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-sm bg-white border border-[#CBD5E1] shadow-gov-card text-xs font-mono select-none"
+      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#071324]/90 border border-[#1E354D] shadow-xl text-xs font-mono select-none backdrop-blur-md"
     >
       {/* State */}
-      <span className="flex items-center gap-1 text-[#4B5B6D]">
-        <Globe className="w-3 h-3 text-[#1479C9]" />
+      <span className="flex items-center gap-1 text-slate-400">
+        <Globe className="w-3 h-3 text-cyan-400" />
         <span>Odisha</span>
       </span>
 
-      <ChevronRight className="w-3 h-3 text-[#94A3B8]" />
+      <ChevronRight className="w-3 h-3 text-slate-600" />
 
       {/* District */}
       <button
         type="button"
         onClick={onSelectDistrict}
         className={cn(
-          'font-semibold transition-colors hover:text-[#1479C9]',
-          !blockName ? 'text-[#0B1F33] font-bold' : 'text-[#4B5B6D]'
+          'font-semibold transition-colors hover:text-cyan-300 cursor-pointer',
+          !blockName ? 'text-white font-bold' : 'text-slate-400'
         )}
       >
         Koraput District
@@ -43,13 +43,13 @@ export function MapHierarchyBreadcrumb({
       {/* Block (if selected) */}
       {blockName && (
         <>
-          <ChevronRight className="w-3 h-3 text-[#94A3B8]" />
+          <ChevronRight className="w-3 h-3 text-slate-600" />
           <button
             type="button"
             onClick={onSelectBlock}
             className={cn(
-              'font-semibold transition-colors hover:text-[#1479C9]',
-              !panchayatName ? 'text-[#1479C9] font-bold underline' : 'text-[#4B5B6D]'
+              'font-semibold transition-colors hover:text-cyan-300 cursor-pointer',
+              !panchayatName ? 'text-cyan-400 font-bold underline' : 'text-slate-400'
             )}
           >
             {blockName} Block
@@ -60,9 +60,9 @@ export function MapHierarchyBreadcrumb({
       {/* Panchayat (if selected) */}
       {panchayatName && (
         <>
-          <ChevronRight className="w-3 h-3 text-[#94A3B8]" />
-          <span className="text-[#247A4A] font-bold flex items-center gap-1">
-            <MapPin className="w-3 h-3" />
+          <ChevronRight className="w-3 h-3 text-slate-600" />
+          <span className="text-emerald-400 font-bold flex items-center gap-1">
+            <MapPin className="w-3 h-3 text-emerald-400" />
             <span>GP: {panchayatName}</span>
           </span>
         </>

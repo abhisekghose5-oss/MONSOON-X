@@ -36,26 +36,26 @@ export function ChartContainer({
   return (
     <div
       className={cn(
-        'rounded-md border border-[#E2E8F0] bg-white shadow-gov-card overflow-hidden flex flex-col',
+        'rounded-lg border border-[#1E354D] bg-[#0A192F]/90 shadow-command-panel overflow-hidden flex flex-col text-slate-100 backdrop-blur-md',
         className
       )}
       {...props}
     >
       {/* Header Bar */}
-      <div className="px-4 py-3 border-b border-[#E2E8F0] bg-[#F5F7FA]/60 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+      <div className="px-4 py-3 border-b border-[#1E354D] bg-[#071324] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
         <div>
           <div className="flex items-center gap-2">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-[#0B1F33]">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-white font-mono">
               {title}
             </h3>
             {unit && (
-              <span className="font-mono text-[10px] text-[#6E7F94] font-medium">
-                [{unit}]
+              <span className="font-mono text-[10px] text-[#38BDF8] font-medium bg-[#0284C7]/15 px-1.5 py-0.2 rounded border border-[#0284C7]/30">
+                {unit}
               </span>
             )}
           </div>
           {subtitle && (
-            <p className="text-[11px] text-[#4B5B6D] mt-0.5">
+            <p className="text-[11px] text-slate-300 mt-0.5">
               {subtitle}
             </p>
           )}
@@ -66,14 +66,14 @@ export function ChartContainer({
 
       {/* Legend Sub-bar if present */}
       {legend && (
-        <div className="px-4 py-2 border-b border-[#F0F3F7] bg-white flex flex-wrap items-center gap-4 text-xs font-mono text-[#4B5B6D]">
+        <div className="px-4 py-2 border-b border-[#1E354D] bg-[#071324]/60 flex flex-wrap items-center gap-4 text-xs font-mono text-slate-300">
           {legend}
         </div>
       )}
 
       {/* Chart Canvas Area */}
       <div
-        className="p-4 relative flex-1 flex flex-col items-center justify-center"
+        className="p-4 relative flex-1 flex flex-col items-center justify-center bg-transparent"
         style={{ minHeight: heightStyle }}
       >
         {isLoading ? (

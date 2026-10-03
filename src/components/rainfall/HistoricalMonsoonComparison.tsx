@@ -68,24 +68,24 @@ export function HistoricalMonsoonComparison({
   });
 
   return (
-    <div className="bg-white border border-[#CBD5E1] rounded-sm p-4 space-y-4 shadow-xs">
+    <div className="bg-[#0A192F]/85 backdrop-blur-md border border-[#1E354D] rounded-md p-4 space-y-4 shadow-command-panel">
       {/* Header and Year Pills */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-[#F1F5F9] pb-3">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-[#1E354D] pb-3">
         <div>
           <div className="flex items-center gap-2">
-            <History className="w-4 h-4 text-[#0284C7]" />
-            <h4 className="font-bold font-mono text-sm tracking-tight text-[#0B1F33]">
+            <History className="w-4 h-4 text-[#38BDF8]" />
+            <h4 className="font-bold font-mono text-sm tracking-tight text-white">
               HISTORICAL MONSOON COMPARISON
             </h4>
           </div>
-          <p className="text-xs text-[#64748B] mt-0.5">
+          <p className="text-xs text-slate-400 mt-0.5">
             Inter-annual comparison of monthly and total seasonal rainfall across verified IMD records (2019–2025).
           </p>
         </div>
 
         {/* Multi-Year Selection Chips */}
         <div className="flex flex-wrap items-center gap-1.5">
-          <span className="text-xs font-mono text-[#64748B] mr-1">Select Years:</span>
+          <span className="text-xs font-mono text-slate-400 mr-1">Select Years:</span>
           {availableYears.map((yr) => {
             const isSelected = selectedYears.includes(yr);
             const color = YEAR_COLORS[yr] || '#64748B';
@@ -93,10 +93,10 @@ export function HistoricalMonsoonComparison({
               <button
                 key={yr}
                 onClick={() => toggleYear(yr)}
-                className={`px-2.5 py-1 text-xs font-mono font-semibold rounded-xs border transition-colors flex items-center gap-1 ${
+                className={`px-2.5 py-1 text-xs font-mono font-semibold rounded-xs border transition-colors flex items-center gap-1 cursor-pointer ${
                   isSelected
-                    ? 'bg-[#0B1F33] text-white border-[#0B1F33]'
-                    : 'bg-[#F8FAFC] text-[#64748B] border-[#CBD5E1] hover:bg-[#F1F5F9]'
+                    ? 'bg-[#071324] text-white border-[#38BDF8] shadow-[0_0_8px_rgba(56,189,248,0.3)]'
+                    : 'bg-[#071324]/50 text-slate-400 border-[#1E354D] hover:bg-[#0D2038] hover:text-slate-200'
                 }`}
               >
                 <span
@@ -104,7 +104,7 @@ export function HistoricalMonsoonComparison({
                   style={{ backgroundColor: color }}
                 />
                 <span>{yr}</span>
-                {isSelected && <Check className="w-3 h-3 text-white" />}
+                {isSelected && <Check className="w-3 h-3 text-[#38BDF8]" />}
               </button>
             );
           })}
@@ -118,19 +118,19 @@ export function HistoricalMonsoonComparison({
             data={chartData}
             margin={{ top: 12, right: 16, left: -8, bottom: 4 }}
           >
-            <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" vertical={false} />
+            <CartesianGrid strokeDasharray="3 3" stroke="#1E354D" vertical={false} />
 
             <XAxis
               dataKey="month"
-              tick={{ fontSize: 11, fill: '#0B1F33', fontFamily: 'monospace', fontWeight: 600 }}
+              tick={{ fontSize: 11, fill: '#94A3B8', fontFamily: 'monospace', fontWeight: 600 }}
               tickLine={false}
-              axisLine={{ stroke: '#CBD5E1' }}
+              axisLine={{ stroke: '#1E354D' }}
             />
 
             <YAxis
-              tick={{ fontSize: 10, fill: '#64748B', fontFamily: 'monospace' }}
+              tick={{ fontSize: 10, fill: '#94A3B8', fontFamily: 'monospace' }}
               tickLine={false}
-              axisLine={{ stroke: '#CBD5E1' }}
+              axisLine={{ stroke: '#1E354D' }}
             />
 
             <Tooltip
@@ -169,7 +169,7 @@ export function HistoricalMonsoonComparison({
               verticalAlign="top"
               align="right"
               wrapperStyle={{ paddingBottom: 8, fontSize: 11, fontFamily: 'monospace' }}
-              formatter={(value: string) => value.replace('yr_', 'Season ')}
+              formatter={(value: string) => <span className="text-slate-300">{value.replace('yr_', 'Season ')}</span>}
             />
 
             {selectedYears.map((yr) => (
@@ -187,10 +187,10 @@ export function HistoricalMonsoonComparison({
       </div>
 
       {/* Summary Table for Selected Years */}
-      <div className="overflow-x-auto pt-2 border-t border-[#F1F5F9]">
+      <div className="overflow-x-auto pt-2 border-t border-[#1E354D]">
         <table className="w-full text-left text-xs font-mono">
           <thead>
-            <tr className="border-b border-[#E2E8F0] text-[#64748B] bg-[#F8FAFC]">
+            <tr className="border-b border-[#1E354D] text-slate-400 bg-[#071324]">
               <th className="py-2 px-3">Year</th>
               <th className="py-2 px-3 text-right">June (mm)</th>
               <th className="py-2 px-3 text-right">July (mm)</th>
@@ -202,31 +202,31 @@ export function HistoricalMonsoonComparison({
               <th className="py-2 px-3">Category</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-[#F1F5F9]">
+          <tbody className="divide-y divide-[#1E354D]/60">
             {selectedYears.map((yr) => {
               const s = seasons.find((item) => item.year === yr);
               if (!s) return null;
               const isPositive = (s.departurePercent ?? 0) >= 0;
 
               return (
-                <tr key={yr} className="hover:bg-[#F8FAFC]">
-                  <td className="py-2.5 px-3 font-bold text-[#0B1F33] flex items-center gap-1.5">
+                <tr key={yr} className="hover:bg-[#0D2038]/60 transition-colors">
+                  <td className="py-2.5 px-3 font-bold text-white flex items-center gap-1.5">
                     <span
                       className="w-2.5 h-2.5 rounded-full"
                       style={{ backgroundColor: YEAR_COLORS[yr] || '#64748B' }}
                     />
                     {yr}
                   </td>
-                  <td className="py-2.5 px-3 text-right text-[#475569]">{s.juneMm?.toFixed(1) ?? '--'}</td>
-                  <td className="py-2.5 px-3 text-right text-[#475569]">{s.julyMm?.toFixed(1) ?? '--'}</td>
-                  <td className="py-2.5 px-3 text-right text-[#475569]">{s.augustMm?.toFixed(1) ?? '--'}</td>
-                  <td className="py-2.5 px-3 text-right text-[#475569]">{s.septemberMm?.toFixed(1) ?? '--'}</td>
-                  <td className="py-2.5 px-3 text-right font-bold text-[#0284C7]">{s.totalSeasonalMm?.toFixed(1) ?? '--'}</td>
-                  <td className="py-2.5 px-3 text-right text-[#64748B]">{s.normalSeasonalMm.toFixed(1)}</td>
-                  <td className={`py-2.5 px-3 text-right font-bold ${isPositive ? 'text-[#059669]' : 'text-[#DC2626]'}`}>
+                  <td className="py-2.5 px-3 text-right text-slate-300">{s.juneMm?.toFixed(1) ?? '--'}</td>
+                  <td className="py-2.5 px-3 text-right text-slate-300">{s.julyMm?.toFixed(1) ?? '--'}</td>
+                  <td className="py-2.5 px-3 text-right text-slate-300">{s.augustMm?.toFixed(1) ?? '--'}</td>
+                  <td className="py-2.5 px-3 text-right text-slate-300">{s.septemberMm?.toFixed(1) ?? '--'}</td>
+                  <td className="py-2.5 px-3 text-right font-bold text-[#38BDF8]">{s.totalSeasonalMm?.toFixed(1) ?? '--'}</td>
+                  <td className="py-2.5 px-3 text-right text-slate-400">{s.normalSeasonalMm.toFixed(1)}</td>
+                  <td className={`py-2.5 px-3 text-right font-bold ${isPositive ? 'text-[#34D399]' : 'text-[#F87171]'}`}>
                     {s.departurePercent !== null ? `${isPositive ? '+' : ''}${s.departurePercent.toFixed(1)}%` : '--'}
                   </td>
-                  <td className="py-2.5 px-3 font-semibold text-[#0B1F33]">{s.departureCategory}</td>
+                  <td className="py-2.5 px-3 font-semibold text-slate-200">{s.departureCategory}</td>
                 </tr>
               );
             })}

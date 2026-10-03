@@ -70,7 +70,7 @@ export function LocationSearch({
   return (
     <div ref={containerRef} className={cn('relative w-full max-w-xs z-[1000]', className)}>
       <div className="relative flex items-center">
-        <Search className="w-3.5 h-3.5 text-[#1479C9] absolute left-2.5 pointer-events-none" />
+        <Search className="w-3.5 h-3.5 text-[#38BDF8] absolute left-2.5 pointer-events-none" />
         <input
           type="text"
           value={query}
@@ -80,7 +80,7 @@ export function LocationSearch({
           }}
           onFocus={() => query.trim() && setIsOpen(true)}
           placeholder={placeholder}
-          className="w-full pl-8 pr-7 py-1.5 rounded-sm border border-[#CBD5E1] bg-white text-xs text-[#0B1F33] placeholder-[#94A3B8] shadow-gov-card focus:outline-none focus:border-[#1479C9] font-sans"
+          className="w-full pl-8 pr-7 py-1.5 rounded-sm border border-[#1E354D] bg-[#071324] text-xs text-white placeholder-slate-400 shadow-command-panel focus:outline-hidden focus:border-[#0284C7] font-sans"
         />
         {query && (
           <button
@@ -89,7 +89,7 @@ export function LocationSearch({
               setQuery('');
               setIsOpen(false);
             }}
-            className="absolute right-2 text-[#94A3B8] hover:text-[#0B1F33]"
+            className="absolute right-2 text-slate-400 hover:text-white"
             title="Clear search"
           >
             <X className="w-3.5 h-3.5" />
@@ -99,16 +99,16 @@ export function LocationSearch({
 
       {/* Autocomplete Dropdown List */}
       {isOpen && trimmed && (
-        <div className="absolute top-full mt-1 left-0 right-0 rounded-sm border border-[#CBD5E1] bg-white shadow-gov-elevated max-h-72 overflow-y-auto text-xs py-1 z-[1001]">
+        <div className="absolute top-full mt-1 left-0 right-0 rounded-lg border border-[#1E354D] bg-[#0A192F] shadow-[0_10px_25px_rgba(0,0,0,0.6)] max-h-72 overflow-y-auto text-xs py-1 z-[1001] text-white">
           {!hasMatches ? (
-            <div className="px-3 py-2.5 text-xs text-[#6E7F94] font-mono text-center">
+            <div className="px-3 py-2.5 text-xs text-slate-400 font-mono text-center">
               No matching block or panchayat found
             </div>
           ) : (
             <>
               {matchedBlocks.length > 0 && (
                 <div>
-                  <div className="px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-wider text-[#6E7F94] bg-[#F5F7FA]">
+                  <div className="px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 bg-[#071324] border-b border-[#1E354D]">
                     Administrative Blocks ({matchedBlocks.length})
                   </div>
                   {matchedBlocks.map((b) => (
@@ -116,13 +116,13 @@ export function LocationSearch({
                       key={b.id}
                       type="button"
                       onClick={() => handleSelectBlock(b.id)}
-                      className="w-full text-left px-3 py-1.5 hover:bg-[#EDF6FC] flex items-center justify-between transition-colors border-b border-[#F0F3F7] last:border-b-0"
+                      className="w-full text-left px-3 py-1.5 hover:bg-[#0284C7]/20 flex items-center justify-between transition-colors border-b border-[#1E354D]/50 last:border-b-0 cursor-pointer"
                     >
                       <div className="flex items-center gap-1.5">
-                        <Mountain className="w-3 h-3 text-[#1479C9] shrink-0" />
-                        <span className="font-semibold text-[#0B1F33]">{b.name} Block</span>
+                        <Mountain className="w-3 h-3 text-[#38BDF8] shrink-0" />
+                        <span className="font-semibold text-white">{b.name} Block</span>
                       </div>
-                      <span className="font-mono text-[10px] text-[#6E7F94]">{b.elevationMeters}m MSL</span>
+                      <span className="font-mono text-[10px] text-slate-400">{b.elevationMeters}m MSL</span>
                     </button>
                   ))}
                 </div>
@@ -130,7 +130,7 @@ export function LocationSearch({
 
               {matchedPanchayats.length > 0 && (
                 <div>
-                  <div className="px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-wider text-[#6E7F94] bg-[#F5F7FA]">
+                  <div className="px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 bg-[#071324] border-b border-[#1E354D]">
                     Gram Panchayats ({matchedPanchayats.length})
                   </div>
                   {matchedPanchayats.map((p) => (
@@ -138,13 +138,13 @@ export function LocationSearch({
                       key={p.id}
                       type="button"
                       onClick={() => handleSelectPanchayat(p)}
-                      className="w-full text-left px-3 py-1.5 hover:bg-[#EDF7F1] flex items-center justify-between transition-colors border-b border-[#F0F3F7] last:border-b-0"
+                      className="w-full text-left px-3 py-1.5 hover:bg-[#10B981]/20 flex items-center justify-between transition-colors border-b border-[#1E354D]/50 last:border-b-0 cursor-pointer"
                     >
                       <div className="flex items-center gap-1.5">
-                        <MapPin className="w-3 h-3 text-[#247A4A] shrink-0" />
-                        <span className="text-[#16202A]">{p.name}</span>
+                        <MapPin className="w-3 h-3 text-[#4ADE80] shrink-0" />
+                        <span className="text-white">{p.name}</span>
                       </div>
-                      <span className="text-[10px] text-[#6E7F94] font-mono">
+                      <span className="text-[10px] text-slate-400 font-mono">
                         {p.blockName} Block ({p.elevationMeters}m)
                       </span>
                     </button>

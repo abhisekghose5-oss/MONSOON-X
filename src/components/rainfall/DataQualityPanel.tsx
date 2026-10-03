@@ -14,7 +14,7 @@ export function DataQualityPanel({
 }: DataQualityPanelProps) {
   if (isLoading) {
     return (
-      <div className="bg-white border border-[#CBD5E1] rounded-sm p-4 animate-pulse h-36" />
+      <div className="bg-[#0A192F]/85 border border-[#1E354D] rounded-md p-4 animate-pulse h-36" />
     );
   }
 
@@ -33,16 +33,16 @@ export function DataQualityPanel({
     : 0;
 
   return (
-    <div className="bg-white border border-[#CBD5E1] rounded-sm p-4 space-y-3.5 shadow-xs">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#F1F5F9] pb-2.5">
+    <div className="bg-[#0A192F]/85 backdrop-blur-md border border-[#1E354D] rounded-md p-4 space-y-3.5 shadow-command-panel">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#1E354D] pb-2.5">
         <div>
           <div className="flex items-center gap-2">
-            <Activity className="w-4 h-4 text-[#0284C7]" />
-            <h4 className="font-bold font-mono text-sm tracking-tight text-[#0B1F33]">
+            <Activity className="w-4 h-4 text-[#38BDF8]" />
+            <h4 className="font-bold font-mono text-sm tracking-tight text-white">
               DATA QUALITY & COMPLETENESS TELEMETRY
             </h4>
           </div>
-          <p className="text-xs text-[#64748B] mt-0.5">
+          <p className="text-xs text-slate-400 mt-0.5">
             Empirical data completeness calculated directly from ingested daily observation records without synthetic imputation.
           </p>
         </div>
@@ -54,77 +54,77 @@ export function DataQualityPanel({
 
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
         {/* Metric 1: Coverage % */}
-        <div className="p-3 rounded-xs bg-[#F8FAFC] border border-[#E2E8F0] space-y-1">
-          <span className="text-[11px] font-mono text-[#64748B] block truncate">
+        <div className="p-3 rounded-xs bg-[#071324] border border-[#1E354D] space-y-1">
+          <span className="text-[11px] font-mono text-slate-400 block truncate">
             Coverage %
           </span>
           <div className="flex items-baseline gap-1">
-            <span className="text-2xl font-bold font-mono text-[#059669]">
+            <span className="text-2xl font-bold font-mono text-[#4ADE80]">
               {coveragePercentage.toFixed(1)}%
             </span>
           </div>
-          <div className="w-full bg-[#E2E8F0] rounded-full h-1.5 overflow-hidden mt-1">
+          <div className="w-full bg-[#030914] border border-[#1E354D] rounded-full h-1.5 overflow-hidden mt-1">
             <div
-              className="h-full bg-[#059669] rounded-full"
+              className="h-full bg-[#10B981] rounded-full shadow-[0_0_6px_rgba(16,185,129,0.5)]"
               style={{ width: `${coveragePercentage}%` }}
             />
           </div>
         </div>
 
         {/* Metric 2: Records Available */}
-        <div className="p-3 rounded-xs bg-[#F8FAFC] border border-[#E2E8F0] space-y-1">
-          <span className="text-[11px] font-mono text-[#64748B] block truncate">
+        <div className="p-3 rounded-xs bg-[#071324] border border-[#1E354D] space-y-1">
+          <span className="text-[11px] font-mono text-slate-400 block truncate">
             Records Available
           </span>
           <div className="flex items-baseline gap-1">
-            <span className="text-2xl font-bold font-mono text-[#0B1F33]">
+            <span className="text-2xl font-bold font-mono text-white">
               {recordsAvailable}
             </span>
-            <span className="text-xs font-mono text-[#64748B]">/ {totalExpectedDays}</span>
+            <span className="text-xs font-mono text-slate-400">/ {totalExpectedDays}</span>
           </div>
-          <span className="text-[10px] font-mono text-[#64748B] block truncate">
+          <span className="text-[10px] font-mono text-slate-500 block truncate">
             Valid daily observations
           </span>
         </div>
 
         {/* Metric 3: Missing Records */}
-        <div className="p-3 rounded-xs bg-[#F8FAFC] border border-[#E2E8F0] space-y-1">
-          <span className="text-[11px] font-mono text-[#64748B] block truncate">
+        <div className="p-3 rounded-xs bg-[#071324] border border-[#1E354D] space-y-1">
+          <span className="text-[11px] font-mono text-slate-400 block truncate">
             Missing Records
           </span>
           <div className="flex items-baseline gap-1">
-            <span className={`text-2xl font-bold font-mono ${missingRecords > 0 ? 'text-[#DC2626]' : 'text-[#0B1F33]'}`}>
+            <span className={`text-2xl font-bold font-mono ${missingRecords > 0 ? 'text-[#F87171]' : 'text-white'}`}>
               {missingRecords}
             </span>
-            <span className="text-xs font-mono text-[#64748B]">({missingPct}%)</span>
+            <span className="text-xs font-mono text-slate-400">({missingPct}%)</span>
           </div>
-          <span className="text-[10px] font-mono text-[#64748B] block truncate">
+          <span className="text-[10px] font-mono text-slate-500 block truncate">
             Unrecorded / gaps
           </span>
         </div>
 
         {/* Metric 4: Last Observation */}
-        <div className="p-3 rounded-xs bg-[#F8FAFC] border border-[#E2E8F0] space-y-1">
-          <span className="text-[11px] font-mono text-[#64748B] block truncate">
+        <div className="p-3 rounded-xs bg-[#071324] border border-[#1E354D] space-y-1">
+          <span className="text-[11px] font-mono text-slate-400 block truncate">
             Last Observation
           </span>
-          <div className="text-sm font-bold font-mono text-[#0B1F33] pt-1">
+          <div className="text-sm font-bold font-mono text-white pt-1">
             {lastObservationDate}
           </div>
-          <span className="text-[10px] font-mono text-[#64748B] block truncate">
+          <span className="text-[10px] font-mono text-slate-500 block truncate">
             08:30 IST reading
           </span>
         </div>
 
         {/* Metric 5: Source */}
-        <div className="p-3 rounded-xs bg-[#F8FAFC] border border-[#E2E8F0] space-y-1 col-span-2 sm:col-span-1">
-          <span className="text-[11px] font-mono text-[#64748B] block truncate">
+        <div className="p-3 rounded-xs bg-[#071324] border border-[#1E354D] space-y-1 col-span-2 sm:col-span-1">
+          <span className="text-[11px] font-mono text-slate-400 block truncate">
             Data Source
           </span>
-          <div className="text-xs font-bold font-mono text-[#0284C7] truncate pt-1" title={source}>
+          <div className="text-xs font-bold font-mono text-[#38BDF8] truncate pt-1" title={source}>
             {source}
           </div>
-          <span className="text-[10px] font-mono text-[#64748B] block truncate">
+          <span className="text-[10px] font-mono text-slate-500 block truncate">
             Gridded 0.25° resolution
           </span>
         </div>

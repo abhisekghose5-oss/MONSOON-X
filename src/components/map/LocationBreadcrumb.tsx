@@ -25,25 +25,25 @@ export function LocationBreadcrumb({
     <nav
       aria-label="Administrative Hierarchy Breadcrumb"
       className={cn(
-        'inline-flex flex-wrap items-center gap-1.5 px-3 py-1.5 rounded-sm bg-white border border-[#CBD5E1] shadow-gov-card text-xs font-mono select-none',
+        'inline-flex flex-wrap items-center gap-1.5 px-3 py-1 rounded-sm bg-[#071324] border border-[#1E354D] shadow-xs text-xs font-mono select-none text-white',
         className
       )}
     >
       {/* State */}
-      <span className="flex items-center gap-1 text-[#4B5B6D]">
-        <Globe className="w-3.5 h-3.5 text-[#1479C9]" />
+      <span className="flex items-center gap-1 text-slate-400">
+        <Globe className="w-3.5 h-3.5 text-[#38BDF8]" />
         <span>{stateName}</span>
       </span>
 
-      <ChevronRight className="w-3 h-3 text-[#94A3B8]" />
+      <ChevronRight className="w-3 h-3 text-slate-600" />
 
       {/* District */}
       <button
         type="button"
         onClick={onSelectDistrict}
         className={cn(
-          'transition-colors hover:text-[#1479C9]',
-          !blockName ? 'text-[#0B1F33] font-bold' : 'text-[#4B5B6D] hover:underline'
+          'transition-colors hover:text-[#38BDF8] cursor-pointer',
+          !blockName ? 'text-white font-bold' : 'text-slate-400 hover:underline'
         )}
       >
         {districtName} District
@@ -52,13 +52,13 @@ export function LocationBreadcrumb({
       {/* Block (if selected) */}
       {blockName && (
         <>
-          <ChevronRight className="w-3 h-3 text-[#94A3B8]" />
+          <ChevronRight className="w-3 h-3 text-slate-600" />
           <button
             type="button"
             onClick={onSelectBlock}
             className={cn(
-              'transition-colors hover:text-[#1479C9]',
-              !panchayatName ? 'text-[#1479C9] font-bold underline' : 'text-[#4B5B6D] hover:underline'
+              'transition-colors hover:text-[#38BDF8] cursor-pointer',
+              !panchayatName ? 'text-[#38BDF8] font-bold' : 'text-slate-400 hover:underline'
             )}
           >
             {blockName} Block
@@ -69,8 +69,8 @@ export function LocationBreadcrumb({
       {/* Panchayat (if selected) */}
       {panchayatName && (
         <>
-          <ChevronRight className="w-3 h-3 text-[#94A3B8]" />
-          <span className="text-[#247A4A] font-bold flex items-center gap-1">
+          <ChevronRight className="w-3 h-3 text-slate-600" />
+          <span className="text-[#4ADE80] font-bold flex items-center gap-1">
             <MapPin className="w-3 h-3" />
             <span>GP: {panchayatName}</span>
           </span>
@@ -80,10 +80,10 @@ export function LocationBreadcrumb({
             <button
               type="button"
               onClick={onSelectBlock}
-              className="ml-2 px-2 py-0.5 rounded-xs bg-[#F5F7FA] hover:bg-[#EAF0F6] border border-[#CBD5E1] text-[#0B1F33] text-[10px] font-mono flex items-center gap-1 transition-colors"
+              className="ml-2 px-2 py-0.5 rounded-xs bg-[#0B1F33] hover:bg-[#1E354D] border border-[#1E354D] text-slate-300 hover:text-white text-[10px] font-mono flex items-center gap-1 transition-colors cursor-pointer"
               title="Return to Block level"
             >
-              <ArrowLeft className="w-3 h-3 text-[#1479C9]" />
+              <ArrowLeft className="w-3 h-3 text-[#38BDF8]" />
               <span>Back to Block</span>
             </button>
           )}

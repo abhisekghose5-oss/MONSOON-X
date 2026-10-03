@@ -38,7 +38,7 @@ export function MobileMapSheet({
       />
 
       {/* Sheet Container */}
-      <div className="relative bg-white rounded-t-lg max-h-[85vh] h-[540px] flex flex-col shadow-2xl border-t border-[#CBD5E1] overflow-hidden animate-in slide-in-from-bottom duration-200">
+      <div className="relative bg-[#0A192F] rounded-t-xl max-h-[85vh] h-[540px] flex flex-col shadow-2xl border-t border-[#1E354D] overflow-hidden animate-in slide-in-from-bottom duration-200">
         {/* Drag handle & Mobile Close */}
         <div className="bg-[#0B1F33] pt-2 pb-1 px-4 flex items-center justify-between border-b border-[#1E354D]">
           <div className="w-10 h-1 bg-[#4B5B6D] rounded-full mx-auto" />

@@ -14,36 +14,36 @@ export function MapLegendControl({ activeLayer, className }: MapLegendControlPro
   return (
     <div
       className={cn(
-        'rounded-sm border border-[#CBD5E1] bg-white/95 backdrop-blur-sm p-3 shadow-gov-elevated text-xs space-y-2 select-none z-[1000]',
+        'rounded-xl border border-cyan-500/30 bg-[#0A192F]/90 backdrop-blur-md p-3.5 shadow-2xl text-xs space-y-2 select-none z-[1000]',
         className
       )}
     >
-      <div className="border-b border-[#F0F3F7] pb-1.5 flex items-center justify-between gap-3">
+      <div className="border-b border-[#1E354D] pb-2 flex items-center justify-between gap-3">
         <div>
-          <h4 className="text-[11px] font-bold uppercase tracking-wider text-[#0B1F33]">
+          <h4 className="text-[11px] font-bold uppercase tracking-wider text-white font-mono">
             {config.name}
           </h4>
-          <span className="text-[10px] text-[#6E7F94] font-mono">
+          <span className="text-[10px] text-cyan-400 font-mono">
             Unit: [{config.unit}] • Operational Scale
           </span>
         </div>
       </div>
 
-      <div className="space-y-1">
+      <div className="space-y-1.5">
         {config.colorScale.map((step, idx) => (
           <div key={idx} className="flex items-center gap-2 font-mono text-[11px]">
             <span
-              className="w-4 h-3 rounded-xs border border-black/10 shrink-0 shadow-xs"
+              className="w-4 h-3 rounded-xs border border-white/20 shrink-0 shadow-xs"
               style={{ backgroundColor: step.color }}
             />
-            <span className="text-[#16202A] font-medium leading-none">
+            <span className="text-slate-200 font-medium leading-none">
               {step.label}
             </span>
           </div>
         ))}
       </div>
 
-      <p className="text-[10px] text-[#6E7F94] leading-tight pt-1 border-t border-[#F0F3F7]">
+      <p className="text-[10px] text-slate-400 leading-tight pt-1.5 border-t border-[#1E354D]">
         {config.description}
       </p>
     </div>

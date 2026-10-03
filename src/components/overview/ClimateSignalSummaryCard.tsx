@@ -9,27 +9,27 @@ interface ClimateSignalSummaryCardProps {
 
 export function ClimateSignalSummaryCard({ signals }: ClimateSignalSummaryCardProps) {
   const trendBadges = {
-    Favorable: 'bg-[#EDF7F1] text-[#154D2F] border-[#ABD7C0]',
-    Neutral: 'bg-[#F0F3F7] text-[#4B5B6D] border-[#CBD5E1]',
-    Suppressing: 'bg-[#FCEDEC] text-[#802626] border-[#EEA9A7]',
-    Delayed: 'bg-[#FDF7EB] text-[#8C5D00] border-[#F4D79C]',
+    Favorable: 'bg-emerald-950/60 text-emerald-300 border-emerald-500/40',
+    Neutral: 'bg-slate-800/60 text-slate-300 border-slate-600/40',
+    Suppressing: 'bg-rose-950/60 text-rose-300 border-rose-500/40',
+    Delayed: 'bg-amber-950/60 text-amber-300 border-amber-500/40',
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3.5">
       {signals.map((signal) => (
         <div
           key={signal.index}
-          className="rounded-sm border border-[#E2E8F0] bg-white p-3.5 shadow-gov-card space-y-2"
+          className="rounded-lg border border-[#1E354D] bg-[#0A192F] p-4 shadow-command-panel hover:border-[#0284C7]/50 transition-all space-y-2.5 text-white"
         >
           <div className="flex items-center justify-between">
-            <span className="font-mono text-xs font-bold text-[#0B1F33] flex items-center gap-1.5">
-              <Globe2 className="w-3.5 h-3.5 text-[#1479C9]" />
+            <span className="font-mono text-xs font-bold text-white flex items-center gap-1.5">
+              <Globe2 className="w-3.5 h-3.5 text-[#38BDF8]" />
               {signal.index}
             </span>
             <span
               className={cn(
-                'text-[10px] font-mono px-2 py-0.2 rounded-xs border font-semibold uppercase',
+                'text-[10px] font-mono px-2 py-0.5 rounded-xs border font-semibold uppercase',
                 trendBadges[signal.monsoonTrendContribution]
               )}
             >
@@ -38,15 +38,15 @@ export function ClimateSignalSummaryCard({ signals }: ClimateSignalSummaryCardPr
           </div>
 
           <div className="space-y-0.5">
-            <div className="text-xs font-bold text-[#16202A] leading-snug">
+            <div className="text-xs font-bold text-white leading-snug font-sans">
               {signal.currentPhase}
             </div>
-            <div className="text-[11px] font-mono text-[#6E7F94]">
+            <div className="text-[11px] font-mono text-[#38BDF8]">
               {signal.anomalyValue}
             </div>
           </div>
 
-          <p className="text-[11px] text-[#4B5B6D] leading-relaxed pt-1.5 border-t border-[#F0F3F7]">
+          <p className="text-[11px] text-slate-300 leading-relaxed pt-2 border-t border-[#1E354D] font-sans">
             {signal.impactOnKoraput}
           </p>
         </div>

@@ -50,8 +50,8 @@ export function HistoricalPage() {
         subtitle="55-year IMD gridded daily rainfall series (0.25° x 0.25°), decadal onset drift analysis, and break-monsoon frequency distributions across Koraput."
         accentColor="navy"
         badge={
-          <span className="font-mono text-[10px] font-bold px-2 py-0.5 rounded-sm bg-[#EDF7F1] text-[#154D2F] border border-[#ABD7C0] uppercase flex items-center gap-1">
-            <Layers className="w-3.5 h-3.5 text-[#247A4A]" />
+          <span className="font-mono text-[10px] font-bold px-2.5 py-1 rounded-lg bg-emerald-950/40 text-emerald-300 border border-emerald-500/30 uppercase flex items-center gap-1.5 shadow-sm">
+            <Layers className="w-3.5 h-3.5 text-emerald-400" />
             55 YEARS ASSIMILATED (1970–2025)
           </span>
         }
@@ -133,17 +133,17 @@ export function HistoricalPage() {
       )}
 
       {/* 7. INSTITUTIONAL SCIENTIFIC METHODOLOGY NOTE */}
-      <div className="p-4 rounded-md border border-[#CBD5E1] bg-[#F8FAFC] space-y-2 text-xs font-mono text-[#334155]">
-        <div className="flex items-center gap-2 text-[#0B1F33] font-bold uppercase">
-          <BookOpen className="w-4 h-4 text-[#1479C9]" />
+      <div className="p-5 rounded-xl border border-[#1E354D] bg-[#0A192F]/80 backdrop-blur-md space-y-2.5 text-xs font-mono text-slate-300 shadow-xl">
+        <div className="flex items-center gap-2 text-white font-bold uppercase tracking-wider">
+          <BookOpen className="w-4 h-4 text-cyan-400" />
           <span>Scientific Methodology & Climatological Reference:</span>
         </div>
-        <p className="leading-relaxed">
+        <p className="leading-relaxed text-slate-400">
           The Long Period Average (LPA) baselines for Koraput (18.81°N, 82.71°E) are constructed using the India Meteorological Department (IMD) high-resolution 0.25° x 0.25° daily gridded rainfall dataset (1970–2025). The climatological normal onset date (11 June, ±6.4 days) represents the 55-year statistical median of verified monsoon surge criteria (tropospheric westerly wind reversal at 850 hPa + sustained convective precipitation exceeding 2.5 mm across spatial rain-gauge networks).
         </p>
-        <div className="pt-2 border-t border-[#E2E8F0] flex flex-wrap items-center justify-between text-[11px] text-[#6E7F94]">
+        <div className="pt-2.5 border-t border-[#1E354D] flex flex-wrap items-center justify-between text-[11px] text-slate-400">
           <span>Dataset Citation: Pai, D. S., et al. (2014). Development of a new high spatial resolution (0.25° x 0.25°) daily gridded rainfall data set (1901–2010). Mausam, 65(1), 1-18.</span>
-          <span className="text-[#0B1F33] font-bold">Zero Fabricated Baselines · SIH26086</span>
+          <span className="text-cyan-400 font-bold tracking-wider">Zero Fabricated Baselines · SIH26086</span>
         </div>
       </div>
     </div>

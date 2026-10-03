@@ -2,11 +2,12 @@ import type { FeatureCollection, Polygon, MultiPolygon } from 'geojson';
 import type { RiskLevel } from '../components/design-system/RiskBadge';
 
 // 1. Primary Risk Layers
-export type RiskLayer = 'onset' | 'break' | 'heavyRain' | 'rainfallAnomaly';
+export type RiskLayer = 'onset' | 'break' | 'heavyRain' | 'rainfallAnomaly' | 'falseOnset' | 'pestRisk';
 export type RiskMapLayerId = RiskLayer; // Alias for backward compatibility
 
 // 2. Forecast Horizons
-export type ForecastHorizon = '7D' | '14D' | '21D' | '30D';
+export type ForecastHorizon = '3D' | '7D' | '14D' | '21D' | '30D';
+
 
 // 3. Administrative Geography Hierarchy
 export type LocationType = 'district' | 'block' | 'panchayat';

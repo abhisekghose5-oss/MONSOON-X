@@ -51,12 +51,22 @@ export const BACKEND_CONFIGURED_CROPS: CropDefinition[] = [
   },
   {
     id: 'pulses',
-    name: 'Pulses',
+    name: 'Highland Pulses',
     localName: 'Arhar & Biri (କନ୍ଦୁଳ ଓ ବିରି)',
     category: 'pulses',
     scientificName: 'Cajanus cajan / Vigna mungo',
     typicalDurationDays: 150,
     optimalSoilType: 'Medium loam with strict drainage to prevent wilt',
+    isKharifPrimary: true,
+  },
+  {
+    id: 'suan',
+    name: 'Suan (Little Millet)',
+    localName: 'Suan (ସୁଆଁ)',
+    category: 'millet',
+    scientificName: 'Panicum sumatrense',
+    typicalDurationDays: 80,
+    optimalSoilType: 'Highland gravelly slopes, exceptionally drought-tolerant',
     isKharifPrimary: true,
   },
   {
@@ -248,6 +258,37 @@ export function generateMockAgricultureData(
       phenologyStage: 'Branching & Early Pod Setting',
     },
 
+    suan: {
+      cropId: 'suan',
+      cropName: 'Suan (Little Millet)',
+      localName: 'Suan (ସୁଆଁ)',
+      category: 'millet',
+      currentRisk: 'watch',
+      currentRiskLabel: 'Favorable Maturity & Drainage Advisory',
+      rainfallOutlook: '58.0 mm expected over 14 days; minimal moisture stress',
+      drySpellProbability: 22,
+      heavyRainProbability: 32,
+      sowingWindow: {
+        status: 'Sowing Concluded',
+        recommendedWindowDate: 'Completed',
+        advice: 'Grain maturity underway on gravelly upper slopes; ensure quick drainage.',
+      },
+      waterStress: {
+        level: 'Low',
+        description: 'Hardy root system thriving on low moisture; avoid water lodging at base.',
+        rootZoneMoistureVolumetricPct: 22,
+        statusColor: 'normal',
+      },
+      recommendedAction:
+        'Keep field exit channels open to drain storm runoff. Prepare threshing floors for early crop harvesting.',
+      confidence: {
+        score: 88,
+        tier: 'High',
+        basis: 'OUAT millet contingency protocols.',
+      },
+      phenologyStage: 'Dough & Early Maturity Stage',
+    },
+
     cotton: {
       cropId: 'cotton',
       cropName: 'Cotton',
@@ -362,6 +403,16 @@ export function generateMockAgricultureData(
       drySpellRisk: { level: 'Moderate', probability: 30 },
       heavyRainRisk: { level: 'High', probability: 40 },
       recommendation: 'Dig drainage ditches every 10 rows; root drench if wilt appears.',
+    },
+    {
+      cropId: 'suan',
+      cropName: 'Suan (Little Millet)',
+      localName: 'Suan (ସୁଆଁ)',
+      category: 'millet',
+      onsetRisk: { level: 'Low', detail: 'Dough maturity' },
+      drySpellRisk: { level: 'Low', probability: 22 },
+      heavyRainRisk: { level: 'Moderate', probability: 32 },
+      recommendation: 'Open boundary furrows; harvest mature panicles before wet burst.',
     },
     {
       cropId: 'cotton',

@@ -107,12 +107,12 @@ export function RainfallMetricCards({ metrics, isDataAvailable = true }: Rainfal
           return (
             <div
               key={c.id}
-              className="min-w-[220px] md:min-w-0 flex-1 bg-white border border-[#CBD5E1] rounded-sm p-3.5 flex flex-col justify-between shadow-xs hover:border-[#94A3B8] transition-colors"
+              className="min-w-[220px] md:min-w-0 flex-1 bg-[#0A192F]/85 backdrop-blur-md border border-[#1E354D] rounded-lg p-3.5 flex flex-col justify-between shadow-command-panel hover:border-[#0284C7]/50 hover:shadow-[0_0_15px_rgba(2,132,199,0.15)] transition-all text-white"
             >
               <div>
                 {/* Header: Title and DataStatusBadge */}
                 <div className="flex items-start justify-between gap-1.5 mb-2">
-                  <span className="font-mono text-[10px] font-bold text-[#64748B] tracking-wider uppercase">
+                  <span className="font-mono text-[10px] font-bold text-slate-400 tracking-wider uppercase">
                     {c.title}
                   </span>
                   <DataStatusBadge status={c.status || 'OFFICIAL'} size="xs" />
@@ -120,11 +120,11 @@ export function RainfallMetricCards({ metrics, isDataAvailable = true }: Rainfal
 
                 {/* Primary Metric Value */}
                 <div className="flex items-baseline gap-1.5 my-1">
-                  <span className="text-2xl font-bold font-mono tracking-tight text-[#0B1F33]">
+                  <span className="text-2xl font-bold font-mono tracking-tight text-white">
                     {c.value}
                   </span>
                   {c.unit && (
-                    <span className="text-xs font-mono font-medium text-[#64748B]">
+                    <span className="text-xs font-mono font-medium text-slate-400">
                       {c.unit}
                     </span>
                   )}
@@ -134,35 +134,35 @@ export function RainfallMetricCards({ metrics, isDataAvailable = true }: Rainfal
                 {c.departure !== null && !c.isAnomalyCard && (
                   <div className="flex items-center gap-1 text-[11px] font-mono mt-0.5">
                     {isPositive ? (
-                      <span className="text-[#059669] font-semibold flex items-center gap-0.5">
+                      <span className="text-[#4ADE80] font-semibold flex items-center gap-0.5">
                         <TrendingUp className="w-3 h-3" />
                         +{c.departure.toFixed(1)}%
                       </span>
                     ) : isNegative ? (
-                      <span className="text-[#DC2626] font-semibold flex items-center gap-0.5">
+                      <span className="text-rose-400 font-semibold flex items-center gap-0.5">
                         <TrendingDown className="w-3 h-3" />
                         {c.departure.toFixed(1)}%
                       </span>
                     ) : (
-                      <span className="text-[#64748B]">0.0%</span>
+                      <span className="text-slate-400">0.0%</span>
                     )}
-                    <span className="text-[#94A3B8] text-[10px]">vs Normal</span>
+                    <span className="text-slate-500 text-[10px]">vs Normal</span>
                   </div>
                 )}
 
                 {/* Subtext */}
-                <p className="text-[11px] text-[#475569] font-medium mt-1 truncate" title={c.subtext}>
+                <p className="text-[11px] text-slate-400 font-mono mt-1 truncate" title={c.subtext}>
                   {c.subtext}
                 </p>
               </div>
 
               {/* Card Footer: Period & Source */}
-              <div className="pt-2.5 mt-2 border-t border-[#F1F5F9] flex items-center justify-between text-[10px] font-mono text-[#64748B]">
+              <div className="pt-2.5 mt-2 border-t border-[#1E354D] flex items-center justify-between text-[10px] font-mono text-slate-400">
                 <span className="flex items-center gap-1 truncate" title={c.period}>
-                  <Icon className="w-3 h-3 text-[#0284C7] shrink-0" />
-                  <span className="truncate">{c.period}</span>
+                  <Icon className="w-3 h-3 text-[#38BDF8] shrink-0" />
+                  <span className="truncate text-slate-300">{c.period}</span>
                 </span>
-                <span className="text-[#94A3B8] shrink-0 ml-1 font-semibold">{c.source}</span>
+                <span className="text-slate-400 shrink-0 ml-1 font-semibold">{c.source}</span>
               </div>
             </div>
           );

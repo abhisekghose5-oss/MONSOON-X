@@ -36,7 +36,7 @@ export function PanchayatViewModal({ block, onClose }: PanchayatViewModalProps) 
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0B1F33]/70 backdrop-blur-xs"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
       role="dialog"
       aria-modal="true"
       aria-labelledby="panchayat-view-title"
@@ -44,18 +44,18 @@ export function PanchayatViewModal({ block, onClose }: PanchayatViewModalProps) 
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="bg-white rounded-md border border-[#CBD5E1] shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto space-y-4 animate-in fade-in duration-200">
+      <div className="bg-[#0A192F] text-white rounded-lg border border-[#1E354D] shadow-[0_0_50px_rgba(0,0,0,0.8)] max-w-2xl w-full max-h-[90vh] overflow-y-auto space-y-4 animate-in fade-in duration-200">
         {/* Header */}
-        <div className="p-4 bg-[#0B1F33] text-white flex items-center justify-between sticky top-0 z-10">
+        <div className="p-4 bg-[#071324] text-white flex items-center justify-between border-b border-[#1E354D] sticky top-0 z-10">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xs bg-[#247A4A] flex items-center justify-center text-white shrink-0">
-              <Layers className="w-4 h-4" />
+            <div className="w-8 h-8 rounded-sm bg-emerald-950/60 border border-emerald-500/40 flex items-center justify-center text-[#4ADE80] shrink-0">
+              <Layers className="w-4 h-4 text-[#4ADE80]" />
             </div>
             <div>
               <h3 id="panchayat-view-title" className="text-base font-bold font-mono uppercase tracking-wider text-white">
                 {block.blockName} BLOCK · GRAM PANCHAYAT REGISTER
               </h3>
-              <span className="text-[11px] text-[#A4BCDA] font-mono">
+              <span className="text-[11px] text-slate-400 font-mono">
                 {block.panchayatCount} Total Gram Panchayats · {block.panchayatsWithAlert} under Active Alert
               </span>
             </div>
@@ -64,7 +64,7 @@ export function PanchayatViewModal({ block, onClose }: PanchayatViewModalProps) 
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 rounded-xs text-[#A4BCDA] hover:text-white hover:bg-white/10 transition-colors focus-visible:ring-2 focus-visible:ring-[#247A4A] focus-visible:outline-hidden"
+            className="p-1.5 rounded-sm text-slate-400 hover:text-white hover:bg-white/10 transition-colors focus-visible:ring-2 focus-visible:ring-[#0284C7] focus-visible:outline-hidden cursor-pointer"
             aria-label="Close gram panchayat modal"
           >
             <X className="w-5 h-5" />
@@ -73,59 +73,59 @@ export function PanchayatViewModal({ block, onClose }: PanchayatViewModalProps) 
 
         {/* Content Body */}
         <div className="p-5 space-y-4 text-xs">
-          {/* Official Administrative Disclaimer (Mandated by System Architecture) */}
-          <div className="p-3 rounded-xs bg-[#FDF7EB] border border-[#F4D79C] text-[#8C5D00] flex items-start gap-2.5">
-            <AlertCircle className="w-4 h-4 text-[#D99000] shrink-0 mt-0.5" />
+          {/* Official Administrative Disclaimer */}
+          <div className="p-3 rounded-lg bg-[#1C1608]/70 border border-amber-500/30 text-amber-200/90 flex items-start gap-2.5">
+            <AlertCircle className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
             <div className="leading-snug">
-              <strong className="block font-mono text-[11px] uppercase text-[#D99000]">
+              <strong className="block font-mono text-[11px] uppercase text-amber-400">
                 Institutional Geographic Provenance Notice:
               </strong>
-              <span>
+              <span className="text-[11px] text-slate-300">
                 Panchayat-level boundary vector polygon data is currently awaiting Survey of India / ORSAC formal digitization release. In accordance with platform integrity rules, no synthetic boundary polygons are generated. Tabular agromet telemetry remains fully operational.
               </span>
             </div>
           </div>
 
           {/* Panchayat Table */}
-          <div className="border border-[#CBD5E1] rounded-xs overflow-hidden">
+          <div className="border border-[#1E354D] rounded-lg overflow-hidden bg-[#071324]/80">
             <table className="w-full text-left border-collapse text-xs">
               <thead>
-                <tr className="bg-[#F0F4F8] border-b border-[#CBD5E1] text-[#0B1F33] font-mono text-[10px] uppercase tracking-wider">
-                  <th className="py-2 px-3 font-bold">Gram Panchayat</th>
-                  <th className="py-2 px-3 font-bold text-right">Est. Area (ha)</th>
-                  <th className="py-2 px-3 font-bold">Soil Classification</th>
-                  <th className="py-2 px-3 font-bold text-center">Alert State</th>
-                  <th className="py-2 px-3 font-bold text-center">mKisan Dispatch</th>
+                <tr className="bg-[#071324] border-b border-[#1E354D] text-slate-400 font-mono text-[10px] uppercase tracking-wider">
+                  <th className="py-2.5 px-3 font-bold">Gram Panchayat</th>
+                  <th className="py-2.5 px-3 font-bold text-right">Est. Area (ha)</th>
+                  <th className="py-2.5 px-3 font-bold">Soil Classification</th>
+                  <th className="py-2.5 px-3 font-bold text-center">Alert State</th>
+                  <th className="py-2.5 px-3 font-bold text-center">mKisan Dispatch</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#E2E8F0]">
+              <tbody className="divide-y divide-[#1E354D]">
                 {panchayats.map((gp) => (
-                  <tr key={gp.id} className="hover:bg-[#F8FAFC]">
-                    <td className="py-2 px-3 font-bold text-[#0B1F33]">
+                  <tr key={gp.id} className="hover:bg-[#0284C7]/10 transition-colors">
+                    <td className="py-2 px-3 font-bold text-white">
                       {gp.name}
                     </td>
-                    <td className="py-2 px-3 text-right font-mono text-[#4B5B6D]">
+                    <td className="py-2 px-3 text-right font-mono text-slate-300">
                       {gp.estAcreage.toLocaleString()}
                     </td>
-                    <td className="py-2 px-3 text-[#4B5B6D]">
+                    <td className="py-2 px-3 text-slate-400">
                       {gp.soilType}
                     </td>
                     <td className="py-2 px-3 text-center">
                       {gp.status === 'alert' ? (
-                        <span className="font-mono text-[10px] font-bold px-1.5 py-0.5 rounded-xs bg-[#FCEDEC] text-[#802626] border border-[#EEA9A7] inline-flex items-center gap-1">
-                          <AlertTriangle className="w-3 h-3 text-[#C43D3D]" />
+                        <span className="font-mono text-[10px] font-bold px-1.5 py-0.5 rounded-xs bg-rose-950/70 text-rose-300 border border-rose-500/40 inline-flex items-center gap-1">
+                          <AlertTriangle className="w-3 h-3 text-rose-400" />
                           WATCH
                         </span>
                       ) : (
-                        <span className="font-mono text-[10px] text-[#247A4A] px-1.5 py-0.5 rounded-xs bg-[#EDF7F1] border border-[#ABD7C0] inline-flex items-center gap-1">
-                          <CheckCircle2 className="w-3 h-3 text-[#247A4A]" />
+                        <span className="font-mono text-[10px] text-emerald-400 px-1.5 py-0.5 rounded-xs bg-emerald-950/50 border border-emerald-500/30 inline-flex items-center gap-1">
+                          <CheckCircle2 className="w-3 h-3 text-[#4ADE80]" />
                           NORMAL
                         </span>
                       )}
                     </td>
                     <td className="py-2 px-3 text-center">
-                      <span className="font-mono text-[10px] text-[#154D2F] inline-flex items-center gap-0.5">
-                        <ShieldCheck className="w-3.5 h-3.5 text-[#247A4A]" /> Confirmed
+                      <span className="font-mono text-[10px] text-emerald-400 inline-flex items-center gap-1">
+                        <ShieldCheck className="w-3.5 h-3.5 text-[#4ADE80]" /> Confirmed
                       </span>
                     </td>
                   </tr>
@@ -136,11 +136,11 @@ export function PanchayatViewModal({ block, onClose }: PanchayatViewModalProps) 
         </div>
 
         {/* Footer Actions */}
-        <div className="p-4 bg-[#F5F7FA] border-t border-[#E2E8F0] flex justify-end">
+        <div className="p-4 bg-[#071324] border-t border-[#1E354D] flex justify-end">
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-1.5 rounded-xs bg-[#0B1F33] hover:bg-[#142B44] text-white text-xs font-bold font-mono transition-all focus-visible:ring-2 focus-visible:ring-[#247A4A] focus-visible:outline-hidden"
+            className="px-4 py-1.5 rounded-sm bg-[#0284C7] hover:bg-[#0369A1] text-white text-xs font-bold font-mono transition-all border border-[#38BDF8]/40 shadow-xs cursor-pointer"
           >
             CLOSE REGISTER
           </button>

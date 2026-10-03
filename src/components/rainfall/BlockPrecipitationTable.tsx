@@ -43,30 +43,30 @@ export function BlockPrecipitationTable({
   const allUnavailable = blocks.every((b) => !b.isDataAvailable);
 
   return (
-    <div className="bg-white border border-[#CBD5E1] rounded-sm p-4 space-y-3.5 shadow-xs">
+    <div className="bg-[#0A192F]/90 border border-[#1E354D] rounded-md p-4 space-y-3.5 shadow-command-panel backdrop-blur-md">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#F1F5F9] pb-2.5">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#1E354D] pb-2.5">
         <div>
-          <h4 className="font-bold font-mono text-sm tracking-tight text-[#0B1F33]">
+          <h4 className="font-bold font-mono text-sm tracking-tight text-white">
             KORAPUT BLOCK COMPARISON
           </h4>
-          <p className="text-xs text-[#64748B] mt-0.5">
+          <p className="text-xs text-slate-400 mt-0.5">
             Microclimatic rainfall accumulation, normals, and dry spells across all 14 Koraput administrative blocks.
           </p>
         </div>
 
         <div className="flex items-center gap-2">
-          <span className="text-[11px] font-mono text-[#64748B]">14 Administrative Blocks</span>
+          <span className="text-[11px] font-mono text-slate-400">14 Administrative Blocks</span>
         </div>
       </div>
 
       {/* Global Notice if block data is pending connection */}
       {allUnavailable && (
-        <div className="p-3 rounded-xs bg-[#FEF3C7] border border-[#F59E0B]/40 text-[#92400E] text-xs font-mono flex items-start gap-2.5">
-          <AlertCircle className="w-4 h-4 text-[#D97706] shrink-0 mt-0.5" />
+        <div className="p-3 rounded-xs bg-[#F59E0B]/10 border border-[#F59E0B]/30 text-amber-200 text-xs font-mono flex items-start gap-2.5">
+          <AlertCircle className="w-4 h-4 text-[#F59E0B] shrink-0 mt-0.5" />
           <div className="space-y-0.5">
-            <strong className="font-bold">Block-level rainfall data unavailable:</strong>
-            <p className="text-[11px] leading-relaxed">
+            <strong className="font-bold text-[#FCD34D]">Block-level rainfall data unavailable:</strong>
+            <p className="text-[11px] leading-relaxed text-amber-200/90">
               Ground automatic weather station (AWS) telemetry is aggregated at the district level (IMD 0.25° grid). In accordance with scientific integrity guidelines, district values are not substituted into blocks. Block AWS telemetry will automatically populate upon API activation.
             </p>
           </div>
@@ -77,10 +77,10 @@ export function BlockPrecipitationTable({
       <div className="hidden md:block overflow-x-auto">
         <table className="w-full text-left text-xs font-mono">
           <thead>
-            <tr className="border-b border-[#E2E8F0] text-[#64748B] bg-[#F8FAFC]">
+            <tr className="border-b border-[#1E354D] text-slate-300 bg-[#071324]">
               <th
                 onClick={() => handleSort('blockName')}
-                className="py-2.5 px-3 font-semibold cursor-pointer hover:text-[#0B1F33]"
+                className="py-2.5 px-3 font-semibold cursor-pointer hover:text-[#38BDF8]"
               >
                 <div className="flex items-center gap-1">
                   <span>Block</span>
@@ -89,7 +89,7 @@ export function BlockPrecipitationTable({
               </th>
               <th
                 onClick={() => handleSort('elevationMeters')}
-                className="py-2.5 px-3 font-semibold cursor-pointer hover:text-[#0B1F33] text-right"
+                className="py-2.5 px-3 font-semibold cursor-pointer hover:text-[#38BDF8] text-right"
               >
                 <div className="flex items-center justify-end gap-1">
                   <span>Elevation</span>
@@ -103,26 +103,26 @@ export function BlockPrecipitationTable({
               <th className="py-2.5 px-3 font-semibold">Telemetry Status</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-[#F1F5F9]">
+          <tbody className="divide-y divide-[#1E354D]/60">
             {sortedBlocks.map((b) => (
               <tr
                 key={b.blockId}
                 onClick={() => onSelectBlock && onSelectBlock(b.blockId)}
-                className="hover:bg-[#F8FAFC] transition-colors cursor-pointer"
+                className="hover:bg-[#132844] transition-colors cursor-pointer"
               >
-                <td className="py-2.5 px-3 font-bold text-[#0B1F33] flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5 text-[#0284C7] shrink-0" />
+                <td className="py-2.5 px-3 font-bold text-white flex items-center gap-1.5">
+                  <MapPin className="w-3.5 h-3.5 text-[#38BDF8] shrink-0" />
                   <span>{b.blockName}</span>
                 </td>
-                <td className="py-2.5 px-3 text-right text-[#64748B]">
+                <td className="py-2.5 px-3 text-right text-slate-400">
                   {b.elevationMeters}m MSL
                 </td>
-                <td className="py-2.5 px-3 text-right font-semibold text-[#0B1F33]">
+                <td className="py-2.5 px-3 text-right font-semibold text-white">
                   {b.isDataAvailable && b.seasonalRainfallMm !== null && b.seasonalRainfallMm !== undefined
                     ? `${b.seasonalRainfallMm.toFixed(1)} mm`
                     : '--'}
                 </td>
-                <td className="py-2.5 px-3 text-right text-[#64748B]">
+                <td className="py-2.5 px-3 text-right text-slate-400">
                   {b.isDataAvailable && b.normalMm !== null && b.normalMm !== undefined
                     ? `${b.normalMm.toFixed(1)} mm`
                     : 'DATA_REQUIRED'}
@@ -131,23 +131,23 @@ export function BlockPrecipitationTable({
                   {b.isDataAvailable && b.departurePercent !== null && b.departurePercent !== undefined ? (
                     <span
                       className={`font-bold ${
-                        b.departurePercent >= 0 ? 'text-[#059669]' : 'text-[#DC2626]'
+                        b.departurePercent >= 0 ? 'text-[#4ADE80]' : 'text-[#F87171]'
                       }`}
                     >
                       {b.departurePercent >= 0 ? '+' : ''}
                       {b.departurePercent.toFixed(1)}%
                     </span>
                   ) : (
-                    <span className="text-[#94A3B8]">--</span>
+                    <span className="text-slate-500">--</span>
                   )}
                 </td>
-                <td className="py-2.5 px-3 text-right text-[#475569]">
+                <td className="py-2.5 px-3 text-right text-slate-300">
                   {b.isDataAvailable && b.currentDrySpellDays !== undefined ? `${b.currentDrySpellDays} days` : '--'}
                 </td>
                 <td className="py-2.5 px-3">
                   <div className="flex items-center gap-2">
                     <DataStatusBadge status={b.status || 'MISSING'} size="xs" />
-                    <span className="text-[10px] text-[#94A3B8] truncate max-w-[180px]">
+                    <span className="text-[10px] text-slate-400 truncate max-w-[180px]">
                       {b.statusNote}
                     </span>
                   </div>
@@ -164,24 +164,24 @@ export function BlockPrecipitationTable({
           <div
             key={b.blockId}
             onClick={() => onSelectBlock && onSelectBlock(b.blockId)}
-            className="p-3 rounded-xs border border-[#CBD5E1] bg-[#F8FAFC] space-y-2 text-xs font-mono"
+            className="p-3 rounded-xs border border-[#1E354D] bg-[#071324] space-y-2 text-xs font-mono"
           >
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-1.5 font-bold text-[#0B1F33]">
-                <MapPin className="w-3.5 h-3.5 text-[#0284C7]" />
+              <div className="flex items-center gap-1.5 font-bold text-white">
+                <MapPin className="w-3.5 h-3.5 text-[#38BDF8]" />
                 <span>{b.blockName} Block</span>
               </div>
               <DataStatusBadge status={b.status || 'MISSING'} size="xs" />
             </div>
 
-            <div className="grid grid-cols-2 gap-2 text-[11px] pt-1 border-t border-[#E2E8F0]">
+            <div className="grid grid-cols-2 gap-2 text-[11px] pt-1 border-t border-[#1E354D]">
               <div>
-                <span className="text-[#64748B] block">Elevation:</span>
-                <span className="font-semibold text-[#0B1F33]">{b.elevationMeters}m MSL</span>
+                <span className="text-slate-400 block">Elevation:</span>
+                <span className="font-semibold text-white">{b.elevationMeters}m MSL</span>
               </div>
               <div>
-                <span className="text-[#64748B] block">Rainfall:</span>
-                <span className="font-semibold text-[#0B1F33]">
+                <span className="text-slate-400 block">Rainfall:</span>
+                <span className="font-semibold text-white">
                   {b.isDataAvailable && b.seasonalRainfallMm !== null && b.seasonalRainfallMm !== undefined
                     ? `${b.seasonalRainfallMm.toFixed(1)} mm`
                     : 'Data unavailable'}
@@ -189,7 +189,7 @@ export function BlockPrecipitationTable({
               </div>
             </div>
 
-            <div className="text-[10px] text-[#94A3B8] pt-1 border-t border-[#E2E8F0]">
+            <div className="text-[10px] text-slate-400 pt-1 border-t border-[#1E354D]">
               {b.statusNote}
             </div>
           </div>

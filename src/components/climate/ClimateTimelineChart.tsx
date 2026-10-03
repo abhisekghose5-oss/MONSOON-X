@@ -104,22 +104,22 @@ export function ClimateTimelineChart({
         <div className="flex flex-wrap items-center justify-between w-full text-xs font-mono">
           <div className="flex items-center gap-4 flex-wrap">
             <span className="flex items-center gap-1.5">
-              <span className="w-3 h-1 bg-[#1479C9] rounded-xs" />
-              <span className="text-[#0B1F33] font-bold">Niño 3.4 (°C)</span>
+              <span className="w-3 h-1 bg-[#38BDF8] rounded-xs" />
+              <span className="text-white font-bold">Niño 3.4 (°C)</span>
             </span>
 
             <span className="flex items-center gap-1.5">
-              <span className="w-3 h-1 bg-[#247A4A] rounded-xs" />
-              <span className="text-[#0B1F33] font-bold">IOD DMI (°C)</span>
+              <span className="w-3 h-1 bg-[#4ADE80] rounded-xs" />
+              <span className="text-white font-bold">IOD DMI (°C)</span>
             </span>
 
             <span className="flex items-center gap-1.5">
-              <span className="w-3 h-3 bg-[#7599C8] rounded-xs" />
-              <span className="text-[#4B5B6D]">Koraput Rainfall Departure (%)</span>
+              <span className="w-3 h-3 bg-[#0284C7] rounded-xs" />
+              <span className="text-slate-300">Koraput Rainfall Departure (%)</span>
             </span>
           </div>
 
-          <div className="text-[11px] text-[#6E7F94]">
+          <div className="text-[11px] text-slate-400">
             Dashed boundary separates observations from model projections
           </div>
         </div>
@@ -127,7 +127,7 @@ export function ClimateTimelineChart({
       footer={
         <div className="flex flex-col sm:flex-row sm:items-center justify-between w-full gap-1">
           <span>Teleconnection evolution: May 2026 to Dec 2026.</span>
-          <span className="text-[#0B1F33] font-medium">
+          <span className="text-slate-300 font-medium">
             Oct–Dec curves represent multi-model seasonal coupled forecasts (NOAA NMME / ECMWF SEAS5)
           </span>
         </div>
@@ -138,18 +138,18 @@ export function ClimateTimelineChart({
           data={timeline}
           margin={{ top: 15, right: 20, left: -10, bottom: 5 }}
         >
-          <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" vertical={false} />
+          <CartesianGrid strokeDasharray="3 3" stroke="#1E354D" vertical={false} />
           
           <XAxis
             dataKey="displayMonth"
-            tick={{ fontSize: 10, fill: '#6E7F94', fontFamily: 'monospace' }}
-            stroke="#CBD5E1"
+            tick={{ fontSize: 10, fill: '#94A3B8', fontFamily: 'monospace' }}
+            stroke="#1E354D"
           />
           
           <YAxis
             yAxisId="sst"
-            tick={{ fontSize: 10, fill: '#6E7F94', fontFamily: 'monospace' }}
-            stroke="#CBD5E1"
+            tick={{ fontSize: 10, fill: '#94A3B8', fontFamily: 'monospace' }}
+            stroke="#1E354D"
             domain={[-1.0, 1.0]}
             ticks={[-0.8, -0.4, 0, 0.4, 0.8]}
           />
@@ -157,8 +157,8 @@ export function ClimateTimelineChart({
           <YAxis
             yAxisId="departure"
             orientation="right"
-            tick={{ fontSize: 10, fill: '#6E7F94', fontFamily: 'monospace' }}
-            stroke="#CBD5E1"
+            tick={{ fontSize: 10, fill: '#94A3B8', fontFamily: 'monospace' }}
+            stroke="#1E354D"
             domain={[-20, 20]}
             ticks={[-15, -10, -5, 0, 5, 10, 15]}
           />
@@ -166,18 +166,18 @@ export function ClimateTimelineChart({
           <Tooltip content={<CustomClimateTooltip />} />
 
           {/* Zero Line */}
-          <ReferenceLine yAxisId="sst" y={0} stroke="#CBD5E1" />
+          <ReferenceLine yAxisId="sst" y={0} stroke="#1E354D" />
 
           {/* Reference Line separating observed from forecast projection (between Sep and Oct) */}
           <ReferenceLine
             yAxisId="sst"
             x="Sep"
-            stroke="#D99000"
+            stroke="#F59E0B"
             strokeDasharray="4 4"
             label={{
               value: 'Projection Horizon →',
               position: 'insideTopRight',
-              fill: '#D99000',
+              fill: '#FCD34D',
               fontSize: 10,
               fontFamily: 'monospace',
             }}
@@ -187,7 +187,7 @@ export function ClimateTimelineChart({
           <Bar
             yAxisId="departure"
             dataKey="koraputRainfallDeparturePercent"
-            fill="#CBD5E1"
+            fill="#1E354D"
             radius={[2, 2, 0, 0]}
             maxBarSize={22}
             name="Koraput Rainfall Departure"
@@ -197,12 +197,12 @@ export function ClimateTimelineChart({
                 key={`cell-time-${index}`}
                 fill={
                   entry.isForecastProjection
-                    ? '#ACD5F2'
+                    ? '#0284C7'
                     : (entry.koraputRainfallDeparturePercent || 0) >= 0
-                    ? '#1479C9'
-                    : '#D99000'
+                    ? '#38BDF8'
+                    : '#F59E0B'
                 }
-                opacity={entry.isForecastProjection ? 0.6 : 1}
+                opacity={entry.isForecastProjection ? 0.5 : 0.85}
               />
             ))}
           </Bar>
@@ -212,9 +212,9 @@ export function ClimateTimelineChart({
             yAxisId="sst"
             type="monotone"
             dataKey="nino34Anomaly"
-            stroke="#0B1F33"
+            stroke="#38BDF8"
             strokeWidth={2.5}
-            dot={{ r: 3, fill: '#0B1F33' }}
+            dot={{ r: 3, fill: '#38BDF8' }}
             name="Niño 3.4 SST"
           />
 
@@ -223,9 +223,9 @@ export function ClimateTimelineChart({
             yAxisId="sst"
             type="monotone"
             dataKey="iodDmiAnomaly"
-            stroke="#247A4A"
+            stroke="#4ADE80"
             strokeWidth={2.5}
-            dot={{ r: 3, fill: '#247A4A' }}
+            dot={{ r: 3, fill: '#4ADE80' }}
             name="IOD DMI"
           />
         </ComposedChart>

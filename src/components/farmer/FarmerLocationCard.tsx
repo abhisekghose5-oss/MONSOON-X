@@ -25,15 +25,15 @@ export function FarmerLocationCard({ className = '' }: FarmerLocationCardProps) 
     : getLocalizedName(selectedBlockId, selectedBlockId);
 
   return (
-    <div className={`bg-white rounded-xl border-2 border-[#CBD5E1] shadow-sm overflow-hidden ${className}`}>
+    <div className={`bg-[#0A192F]/90 backdrop-blur-md rounded-xl border border-[#1E354D] shadow-command-panel overflow-hidden ${className}`}>
       {/* Header / Active Location Bar */}
-      <div className="p-4 bg-gradient-to-r from-[#F0F6FA] to-white border-b border-[#E2E8F0]">
+      <div className="p-4 bg-[#071324] border-b border-[#1E354D]">
         <div className="flex items-center justify-between">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#1479C9] font-mono flex items-center gap-1.5">
-            <MapPin className="w-4 h-4 text-[#1479C9]" />
+          <span className="text-xs font-bold uppercase tracking-wider text-[#38BDF8] font-mono flex items-center gap-1.5">
+            <MapPin className="w-4 h-4 text-[#38BDF8]" />
             <span>{locT.title}</span>
           </span>
-          <span className="text-[11px] font-mono text-[#6E7F94] bg-white px-2 py-0.5 rounded border border-[#E2E8F0]">
+          <span className="text-[11px] font-mono text-slate-400 bg-[#0A192F] px-2 py-0.5 rounded border border-[#1E354D]">
             Odisha · Koraput
           </span>
         </div>
@@ -41,10 +41,10 @@ export function FarmerLocationCard({ className = '' }: FarmerLocationCardProps) 
         {/* Current Active Location Display */}
         <div className="mt-2 flex items-center justify-between">
           <div>
-            <h3 className="text-xl md:text-2xl font-black text-[#0B1F33] tracking-tight">
+            <h3 className="text-xl md:text-2xl font-black text-white tracking-tight">
               {currentDisplayName}
             </h3>
-            <p className="text-xs text-[#4B5B6D] mt-0.5">
+            <p className="text-xs text-slate-400 mt-0.5">
               {locT.selectedNotice}
             </p>
           </div>
@@ -52,7 +52,7 @@ export function FarmerLocationCard({ className = '' }: FarmerLocationCardProps) 
           <button
             type="button"
             onClick={() => setIsExpanded(!isExpanded)}
-            className="min-h-[44px] px-3 py-2 rounded-lg bg-[#1479C9]/10 hover:bg-[#1479C9]/20 text-[#1479C9] font-bold text-xs flex items-center gap-1.5 transition-all touch-manipulation active:scale-95 border border-[#1479C9]/30"
+            className="min-h-[44px] px-3.5 py-2 rounded-lg bg-[#0284C7]/20 hover:bg-[#0284C7]/30 text-[#38BDF8] font-bold text-xs flex items-center gap-1.5 transition-all touch-manipulation active:scale-95 border border-[#38BDF8]/40 cursor-pointer"
             aria-expanded={isExpanded}
           >
             <span>{isExpanded ? 'ସଙ୍କୁଚିତ / Close' : 'ବଦଳାନ୍ତୁ / Change'}</span>
@@ -62,17 +62,17 @@ export function FarmerLocationCard({ className = '' }: FarmerLocationCardProps) 
       </div>
 
       {/* Quick Horizontal Selector Bar (Always visible for top blocks) */}
-      <div className="p-3 bg-[#F8FAFC] border-b border-[#E2E8F0] overflow-x-auto scrollbar-none flex gap-2">
+      <div className="p-3 bg-[#071324]/60 border-b border-[#1E354D] overflow-x-auto scrollbar-none flex gap-2">
         <button
           type="button"
           onClick={() => selectBlock('all')}
-          className={`min-h-[44px] px-3.5 py-1.5 rounded-lg text-xs font-bold shrink-0 transition-all flex items-center gap-1.5 touch-manipulation active:scale-95 ${
+          className={`min-h-[44px] px-3.5 py-1.5 rounded-lg text-xs font-bold shrink-0 transition-all flex items-center gap-1.5 touch-manipulation active:scale-95 cursor-pointer ${
             isDistrictWide
-              ? 'bg-[#0B1F33] text-white shadow-sm'
-              : 'bg-white text-[#4B5B6D] hover:bg-slate-100 border border-[#CBD5E1]'
+              ? 'bg-[#0284C7] text-white shadow-md border border-[#38BDF8]'
+              : 'bg-[#0A192F] text-slate-300 hover:bg-[#132844] border border-[#1E354D]'
           }`}
         >
-          {isDistrictWide && <CheckCircle2 className="w-3.5 h-3.5 text-[#247A4A]" />}
+          {isDistrictWide && <CheckCircle2 className="w-3.5 h-3.5 text-white" />}
           <span>{locT.allKoraput}</span>
         </button>
 
@@ -83,10 +83,10 @@ export function FarmerLocationCard({ className = '' }: FarmerLocationCardProps) 
               key={block.id}
               type="button"
               onClick={() => selectBlock(block.id as KoraputBlockId)}
-              className={`min-h-[44px] px-3.5 py-1.5 rounded-lg text-xs font-bold shrink-0 transition-all flex items-center gap-1.5 touch-manipulation active:scale-95 ${
+              className={`min-h-[44px] px-3.5 py-1.5 rounded-lg text-xs font-bold shrink-0 transition-all flex items-center gap-1.5 touch-manipulation active:scale-95 cursor-pointer ${
                 isSelected
-                  ? 'bg-[#1479C9] text-white shadow-sm'
-                  : 'bg-white text-[#4B5B6D] hover:bg-slate-100 border border-[#CBD5E1]'
+                  ? 'bg-[#0284C7] text-white shadow-md border border-[#38BDF8]'
+                  : 'bg-[#0A192F] text-slate-300 hover:bg-[#132844] border border-[#1E354D]'
               }`}
             >
               {isSelected && <CheckCircle2 className="w-3.5 h-3.5 text-white" />}
@@ -98,8 +98,8 @@ export function FarmerLocationCard({ className = '' }: FarmerLocationCardProps) 
 
       {/* Expandable Full Block Grid (All 14 Koraput Blocks) */}
       {isExpanded && (
-        <div className="p-3 bg-white space-y-2 animate-in fade-in duration-200">
-          <p className="text-[11px] font-bold text-[#6E7F94] uppercase px-1">
+        <div className="p-3 bg-[#071324] space-y-2 animate-in fade-in duration-200 border-t border-[#1E354D]">
+          <p className="text-[11px] font-bold text-slate-400 uppercase px-1 font-mono">
             {locT.selectBlock} (14 Blocks)
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
@@ -109,14 +109,14 @@ export function FarmerLocationCard({ className = '' }: FarmerLocationCardProps) 
                 selectBlock('all');
                 setIsExpanded(false);
               }}
-              className={`min-h-[48px] p-2.5 rounded-lg text-left text-xs font-bold transition-all flex items-center justify-between border-2 touch-manipulation active:scale-95 ${
+              className={`min-h-[48px] p-2.5 rounded-lg text-left text-xs font-bold transition-all flex items-center justify-between border touch-manipulation active:scale-95 cursor-pointer ${
                 isDistrictWide
-                  ? 'bg-[#EAF5FC] border-[#1479C9] text-[#0B1F33]'
-                  : 'bg-[#F8FAFC] border-[#E2E8F0] text-[#4B5B6D] hover:bg-slate-100'
+                  ? 'bg-[#0284C7] border-[#38BDF8] text-white'
+                  : 'bg-[#0A192F] border-[#1E354D] text-slate-300 hover:bg-[#132844]'
               }`}
             >
               <span>{locT.allKoraput}</span>
-              {isDistrictWide && <CheckCircle2 className="w-4 h-4 text-[#1479C9] shrink-0" />}
+              {isDistrictWide && <CheckCircle2 className="w-4 h-4 text-white shrink-0" />}
             </button>
 
             {allBlocks.map((block) => {
@@ -129,17 +129,17 @@ export function FarmerLocationCard({ className = '' }: FarmerLocationCardProps) 
                     selectBlock(block.id as KoraputBlockId);
                     setIsExpanded(false);
                   }}
-                  className={`min-h-[48px] p-2.5 rounded-lg text-left text-xs font-bold transition-all flex items-center justify-between border-2 touch-manipulation active:scale-95 ${
+                  className={`min-h-[48px] p-2.5 rounded-lg text-left text-xs font-bold transition-all flex items-center justify-between border touch-manipulation active:scale-95 cursor-pointer ${
                     isSelected
-                      ? 'bg-[#EAF5FC] border-[#1479C9] text-[#0B1F33]'
-                      : 'bg-[#F8FAFC] border-[#E2E8F0] text-[#4B5B6D] hover:bg-slate-100'
+                      ? 'bg-[#0284C7] border-[#38BDF8] text-white'
+                      : 'bg-[#0A192F] border-[#1E354D] text-slate-300 hover:bg-[#132844]'
                   }`}
                 >
                   <div className="flex flex-col min-w-0">
                     <span className="truncate">{getLocalizedName(block.id, block.name)}</span>
-                    <span className="text-[10px] text-[#6E7F94] font-normal">{block.name}</span>
+                    <span className="text-[10px] text-slate-400 font-normal">{block.name}</span>
                   </div>
-                  {isSelected && <CheckCircle2 className="w-4 h-4 text-[#1479C9] shrink-0 ml-1" />}
+                  {isSelected && <CheckCircle2 className="w-4 h-4 text-white shrink-0 ml-1" />}
                 </button>
               );
             })}
@@ -149,3 +149,4 @@ export function FarmerLocationCard({ className = '' }: FarmerLocationCardProps) 
     </div>
   );
 }
+export default FarmerLocationCard;

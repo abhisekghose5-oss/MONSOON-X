@@ -53,12 +53,12 @@ export function RainfallDateControls({
   };
 
   return (
-    <div className="bg-white border border-[#CBD5E1] rounded-sm p-3.5 space-y-3 shadow-xs">
+    <div className="bg-[#0A192F]/85 backdrop-blur-md border border-[#1E354D] rounded-sm p-3.5 space-y-3 shadow-command-panel">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
         {/* Preset Buttons */}
         <div className="flex flex-wrap items-center gap-1.5">
-          <div className="flex items-center gap-1 text-xs font-mono font-bold text-[#0B1F33] mr-2">
-            <Clock className="w-3.5 h-3.5 text-[#0284C7]" />
+          <div className="flex items-center gap-1 text-xs font-mono font-bold text-slate-200 mr-2">
+            <Clock className="w-3.5 h-3.5 text-[#38BDF8]" />
             <span>TIME HORIZON:</span>
           </div>
           {presets.map((p) => {
@@ -67,10 +67,10 @@ export function RainfallDateControls({
               <button
                 key={p.id}
                 onClick={() => handlePresetClick(p.id)}
-                className={`px-3 py-1.5 text-xs font-mono font-semibold rounded-xs transition-colors ${
+                className={`px-3 py-1.5 text-xs font-mono font-semibold rounded-xs transition-colors cursor-pointer ${
                   isActive
-                    ? 'bg-[#0284C7] text-white shadow-xs'
-                    : 'bg-[#F8FAFC] text-[#475569] hover:bg-[#F1F5F9] border border-[#E2E8F0]'
+                    ? 'bg-[#0284C7] text-white shadow-xs border border-[#38BDF8]/50'
+                    : 'bg-[#071324] text-slate-400 hover:text-white hover:bg-[#0D2038] border border-[#1E354D]'
                 }`}
               >
                 {p.label}
@@ -81,7 +81,7 @@ export function RainfallDateControls({
 
         {/* Date Display / Custom Range Controls */}
         <div className="flex items-center gap-2 text-xs font-mono">
-          <Calendar className="w-3.5 h-3.5 text-[#64748B]" />
+          <Calendar className="w-3.5 h-3.5 text-slate-400" />
           {filter.preset === 'custom' ? (
             <div className="flex items-center gap-1.5">
               <input
@@ -90,22 +90,22 @@ export function RainfallDateControls({
                 onChange={(e) =>
                   onFilterChange({ ...filter, startDate: e.target.value })
                 }
-                className="border border-[#CBD5E1] rounded-xs px-2 py-1 text-xs font-mono bg-white text-[#0B1F33]"
+                className="border border-[#1E354D] rounded-xs px-2 py-1 text-xs font-mono bg-[#071324] text-white focus:outline-hidden focus:border-[#38BDF8]"
               />
-              <span className="text-[#64748B]">to</span>
+              <span className="text-slate-500">to</span>
               <input
                 type="date"
                 value={filter.endDate}
                 onChange={(e) =>
                   onFilterChange({ ...filter, endDate: e.target.value })
                 }
-                className="border border-[#CBD5E1] rounded-xs px-2 py-1 text-xs font-mono bg-white text-[#0B1F33]"
+                className="border border-[#1E354D] rounded-xs px-2 py-1 text-xs font-mono bg-[#071324] text-white focus:outline-hidden focus:border-[#38BDF8]"
               />
             </div>
           ) : (
-            <span className="text-[#475569] font-medium">
-              Window: <strong className="text-[#0B1F33]">{filter.startDate}</strong> to{' '}
-              <strong className="text-[#0B1F33]">{filter.endDate}</strong>
+            <span className="text-slate-400 font-medium">
+              Window: <strong className="text-white font-mono">{filter.startDate}</strong> to{' '}
+              <strong className="text-white font-mono">{filter.endDate}</strong>
             </span>
           )}
         </div>

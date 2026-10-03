@@ -40,15 +40,15 @@ export function ClimatologyFilterBar({
   const ensoPhases: (HistoricalEnsoPhase | 'all')[] = ['all', 'El Niño', 'La Niña', 'Neutral'];
 
   return (
-    <div className={`p-4 rounded-md border border-[#E2E8F0] bg-white shadow-gov-card space-y-3 ${className}`}>
+    <div className={`p-4 rounded-xl border border-[#1E354D] bg-[#0A192F]/80 shadow-xl backdrop-blur-md space-y-3 ${className}`}>
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
         {/* Count Badge */}
         <div className="flex items-center gap-2">
-          <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#0B1F33] flex items-center gap-1.5">
-            <Filter className="w-4 h-4 text-[#1479C9]" />
+          <span className="font-mono text-xs font-bold uppercase tracking-wider text-white flex items-center gap-1.5">
+            <Filter className="w-4 h-4 text-cyan-400" />
             CLIMATOLOGY FILTER CONTROLS:
           </span>
-          <span className="text-[10px] font-mono px-2 py-0.5 rounded-sm bg-[#0B1F33] text-white">
+          <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-lg bg-cyan-950/50 text-cyan-300 border border-cyan-500/40 font-bold">
             {totalFilteredCount} of {totalCount} YEARS
           </span>
         </div>
@@ -56,20 +56,20 @@ export function ClimatologyFilterBar({
         {/* Search Year Box & Export CSV */}
         <div className="flex items-center gap-2">
           <div className="relative min-w-[180px]">
-            <Search className="w-3.5 h-3.5 text-[#6E7F94] absolute left-2.5 top-1/2 -translate-y-1/2" />
+            <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               value={searchYear}
               onChange={(e) => onSearchYearChange(e.target.value)}
               placeholder="Search year (e.g. 2002)..."
-              className="w-full pl-8 pr-3 py-1 rounded-xs border border-[#CBD5E1] bg-white text-xs font-mono text-[#0B1F33] placeholder-[#94A3B8] focus:outline-hidden focus:border-[#1479C9]"
+              className="w-full pl-8 pr-3 py-1.5 rounded-lg border border-[#1E354D] bg-[#071324] text-xs font-mono text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors"
             />
           </div>
 
           <button
             type="button"
             onClick={onExportCsv}
-            className="px-2.5 py-1 text-xs font-mono font-bold rounded-xs bg-[#247A4A] hover:bg-[#1E663E] text-white flex items-center gap-1.5 transition-colors shadow-xs whitespace-nowrap"
+            className="px-3 py-1.5 text-xs font-mono font-bold rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white flex items-center gap-1.5 transition-colors shadow-lg shadow-emerald-900/30 whitespace-nowrap"
           >
             <Download className="w-3.5 h-3.5" />
             <span>EXPORT 55-YR CSV</span>
@@ -78,10 +78,10 @@ export function ClimatologyFilterBar({
       </div>
 
       {/* Filter Buttons */}
-      <div className="flex flex-wrap items-center gap-3 pt-2 border-t border-[#F0F3F7] text-xs">
+      <div className="flex flex-wrap items-center gap-3 pt-3 border-t border-[#1E354D] text-xs">
         {/* Decade Selector */}
-        <div className="flex items-center gap-1 overflow-x-auto scrollbar-none py-0.5">
-          <span className="text-[10px] font-mono font-bold text-[#6E7F94] uppercase mr-1">
+        <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none py-0.5">
+          <span className="text-[10px] font-mono font-bold text-slate-400 uppercase mr-1">
             Decade:
           </span>
           {decades.map((d) => (
@@ -89,10 +89,10 @@ export function ClimatologyFilterBar({
               key={d.key}
               type="button"
               onClick={() => onSelectDecade(d.key)}
-              className={`px-2 py-0.5 text-[11px] font-mono font-bold rounded-xs transition-all whitespace-nowrap ${
+              className={`px-2.5 py-1 text-[11px] font-mono font-bold rounded-lg transition-all whitespace-nowrap border ${
                 selectedDecade === d.key
-                  ? 'bg-[#0B1F33] text-white shadow-xs'
-                  : 'bg-white text-[#4B5B6D] border border-[#CBD5E1] hover:bg-slate-50'
+                  ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/50 shadow-[0_0_12px_rgba(56,189,248,0.25)]'
+                  : 'bg-[#071324] text-slate-400 hover:text-slate-200 border-[#1E354D] hover:border-slate-600'
               }`}
             >
               {d.label}
@@ -101,8 +101,8 @@ export function ClimatologyFilterBar({
         </div>
 
         {/* ENSO Selector */}
-        <div className="flex items-center gap-1 ml-auto">
-          <span className="text-[10px] font-mono font-bold text-[#6E7F94] uppercase mr-1">
+        <div className="flex items-center gap-1.5 ml-auto">
+          <span className="text-[10px] font-mono font-bold text-slate-400 uppercase mr-1">
             ENSO:
           </span>
           {ensoPhases.map((phase) => (
@@ -110,10 +110,10 @@ export function ClimatologyFilterBar({
               key={phase}
               type="button"
               onClick={() => onSelectEnso(phase)}
-              className={`px-2 py-0.5 text-[11px] font-mono font-bold rounded-xs transition-all ${
+              className={`px-2.5 py-1 text-[11px] font-mono font-bold rounded-lg transition-all border ${
                 selectedEnso === phase
-                  ? 'bg-[#1479C9] text-white shadow-xs'
-                  : 'bg-white text-[#4B5B6D] border border-[#CBD5E1] hover:bg-slate-50'
+                  ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/50 shadow-[0_0_12px_rgba(56,189,248,0.25)]'
+                  : 'bg-[#071324] text-slate-400 hover:text-slate-200 border-[#1E354D] hover:border-slate-600'
               }`}
             >
               {phase === 'all' ? 'All Phases' : phase}

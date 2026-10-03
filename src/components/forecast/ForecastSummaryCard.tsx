@@ -9,12 +9,12 @@ export interface ForecastSummaryCardProps {
 
 export function ForecastSummaryCard({ summary }: ForecastSummaryCardProps) {
   return (
-    <div className="rounded-md border border-[#E2E8F0] bg-white shadow-gov-card overflow-hidden">
+    <div className="rounded-md border border-[#1E354D] bg-[#0A192F]/90 shadow-command-panel overflow-hidden backdrop-blur-md">
       {/* Header */}
-      <div className="px-4 py-3 border-b border-[#E2E8F0] bg-[#F5F7FA]/70 flex items-center justify-between">
+      <div className="px-4 py-3 border-b border-[#1E354D] bg-[#071324] flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <FileText className="w-4 h-4 text-[#1479C9]" />
-          <h3 className="text-xs font-bold uppercase tracking-wider text-[#0B1F33]">
+          <FileText className="w-4 h-4 text-[#38BDF8]" />
+          <h3 className="text-xs font-bold uppercase tracking-wider text-white">
             Meteorological Forecast Synopsis
           </h3>
         </div>
@@ -23,8 +23,8 @@ export function ForecastSummaryCard({ summary }: ForecastSummaryCardProps) {
 
       <div className="p-4 sm:p-5 space-y-4">
         {/* Headline */}
-        <div className="border-l-4 border-l-[#1479C9] pl-3 py-0.5">
-          <h4 className="text-sm font-bold text-[#0B1F33] font-sans">
+        <div className="border-l-4 border-l-[#38BDF8] pl-3 py-0.5">
+          <h4 className="text-sm font-bold text-white font-sans">
             {summary.headline}
           </h4>
         </div>
@@ -32,45 +32,45 @@ export function ForecastSummaryCard({ summary }: ForecastSummaryCardProps) {
         {/* Narrative Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-sans">
           {/* Synoptic Dynamics */}
-          <div className="space-y-1.5 p-3 rounded-sm bg-[#F5F7FA] border border-[#CBD5E1]">
-            <div className="flex items-center gap-1.5 font-mono text-[11px] font-bold text-[#0B1F33] uppercase">
-              <Wind className="w-3.5 h-3.5 text-[#1479C9]" />
+          <div className="space-y-1.5 p-3.5 rounded-sm bg-[#071324] border border-[#1E354D]">
+            <div className="flex items-center gap-1.5 font-mono text-[11px] font-bold text-white uppercase">
+              <Wind className="w-3.5 h-3.5 text-[#38BDF8]" />
               <span>Synoptic Circulation & Dynamics</span>
             </div>
-            <p className="text-[#4B5B6D] leading-relaxed">
+            <p className="text-slate-300 leading-relaxed">
               {summary.synopticDynamics}
             </p>
           </div>
 
           {/* Primary Hazard Window */}
-          <div className="space-y-1.5 p-3 rounded-sm bg-[#FCEDEC] border border-[#EEA9A7]">
-            <div className="flex items-center gap-1.5 font-mono text-[11px] font-bold text-[#802626] uppercase">
-              <AlertTriangle className="w-3.5 h-3.5 text-[#C43D3D]" />
+          <div className="space-y-1.5 p-3.5 rounded-sm bg-[#EF4444]/10 border border-[#EF4444]/30">
+            <div className="flex items-center gap-1.5 font-mono text-[11px] font-bold text-[#F87171] uppercase">
+              <AlertTriangle className="w-3.5 h-3.5 text-[#EF4444]" />
               <span>Critical Risk Window</span>
             </div>
-            <p className="text-[#802626] leading-relaxed font-semibold">
+            <p className="text-rose-200 leading-relaxed font-semibold">
               {summary.primaryHazardWindow}
             </p>
           </div>
 
           {/* Agricultural Impact */}
-          <div className="space-y-1.5 p-3 rounded-sm bg-[#EDF7F1] border border-[#ABD7C0]">
-            <div className="flex items-center gap-1.5 font-mono text-[11px] font-bold text-[#154D2F] uppercase">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#247A4A]" />
+          <div className="space-y-1.5 p-3.5 rounded-sm bg-[#10B981]/10 border border-[#10B981]/30">
+            <div className="flex items-center gap-1.5 font-mono text-[11px] font-bold text-[#4ADE80] uppercase">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#10B981]" />
               <span>Agronomic Impact & Operations</span>
             </div>
-            <p className="text-[#154D2F] leading-relaxed">
+            <p className="text-emerald-200 leading-relaxed">
               {summary.agriculturalImpact}
             </p>
           </div>
 
           {/* Convective Thunderstorm Outlook */}
-          <div className="space-y-1.5 p-3 rounded-sm bg-[#FDF7EB] border border-[#F4D79C]">
-            <div className="flex items-center gap-1.5 font-mono text-[11px] font-bold text-[#8C5D00] uppercase">
-              <Zap className="w-3.5 h-3.5 text-[#D99000]" />
+          <div className="space-y-1.5 p-3.5 rounded-sm bg-[#F59E0B]/10 border border-[#F59E0B]/30">
+            <div className="flex items-center gap-1.5 font-mono text-[11px] font-bold text-[#FCD34D] uppercase">
+              <Zap className="w-3.5 h-3.5 text-[#F59E0B]" />
               <span>Severe Convective & Lightning Risk</span>
             </div>
-            <p className="text-[#8C5D00] leading-relaxed">
+            <p className="text-amber-200 leading-relaxed">
               {summary.convectiveOutlook}
             </p>
           </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import type { RiskMapLayerId } from '../../types/riskMap';
 import { RISK_MAP_LAYERS } from '../../data/geo/layerConfigs';
-import { Layers, Compass, ShieldAlert, CloudRain, Droplets } from 'lucide-react';
+import { Layers, Compass, ShieldAlert, CloudRain, Droplets, AlertTriangle, Bug } from 'lucide-react';
 import { cn } from '../../utils/cn';
 
 interface MapLayerSwitcherProps {
@@ -10,19 +10,21 @@ interface MapLayerSwitcherProps {
 }
 
 export function MapLayerSwitcher({ activeLayer, onLayerChange }: MapLayerSwitcherProps) {
-  const layerIcons = {
+  const layerIcons: Record<RiskMapLayerId, React.ComponentType<{ className?: string }>> = {
     onset: Compass,
+    falseOnset: AlertTriangle,
     break: ShieldAlert,
     heavyRain: CloudRain,
     rainfallAnomaly: Droplets,
+    pestRisk: Bug,
   };
 
-  const layersList: RiskMapLayerId[] = ['onset', 'break', 'heavyRain', 'rainfallAnomaly'];
+  const layersList: RiskMapLayerId[] = ['onset', 'falseOnset', 'break', 'heavyRain', 'rainfallAnomaly', 'pestRisk'];
 
   return (
-    <div className="rounded-sm border border-[#CBD5E1] bg-white p-1.5 shadow-gov-card flex flex-wrap items-center gap-1.5">
-      <div className="hidden sm:flex items-center gap-1.5 px-2 text-[#4B5B6D] font-mono text-[11px] font-bold uppercase border-r border-[#E2E8F0]">
-        <Layers className="w-3.5 h-3.5 text-[#1479C9]" />
+    <div className="rounded-lg border border-[#1E354D] bg-[#071324]/90 p-1.5 shadow-command-panel flex flex-wrap items-center gap-1.5">
+      <div className="hidden sm:flex items-center gap-1.5 px-2 text-slate-400 font-mono text-[10px] font-bold uppercase border-r border-[#1E354D]">
+        <Layers className="w-3.5 h-3.5 text-[#38BDF8]" />
         <span>Thematic Layer:</span>
       </div>
 
@@ -32,11 +34,13 @@ export function MapLayerSwitcher({ activeLayer, onLayerChange }: MapLayerSwitche
           const Icon = layerIcons[layerId];
           const isActive = activeLayer === layerId;
 
-          const activeColors = {
-            onset: 'bg-[#1479C9] text-white',
-            break: 'bg-[#D99000] text-white',
-            heavyRain: 'bg-[#C43D3D] text-white',
-            rainfallAnomaly: 'bg-[#0B1F33] text-white',
+          const activeColors: Record<RiskMapLayerId, string> = {
+            onset: 'bg-[#0284C7] text-white border-[#38BDF8]/40 shadow-xs',
+            falseOnset: 'bg-[#D97706] text-white border-amber-400/40 shadow-xs',
+            break: 'bg-[#B45309] text-white border-amber-500/40 shadow-xs',
+            heavyRain: 'bg-rose-600 text-white border-rose-400/40 shadow-xs',
+            rainfallAnomaly: 'bg-[#0B1F33] text-white border-[#38BDF8]/40 shadow-xs',
+            pestRisk: 'bg-[#15803D] text-white border-emerald-400/40 shadow-xs',
           };
 
           return (
@@ -45,10 +49,10 @@ export function MapLayerSwitcher({ activeLayer, onLayerChange }: MapLayerSwitche
               type="button"
               onClick={() => onLayerChange(layerId)}
               className={cn(
-                'flex items-center gap-1.5 px-2.5 py-1 rounded-sm text-xs font-semibold transition-all shadow-xs',
+                'flex items-center gap-1.5 px-2.5 py-1 rounded-sm text-xs font-semibold transition-all border cursor-pointer',
                 isActive
                   ? activeColors[layerId]
-                  : 'bg-[#F5F7FA] text-[#4B5B6D] hover:text-[#0B1F33] hover:bg-[#EAF0F6] border border-[#CBD5E1]'
+                  : 'bg-[#0A192F] text-slate-300 hover:text-white hover:bg-[#1E354D] border-[#1E354D]'
               )}
             >
               <Icon className="w-3.5 h-3.5 shrink-0" />

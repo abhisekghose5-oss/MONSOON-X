@@ -11,16 +11,16 @@ export function FarmerHelplineCard({ className = '' }: FarmerHelplineCardProps) 
   const helpT = t.helpline;
 
   return (
-    <div className={`bg-gradient-to-r from-[#0B1F33] to-[#142B44] text-white rounded-xl p-4 shadow-md space-y-3 ${className}`}>
+    <div className={`bg-[#0A192F]/90 backdrop-blur-md text-white rounded-xl p-4 shadow-command-panel border border-[#1E354D] space-y-3 ${className}`}>
       <div className="flex items-center gap-2">
-        <div className="w-8 h-8 rounded-full bg-[#247A4A] flex items-center justify-center shrink-0">
-          <PhoneCall className="w-4 h-4 text-white" />
+        <div className="w-8 h-8 rounded-full bg-[#15803D]/30 border border-[#4ADE80]/50 flex items-center justify-center shrink-0">
+          <PhoneCall className="w-4 h-4 text-[#4ADE80]" />
         </div>
         <div>
-          <h4 className="text-sm font-bold text-white leading-tight">
+          <h4 className="text-sm font-bold text-white leading-tight font-mono">
             {helpT.title}
           </h4>
-          <span className="text-[11px] text-[#A4BCDA] block font-mono">
+          <span className="text-[11px] text-slate-400 block font-mono">
             Direct Agronomist Line · Koraput & Odisha
           </span>
         </div>
@@ -30,20 +30,20 @@ export function FarmerHelplineCard({ className = '' }: FarmerHelplineCardProps) 
         {/* Kisan Call Centre (Toll Free) */}
         <a
           href={`tel:${helpT.tollFreeNumber}`}
-          className="min-h-[50px] p-2.5 rounded-lg bg-[#247A4A] hover:bg-[#1D633C] text-white flex items-center justify-between transition-all touch-manipulation active:scale-95 shadow-sm border border-[#3CA76B]"
+          className="min-h-[50px] p-2.5 rounded-lg bg-emerald-950/40 hover:bg-emerald-900/50 text-white flex items-center justify-between transition-all touch-manipulation active:scale-95 shadow-sm border border-emerald-500/50 cursor-pointer"
         >
           <div className="flex items-center gap-2">
-            <PhoneCall className="w-5 h-5 text-white shrink-0" />
+            <PhoneCall className="w-5 h-5 text-[#4ADE80] shrink-0" />
             <div>
               <span className="text-xs font-bold block leading-tight">
                 Kisan Call Centre (କିଷାନ କଲ୍ ସେଣ୍ଟର)
               </span>
-              <span className="text-sm font-mono font-black text-white/90">
+              <span className="text-sm font-mono font-black text-[#4ADE80]">
                 {helpT.tollFreeNumber}
               </span>
             </div>
           </div>
-          <span className="text-[10px] uppercase font-bold bg-white/20 px-2 py-0.5 rounded">
+          <span className="text-[10px] uppercase font-bold bg-[#15803D]/40 text-[#86EFAC] px-2 py-0.5 rounded border border-[#15803D]/60 font-mono">
             Free
           </span>
         </a>
@@ -51,20 +51,20 @@ export function FarmerHelplineCard({ className = '' }: FarmerHelplineCardProps) 
         {/* Krishi Vigyan Kendra Koraput */}
         <a
           href={`tel:${helpT.kvkPhone}`}
-          className="min-h-[50px] p-2.5 rounded-lg bg-[#1479C9] hover:bg-[#0E63A8] text-white flex items-center justify-between transition-all touch-manipulation active:scale-95 shadow-sm border border-[#439EE0]"
+          className="min-h-[50px] p-2.5 rounded-lg bg-sky-950/40 hover:bg-sky-900/50 text-white flex items-center justify-between transition-all touch-manipulation active:scale-95 shadow-sm border border-sky-500/50 cursor-pointer"
         >
           <div className="flex items-center gap-2">
-            <Building2 className="w-5 h-5 text-white shrink-0" />
+            <Building2 className="w-5 h-5 text-[#38BDF8] shrink-0" />
             <div>
               <span className="text-xs font-bold block leading-tight">
                 {helpT.kvkKoraput}
               </span>
-              <span className="text-sm font-mono font-black text-white/90">
+              <span className="text-sm font-mono font-black text-[#38BDF8]">
                 {helpT.kvkPhone}
               </span>
             </div>
           </div>
-          <span className="text-[10px] uppercase font-bold bg-white/20 px-2 py-0.5 rounded">
+          <span className="text-[10px] uppercase font-bold bg-[#0284C7]/40 text-[#7DD3FC] px-2 py-0.5 rounded border border-[#0284C7]/60 font-mono">
             KVK
           </span>
         </a>
@@ -72,3 +72,4 @@ export function FarmerHelplineCard({ className = '' }: FarmerHelplineCardProps) 
     </div>
   );
 }
+export default FarmerHelplineCard;

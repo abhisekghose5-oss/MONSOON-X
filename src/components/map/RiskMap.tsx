@@ -123,7 +123,7 @@ export function RiskMap({
   // Basemap tile URLs
   const basemapUrls: Record<BasemapType, { url: string; attribution: string }> = {
     positron: {
-      url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+      url: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
       attribution: '&copy; CARTO &copy; OpenStreetMap contributors',
     },
     osm: {
@@ -171,7 +171,7 @@ export function RiskMap({
         fillColor,
         weight: isSelected ? 3.5 : 1.5,
         opacity: 1,
-        color: isSelected ? '#0B1F33' : '#4B5B6D',
+        color: isSelected ? '#38BDF8' : '#334155',
         dashArray: isSelected ? '' : '2',
         fillOpacity: isSelected ? 0.88 : 0.68,
       };
@@ -273,13 +273,13 @@ export function RiskMap({
   return (
     <div
       ref={containerRef}
-      className={`relative w-full h-full min-h-[580px] bg-[#F5F7FA] overflow-hidden rounded-sm border border-[#CBD5E1] ${className || ''}`}
+      className={`relative w-full h-full min-h-[580px] bg-[#060D17] overflow-hidden rounded-lg border border-[#1E354D] ${className || ''}`}
     >
       {/* Top Floating Geo Banner */}
-      <div className="absolute top-3 left-14 z-[1000] hidden md:flex items-center gap-2 px-3 py-1 rounded-sm bg-[#0B1F33]/90 backdrop-blur-xs text-white font-mono text-[10px] shadow-gov-card border border-[#1E354D] select-none">
-        <span className="w-2 h-2 rounded-full bg-[#247A4A] animate-pulse" />
+      <div className="absolute top-3 left-14 z-[1000] hidden md:flex items-center gap-2 px-3 py-1 rounded-sm bg-[#0B1F33]/90 backdrop-blur-xs text-white font-mono text-[10px] shadow-command-panel border border-[#1E354D] select-none">
+        <span className="w-2 h-2 rounded-full bg-[#10B981] telemetry-pulse" />
         <span className="font-bold tracking-wide">KORAPUT GIS PLATFORM</span>
-        <span className="text-[#A4BCDA]">| 14 ADMINISTRATIVE BLOCKS</span>
+        <span className="text-[#38BDF8]">| 14 ADMINISTRATIVE BLOCKS</span>
       </div>
 
       {/* Floating Basemap & Extent Controls (Top-Right) */}
@@ -308,7 +308,7 @@ export function RiskMap({
           maxZoom={15}
           zoomControl={false}
           className="w-full h-full"
-          style={{ height: '100%', minHeight: '580px', background: '#EAF0F6' }}
+          style={{ height: '100%', minHeight: '580px', background: '#060D17' }}
         >
           <MapViewController targetCoords={mapTarget.coords} targetZoom={mapTarget.zoom} />
 

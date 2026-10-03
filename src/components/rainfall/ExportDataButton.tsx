@@ -73,33 +73,33 @@ export function ExportDataButton({
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="px-3 py-1.5 rounded-xs border border-[#CBD5E1] bg-white hover:bg-[#F8FAFC] text-[#0B1F33] text-xs font-mono font-semibold flex items-center gap-1.5 shadow-xs transition-colors"
+        className="px-3 py-1.5 rounded-xs border border-[#1E354D] bg-[#0A192F] hover:bg-[#132844] text-slate-200 hover:text-white text-xs font-mono font-semibold flex items-center gap-1.5 shadow-command-panel transition-colors cursor-pointer"
       >
-        <Download className="w-3.5 h-3.5 text-[#0284C7]" />
+        <Download className="w-3.5 h-3.5 text-[#38BDF8]" />
         <span>Export Data</span>
-        <ChevronDown className="w-3 h-3 text-[#64748B]" />
+        <ChevronDown className="w-3 h-3 text-slate-400" />
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-1 w-52 rounded-xs bg-white border border-[#CBD5E1] shadow-lg py-1 z-50 text-xs font-mono">
+        <div className="absolute right-0 mt-1 w-56 rounded-xs bg-[#0A192F] border border-[#1E354D] shadow-2xl py-1 z-50 text-xs font-mono backdrop-blur-md">
           <button
             onClick={handleExportCSV}
-            className="w-full px-3 py-2 text-left text-[#0B1F33] hover:bg-[#F1F5F9] flex items-center gap-2"
+            className="w-full px-3 py-2 text-left text-slate-200 hover:bg-[#132844] hover:text-white flex items-center gap-2 cursor-pointer transition-colors"
           >
-            <FileSpreadsheet className="w-4 h-4 text-[#059669]" />
+            <FileSpreadsheet className="w-4 h-4 text-[#4ADE80]" />
             <div>
               <div className="font-bold">Export CSV</div>
-              <div className="text-[10px] text-[#64748B]">Complete daily series & metadata</div>
+              <div className="text-[10px] text-slate-400">Complete daily series & metadata</div>
             </div>
           </button>
           <button
             onClick={handleExportPNG}
-            className="w-full px-3 py-2 text-left text-[#0B1F33] hover:bg-[#F1F5F9] flex items-center gap-2 border-t border-[#F1F5F9]"
+            className="w-full px-3 py-2 text-left text-slate-200 hover:bg-[#132844] hover:text-white flex items-center gap-2 border-t border-[#1E354D] cursor-pointer transition-colors"
           >
-            <ImageIcon className="w-4 h-4 text-[#0284C7]" />
+            <ImageIcon className="w-4 h-4 text-[#38BDF8]" />
             <div>
               <div className="font-bold">Print / Save Chart Image</div>
-              <div className="text-[10px] text-[#64748B]">High-res printable hyetograph</div>
+              <div className="text-[10px] text-slate-400">High-res printable hyetograph</div>
             </div>
           </button>
         </div>

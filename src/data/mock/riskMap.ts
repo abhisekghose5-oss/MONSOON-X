@@ -1,4 +1,4 @@
-﻿/**
+/**
  * MONSOON-X (SIH26086)
  * DEMO MODEL OUTPUT — HYPERLOCAL RISK MAP DATASET
  * 
@@ -260,11 +260,12 @@ const BLOCK_PROFILES: BlockBaseProfile[] = [
   },
 ];
 
-// Multipliers and shift curves across forecast horizons (7D, 14D, 21D, 30D)
+// Multipliers and shift curves across forecast horizons (3D, 7D, 14D, 21D, 30D)
 const HORIZON_FACTORS: Record<
   ForecastHorizon,
   { onsetShift: number; breakShift: number; heavyShift: number; anomalyShift: number; confidence: number }
 > = {
+  '3D': { onsetShift: -12, breakShift: -8, heavyShift: 10, anomalyShift: -2, confidence: 94 },
   '7D': { onsetShift: -8, breakShift: -5, heavyShift: 6, anomalyShift: -4, confidence: 88 },
   '14D': { onsetShift: 0, breakShift: 0, heavyShift: 0, anomalyShift: 0, confidence: 79 },
   '21D': { onsetShift: 10, breakShift: 6, heavyShift: -6, anomalyShift: 6, confidence: 68 },
@@ -279,8 +280,9 @@ function clamp(val: number, min: number, max: number): number {
  * Builds realistic DEMO MODEL OUTPUT records for all 14 blocks + district across all horizons
  */
 function buildMockRiskMapRecords(): Record<ForecastHorizon, Record<string, RiskMapRecord>> {
-  const horizons: ForecastHorizon[] = ['7D', '14D', '21D', '30D'];
+  const horizons: ForecastHorizon[] = ['3D', '7D', '14D', '21D', '30D'];
   const result: Record<ForecastHorizon, Record<string, RiskMapRecord>> = {
+    '3D': {},
     '7D': {},
     '14D': {},
     '21D': {},

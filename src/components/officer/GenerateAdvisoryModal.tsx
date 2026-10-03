@@ -49,7 +49,7 @@ export function GenerateAdvisoryModal({ isOpen, onClose, horizon }: GenerateAdvi
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0B1F33]/70 backdrop-blur-xs"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
       role="dialog"
       aria-modal="true"
       aria-labelledby="generate-advisory-title"
@@ -57,18 +57,18 @@ export function GenerateAdvisoryModal({ isOpen, onClose, horizon }: GenerateAdvi
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="bg-white rounded-md border border-[#CBD5E1] shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto space-y-0 animate-in fade-in duration-200">
+      <div className="bg-[#0A192F] text-white rounded-lg border border-[#1E354D] shadow-[0_0_50px_rgba(0,0,0,0.8)] max-w-3xl w-full max-h-[90vh] overflow-y-auto space-y-0 animate-in fade-in duration-200">
         {/* Header */}
-        <div className="p-4 bg-[#0B1F33] text-white flex items-center justify-between sticky top-0 z-10">
+        <div className="p-4 bg-[#071324] text-white flex items-center justify-between border-b border-[#1E354D] sticky top-0 z-10">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xs bg-[#247A4A] flex items-center justify-center text-white shrink-0">
+            <div className="w-8 h-8 rounded-sm bg-emerald-950/60 border border-emerald-500/40 flex items-center justify-center text-[#4ADE80] shrink-0">
               <FileText className="w-4 h-4" />
             </div>
             <div>
               <h3 id="generate-advisory-title" className="text-base font-bold font-mono uppercase tracking-wider text-white">
                 OFFICIAL AGROMET ADVISORY BULLETIN (GKMS)
               </h3>
-              <span className="text-[11px] text-[#A4BCDA] font-mono">
+              <span className="text-[11px] text-slate-400 font-mono">
                 Department of Agriculture & Farmers' Empowerment · Govt. of Odisha
               </span>
             </div>
@@ -77,7 +77,7 @@ export function GenerateAdvisoryModal({ isOpen, onClose, horizon }: GenerateAdvi
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 rounded-xs text-[#A4BCDA] hover:text-white hover:bg-white/10 transition-colors focus-visible:ring-2 focus-visible:ring-[#247A4A] focus-visible:outline-hidden"
+            className="p-1.5 rounded-sm text-slate-400 hover:text-white hover:bg-white/10 transition-colors focus-visible:ring-2 focus-visible:ring-[#0284C7] focus-visible:outline-hidden cursor-pointer"
             aria-label="Close advisory bulletin modal"
           >
             <X className="w-5 h-5" />
@@ -85,34 +85,34 @@ export function GenerateAdvisoryModal({ isOpen, onClose, horizon }: GenerateAdvi
         </div>
 
         {/* Action Toolbar */}
-        <div className="p-3 bg-[#F5F7FA] border-b border-[#E2E8F0] flex items-center justify-between gap-2">
-          <span className="text-xs font-mono text-[#4B5B6D]">
-            Horizon: <strong className="text-[#0B1F33] uppercase">{horizon}</strong> · Format: Official Institutional Dispatch
+        <div className="p-3 bg-[#071324]/90 border-b border-[#1E354D] flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+          <span className="text-xs font-mono text-slate-400">
+            Horizon: <strong className="text-[#38BDF8] uppercase">{horizon}</strong> · Format: Official Institutional Dispatch
           </span>
 
           <div className="flex items-center gap-2">
             <button
               type="button"
               onClick={handleCopy}
-              className="px-3 py-1.5 rounded-xs bg-white hover:bg-slate-100 text-[#0B1F33] text-xs font-mono font-bold transition-all border border-[#CBD5E1] flex items-center gap-1.5 shadow-xs"
+              className="px-3 py-1.5 rounded-sm bg-[#0B1F33] hover:bg-[#0284C7] text-white text-xs font-mono font-bold transition-all border border-[#1E354D] flex items-center gap-1.5 shadow-xs cursor-pointer"
             >
-              {copied ? <Check className="w-3.5 h-3.5 text-[#247A4A]" /> : <Copy className="w-3.5 h-3.5" />}
+              {copied ? <Check className="w-3.5 h-3.5 text-[#4ADE80]" /> : <Copy className="w-3.5 h-3.5 text-[#38BDF8]" />}
               <span>{copied ? 'COPIED' : 'COPY TEXT'}</span>
             </button>
 
             <button
               type="button"
               onClick={handleDownload}
-              className="px-3 py-1.5 rounded-xs bg-white hover:bg-slate-100 text-[#0B1F33] text-xs font-mono font-bold transition-all border border-[#CBD5E1] flex items-center gap-1.5 shadow-xs"
+              className="px-3 py-1.5 rounded-sm bg-[#0B1F33] hover:bg-[#0284C7] text-white text-xs font-mono font-bold transition-all border border-[#1E354D] flex items-center gap-1.5 shadow-xs cursor-pointer"
             >
-              <Download className="w-3.5 h-3.5 text-[#1479C9]" />
+              <Download className="w-3.5 h-3.5 text-[#38BDF8]" />
               <span>DOWNLOAD .TXT</span>
             </button>
 
             <button
               type="button"
               onClick={handlePrint}
-              className="px-3 py-1.5 rounded-xs bg-[#1479C9] hover:bg-[#0E63A8] text-white text-xs font-mono font-bold transition-all flex items-center gap-1.5 shadow-xs"
+              className="px-3 py-1.5 rounded-sm bg-[#0284C7] hover:bg-[#0369A1] text-white text-xs font-mono font-bold transition-all flex items-center gap-1.5 shadow-xs border border-[#38BDF8]/40 cursor-pointer"
             >
               <Printer className="w-3.5 h-3.5" />
               <span>PRINT</span>
@@ -121,21 +121,21 @@ export function GenerateAdvisoryModal({ isOpen, onClose, horizon }: GenerateAdvi
         </div>
 
         {/* Formatted Official Document Preview */}
-        <div className="p-6 bg-white space-y-4">
-          <div className="p-5 rounded-xs bg-[#F8FAFC] border-2 border-[#CBD5E1] font-mono text-xs leading-relaxed text-[#16202A] whitespace-pre-wrap select-all">
+        <div className="p-5 bg-[#071324]/50 space-y-4">
+          <div className="p-4 rounded-lg bg-[#060D17] border border-[#1E354D] font-mono text-xs leading-relaxed text-slate-200 whitespace-pre-wrap select-all shadow-inner">
             {bulletinText}
           </div>
         </div>
 
         {/* Footer */}
-        <div className="p-4 bg-[#F5F7FA] border-t border-[#E2E8F0] flex items-center justify-between">
-          <span className="text-[11px] font-mono text-[#6E7F94]">
+        <div className="p-4 bg-[#071324] border-t border-[#1E354D] flex items-center justify-between">
+          <span className="text-[11px] font-mono text-slate-400">
             Ready for dissemination via mKisan portal, AIR Jeypore & District Agromet Cell.
           </span>
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-1.5 rounded-xs bg-[#0B1F33] hover:bg-[#142B44] text-white text-xs font-bold font-mono transition-all"
+            className="px-4 py-1.5 rounded-sm bg-[#0B1F33] hover:bg-white/10 text-slate-300 hover:text-white text-xs font-bold font-mono transition-all border border-[#1E354D] cursor-pointer"
           >
             CLOSE
           </button>

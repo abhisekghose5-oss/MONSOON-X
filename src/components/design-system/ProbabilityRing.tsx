@@ -23,18 +23,19 @@ export function ProbabilityRing({
   const clampedPercentage = Math.min(100, Math.max(0, percentage));
 
   const variantColors = {
-    monsoon: { stroke: '#1479C9', track: '#D5EBF8', text: '#0B1F33' },
-    agri: { stroke: '#247A4A', track: '#D5ECE0', text: '#0B1F33' },
-    warning: { stroke: '#D99000', track: '#FAECD0', text: '#0B1F33' },
-    risk: { stroke: '#C43D3D', track: '#F7D6D5', text: '#0B1F33' },
-    navy: { stroke: '#0B1F33', track: '#D2DEEB', text: '#0B1F33' },
+    monsoon: { stroke: '#38BDF8', track: '#1E354D', text: '#38BDF8' },
+    agri: { stroke: '#4ADE80', track: '#1E354D', text: '#4ADE80' },
+    warning: { stroke: '#FCD34D', track: '#1E354D', text: '#FCD34D' },
+    risk: { stroke: '#F87171', track: '#1E354D', text: '#F87171' },
+    navy: { stroke: '#60A5FA', track: '#1E354D', text: '#FFFFFF' },
   };
 
   const dimensions = {
-    sm: { diameter: 64, stroke: strokeWidth || 6, fontSize: 'text-xs' },
-    md: { diameter: 96, stroke: strokeWidth || 8, fontSize: 'text-lg' },
-    lg: { diameter: 128, stroke: strokeWidth || 10, fontSize: 'text-2xl' },
+    sm: { diameter: 60, stroke: strokeWidth || 5, fontSize: 'text-xs font-extrabold' },
+    md: { diameter: 92, stroke: strokeWidth || 7, fontSize: 'text-xl font-black' },
+    lg: { diameter: 124, stroke: strokeWidth || 9, fontSize: 'text-2xl font-black' },
   };
+
 
   const { diameter, stroke, fontSize } = dimensions[size];
   const radius = (diameter - stroke) / 2;
@@ -82,7 +83,7 @@ export function ProbabilityRing({
 
         {/* Center Readout */}
         <div className="absolute flex flex-col items-center justify-center">
-          <span className={cn('font-bold font-mono tracking-tight', fontSize, 'text-[#16202A]')}>
+          <span className={cn('font-bold font-mono tracking-tight', fontSize, 'text-white')}>
             {Math.round(clampedPercentage)}%
           </span>
         </div>
@@ -91,12 +92,12 @@ export function ProbabilityRing({
       {(label || subtext) && (
         <div className="mt-2 space-y-0.5">
           {label && (
-            <p className="text-xs font-semibold text-[#16202A] uppercase tracking-wide">
+            <p className="text-xs font-semibold text-slate-200 uppercase tracking-wide">
               {label}
             </p>
           )}
           {subtext && (
-            <p className="text-[11px] text-[#6E7F94] font-mono">
+            <p className="text-[11px] text-slate-400 font-mono">
               {subtext}
             </p>
           )}

@@ -32,16 +32,16 @@ export function DataSourceBadge({
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-1.5 px-2 py-0.5 rounded-sm bg-[#EAF0F6] border border-[#CBD5E1] text-[#0B1F33] font-mono text-[11px] font-semibold tracking-wide uppercase',
+        'inline-flex items-center gap-1.5 px-2 py-0.5 rounded-sm bg-[#0B1F33] border border-[#1E354D] text-slate-200 font-mono text-[11px] font-semibold tracking-wide uppercase',
         size === 'sm' && 'text-[10px] px-1.5 py-0.2',
         className
       )}
       {...props}
     >
-      <Icon className="w-3 h-3 text-[#1479C9] shrink-0" />
+      <Icon className="w-3 h-3 text-[#38BDF8] shrink-0" />
       <span>{source}</span>
       {latency && (
-        <span className="text-[10px] text-[#6E7F94] font-normal lowercase pl-1 border-l border-[#CBD5E1]">
+        <span className="text-[10px] text-slate-400 font-normal lowercase pl-1 border-l border-[#1E354D]">
           {latency}
         </span>
       )}
