@@ -103,46 +103,46 @@ export function LiveWeatherTicker({ className }: LiveWeatherTickerProps) {
             className="fixed inset-0 z-40"
             onClick={() => setShowDetail(false)}
           />
-          <div className="absolute right-0 top-full mt-2 w-72 p-4 rounded-xl glass-panel bg-white/95 border border-sky-200 shadow-xl z-50 animate-in fade-in zoom-in-95 duration-150 text-xs">
-            <div className="flex items-center justify-between pb-2 mb-3 border-b border-slate-100">
-              <div className="flex items-center gap-1.5 font-bold text-slate-800">
-                <Mountain className="w-4 h-4 text-sky-600" />
-                <span>{current.blockName} Block Microclimate</span>
+          <div className="absolute right-0 top-full mt-2 w-72 p-4 rounded-2xl bg-[#0A192F]/95 border border-cyan-500/30 shadow-[0_0_50px_rgba(0,0,0,0.8)] z-50 animate-in fade-in zoom-in-95 duration-150 text-xs backdrop-blur-md">
+            <div className="flex items-center justify-between pb-2 mb-3 border-b border-[#1E354D]">
+              <div className="flex items-center gap-1.5 font-bold text-white">
+                <Mountain className="w-4 h-4 text-cyan-400" />
+                <span>{current.blockName} Microclimate</span>
               </div>
-              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-sm bg-emerald-100 text-emerald-800 font-semibold">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-lg bg-emerald-950/40 text-emerald-300 border border-emerald-500/30 font-bold">
                 ACTIVE
               </span>
             </div>
 
             <div className="grid grid-cols-2 gap-2 font-mono text-[11px]">
-              <div className="p-2 rounded-lg bg-slate-50 border border-slate-100 flex flex-col">
+              <div className="p-2.5 rounded-xl bg-[#071324] border border-[#1E354D] flex flex-col">
                 <span className="text-slate-400 text-[10px]">Apparent Temp</span>
-                <span className="font-bold text-slate-800 text-sm">{current.apparentTemperatureC}°C</span>
+                <span className="font-black text-white text-sm mt-0.5">{current.apparentTemperatureC}°C</span>
               </div>
-              <div className="p-2 rounded-lg bg-slate-50 border border-slate-100 flex flex-col">
+              <div className="p-2.5 rounded-xl bg-[#071324] border border-[#1E354D] flex flex-col">
                 <span className="text-slate-400 text-[10px] flex items-center gap-1">
-                  <Droplets className="w-3 h-3 text-blue-500" /> Humidity
+                  <Droplets className="w-3 h-3 text-cyan-400" /> Humidity
                 </span>
-                <span className="font-bold text-slate-800 text-sm">{current.relativeHumidityPercent}%</span>
+                <span className="font-black text-cyan-300 text-sm mt-0.5">{current.relativeHumidityPercent}%</span>
               </div>
-              <div className="p-2 rounded-lg bg-slate-50 border border-slate-100 flex flex-col">
+              <div className="p-2.5 rounded-xl bg-[#071324] border border-[#1E354D] flex flex-col">
                 <span className="text-slate-400 text-[10px] flex items-center gap-1">
-                  <Wind className="w-3 h-3 text-teal-500" /> Wind Speed
+                  <Wind className="w-3 h-3 text-teal-400" /> Wind Speed
                 </span>
-                <span className="font-bold text-slate-800 text-sm">{current.windSpeedKmh} km/h</span>
+                <span className="font-black text-teal-300 text-sm mt-0.5">{current.windSpeedKmh} km/h</span>
               </div>
-              <div className="p-2 rounded-lg bg-slate-50 border border-slate-100 flex flex-col">
+              <div className="p-2.5 rounded-xl bg-[#071324] border border-[#1E354D] flex flex-col">
                 <span className="text-slate-400 text-[10px]">Elevation</span>
-                <span className="font-bold text-slate-800 text-sm">{current.elevationMeters}m</span>
+                <span className="font-black text-slate-200 text-sm mt-0.5">{current.elevationMeters}m</span>
               </div>
             </div>
 
-            <div className="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] font-mono text-slate-500">
+            <div className="mt-3 pt-2.5 border-t border-[#1E354D] flex items-center justify-between text-[10px] font-mono text-slate-400">
               <span>Source: {current.source}</span>
               <button
                 type="button"
                 onClick={() => setShowDetail(false)}
-                className="text-sky-600 hover:text-sky-700 font-semibold"
+                className="text-cyan-400 hover:text-cyan-300 font-bold cursor-pointer"
               >
                 Close
               </button>

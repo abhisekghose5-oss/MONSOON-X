@@ -24,7 +24,7 @@ export function MapBasemapToggle({
   return (
     <div
       className={cn(
-        'rounded-sm border border-[#CBD5E1] bg-white/95 backdrop-blur-sm p-1 shadow-gov-card flex items-center gap-1 text-xs select-none',
+        'rounded-lg border border-[#1E354D] bg-[#0A192F]/90 backdrop-blur-md p-1 shadow-command-panel flex items-center gap-1 text-xs select-none text-white',
         className
       )}
     >
@@ -37,13 +37,13 @@ export function MapBasemapToggle({
             type="button"
             onClick={() => onChangeBasemap(opt.id)}
             className={cn(
-              'flex items-center gap-1 px-2 py-1 rounded-xs font-mono text-[11px] transition-colors',
+              'flex items-center gap-1.5 px-2.5 py-1 rounded-sm font-mono text-[11px] transition-all cursor-pointer',
               isActive
-                ? 'bg-[#0B1F33] text-white font-bold shadow-xs'
-                : 'text-[#4B5B6D] hover:bg-[#F5F7FA] hover:text-[#0B1F33]'
+                ? 'bg-[#0284C7] text-white font-bold shadow-xs border border-[#38BDF8]/40'
+                : 'text-slate-300 hover:bg-[#1E354D] hover:text-white'
             )}
           >
-            <Icon className="w-3 h-3" />
+            <Icon className="w-3.5 h-3.5 text-[#38BDF8]" />
             <span className="hidden sm:inline">{opt.label}</span>
           </button>
         );

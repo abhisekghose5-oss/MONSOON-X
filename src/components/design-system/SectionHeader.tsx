@@ -19,17 +19,17 @@ export function SectionHeader({
   ...props
 }: SectionHeaderProps) {
   const accentBorders = {
-    navy: 'border-l-[#0B1F33]',
-    monsoon: 'border-l-[#1479C9]',
-    agri: 'border-l-[#247A4A]',
-    warning: 'border-l-[#D99000]',
-    risk: 'border-l-[#C43D3D]',
+    navy: 'border-l-[#38BDF8]',
+    monsoon: 'border-l-[#0284C7]',
+    agri: 'border-l-[#10B981]',
+    warning: 'border-l-[#F59E0B]',
+    risk: 'border-l-[#EF4444]',
   };
 
   return (
     <div
       className={cn(
-        'flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-l-4 pl-3.5 py-0.5',
+        'flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-l-4 pl-3.5 py-1',
         accentBorders[accentColor],
         className
       )}
@@ -37,13 +37,13 @@ export function SectionHeader({
     >
       <div className="space-y-0.5 min-w-0">
         <div className="flex items-center gap-2 flex-wrap">
-          <h2 className="text-base sm:text-lg font-bold tracking-tight text-[#16202A] uppercase">
+          <h2 className="text-base sm:text-lg font-bold tracking-tight text-white uppercase font-sans">
             {title}
           </h2>
           {badge}
         </div>
         {subtitle && (
-          <p className="text-xs text-[#4B5B6D] max-w-2xl leading-relaxed">
+          <p className="text-xs text-slate-300 max-w-3xl leading-relaxed">
             {subtitle}
           </p>
         )}

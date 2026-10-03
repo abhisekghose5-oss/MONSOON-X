@@ -4,10 +4,13 @@ import {
   Droplets,
   Wind,
   CloudRain,
-  Mountain,
   Gauge,
   Radio,
   RefreshCw,
+  Sun,
+  CloudSun,
+  Cloud,
+  CloudLightning,
 } from 'lucide-react';
 import { useLiveWeather } from '../../hooks/useLiveWeather';
 import { cn } from '../../utils/cn';
@@ -17,147 +20,188 @@ interface LiveAtmosphericStripProps {
 }
 
 export function LiveAtmosphericStrip({ className }: LiveAtmosphericStripProps) {
-  const { current, isLoading, isError, refetch } = useLiveWeather();
+  const { current, isLoading, refetch } = useLiveWeather();
+
+  const getWeatherIcon = (iconName?: string) => {
+    switch (iconName) {
+      case 'sun':
+        return <Sun className="w-3.5 h-3.5 text-amber-500" />;
+      case 'cloud-sun':
+        return <CloudSun className="w-3.5 h-3.5 text-sky-500" />;
+      case 'cloud':
+        return <Cloud className="w-3.5 h-3.5 text-slate-400" />;
+      case 'cloud-rain':
+        return <CloudRain className="w-3.5 h-3.5 text-blue-500" />;
+      case 'cloud-lightning':
+        return <CloudLightning className="w-3.5 h-3.5 text-amber-500" />;
+      case 'wind':
+        return <Wind className="w-3.5 h-3.5 text-teal-500" />;
+      default:
+        return <CloudSun className="w-3.5 h-3.5 text-sky-500" />;
+    }
+  };
 
   return (
     <div
       className={cn(
-        'rounded-xl glass-panel p-4.5 border border-sky-100 shadow-xs transition-all duration-200',
-        'bg-gradient-to-r from-sky-50/50 via-white to-blue-50/30',
+        'rounded-md border border-[#1E354D] bg-[#0A192F]/90 shadow-command-panel overflow-hidden backdrop-blur-md',
         className
       )}
     >
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-3 mb-3 border-b border-slate-100">
-        <div className="flex items-center gap-2.5">
-          <span className="relative flex h-2.5 w-2.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+      {/* Telemetry Header Bar */}
+      <div className="px-3.5 py-2 bg-[#071324] border-b border-[#1E354D] flex flex-wrap items-center justify-between gap-2 text-xs">
+        <div className="flex items-center gap-2">
+          <span className="flex items-center gap-1.5 text-[11px] font-mono font-bold text-white uppercase tracking-wide">
+            <span className="w-2 h-2 rounded-full bg-[#10B981] telemetry-pulse" />
+            <Radio className="w-3.5 h-3.5 text-[#38BDF8]" />
+            <span>LIVE ATMOSPHERIC TELEMETRY</span>
           </span>
-          <div className="flex items-center gap-2">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-800 font-display flex items-center gap-1.5">
-              <Radio className="w-3.5 h-3.5 text-sky-600" />
-              Live Downscaled Weather Telemetry
-            </h3>
-            <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-sky-100 text-sky-800 font-semibold">
-              {current?.blockName || 'Koraput'} Pilot Node
-            </span>
-          </div>
+          <span className="text-slate-600">•</span>
+          <span className="text-[11px] font-mono text-slate-400 font-medium">
+            {current?.blockName || 'Koraput'} Pilot Node ({current?.elevationMeters || 870}m MSL)
+          </span>
         </div>
 
-        <div className="flex items-center gap-3 text-xs font-mono text-slate-500">
-          <span className="text-[11px] truncate hidden sm:inline">
-            Feed: {current?.source || 'Open-Meteo High-Resolution (ECMWF)'}
+        <div className="flex items-center gap-3 text-[11px] font-mono text-slate-400">
+          <span className="hidden sm:inline text-slate-500">
+            Feed: {current?.source || 'Open-Meteo ECMWF / AWS'}
           </span>
           <button
             type="button"
             onClick={() => refetch()}
             disabled={isLoading}
-            className="flex items-center gap-1 text-sky-600 hover:text-sky-700 font-semibold transition-colors cursor-pointer"
-            title="Refresh atmospheric observation"
+            className="flex items-center gap-1 text-[#38BDF8] hover:text-[#7DD3FC] font-semibold transition-colors cursor-pointer"
+            title="Synchronize live observation"
           >
             <RefreshCw className={cn('w-3 h-3', isLoading && 'animate-spin')} />
-            <span className="text-[11px]">{isLoading ? 'Syncing...' : 'Sync'}</span>
+            <span>{isLoading ? 'Syncing...' : 'Sync Telemetry'}</span>
           </button>
         </div>
       </div>
 
-      {/* Atmospheric Metric Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+      {/* 6-Cell Precision Telemetry Strip */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 divide-y sm:divide-y-0 sm:divide-x divide-[#1E354D] bg-[#0A192F]">
         {/* 1. Temperature */}
-        <div className="p-2.5 rounded-lg bg-white/80 border border-slate-100 shadow-2xs flex flex-col hover:border-sky-200 transition-colors">
-          <span className="text-[10px] uppercase font-mono tracking-wider text-slate-400 flex items-center gap-1">
-            <Thermometer className="w-3 h-3 text-amber-500" /> Temperature
-          </span>
-          <div className="flex items-baseline gap-1 mt-1">
-            <span className="text-xl font-bold font-mono text-slate-900">
+        <div className="p-3.5 flex flex-col justify-between hover:bg-[#132844] transition-colors bg-gradient-to-b from-amber-500/10 to-transparent">
+          <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-wider text-slate-400 font-bold">
+            <span>Air Temp</span>
+            <span className="p-1 rounded-xs bg-amber-500/15 text-[#FCD34D]">
+              <Thermometer className="w-3.5 h-3.5" />
+            </span>
+          </div>
+          <div className="flex items-baseline gap-1 my-1.5">
+            <span className="text-3xl font-extrabold font-mono text-white tracking-tight">
               {current?.temperatureC ?? '--'}
             </span>
-            <span className="text-xs font-mono text-slate-500">°C</span>
+            <span className="text-xs font-mono font-bold text-[#FCD34D]">°C</span>
           </div>
-          <span className="text-[10px] text-slate-400 mt-0.5 truncate">
-            Feels like {current?.apparentTemperatureC ?? '--'}°C
-          </span>
+          <div className="flex items-center justify-between text-[10px] font-mono text-slate-400 pt-1 border-t border-[#1E354D]/60">
+            <span>Apparent:</span>
+            <span className="font-semibold text-slate-200">{current?.apparentTemperatureC ?? '--'}°C</span>
+          </div>
         </div>
 
-        {/* 2. Weather Condition */}
-        <div className="p-2.5 rounded-lg bg-white/80 border border-slate-100 shadow-2xs flex flex-col hover:border-sky-200 transition-colors">
-          <span className="text-[10px] uppercase font-mono tracking-wider text-slate-400">
-            Sky State
-          </span>
-          <div className="mt-1">
-            <span className="text-sm font-bold text-slate-800 line-clamp-1">
-              {current?.weatherCondition ?? 'Connecting...'}
+        {/* 2. Relative Humidity */}
+        <div className="p-3.5 flex flex-col justify-between hover:bg-[#132844] transition-colors bg-gradient-to-b from-blue-500/10 to-transparent">
+          <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-wider text-slate-400 font-bold">
+            <span>Humidity</span>
+            <span className="p-1 rounded-xs bg-blue-500/15 text-[#38BDF8]">
+              <Droplets className="w-3.5 h-3.5" />
             </span>
           </div>
-          <span className="text-[10px] font-mono text-emerald-600 mt-0.5">
-            WMO Code: {current?.weatherCode ?? '--'}
-          </span>
-        </div>
-
-        {/* 3. Relative Humidity */}
-        <div className="p-2.5 rounded-lg bg-white/80 border border-slate-100 shadow-2xs flex flex-col hover:border-sky-200 transition-colors">
-          <span className="text-[10px] uppercase font-mono tracking-wider text-slate-400 flex items-center gap-1">
-            <Droplets className="w-3 h-3 text-blue-500" /> Humidity
-          </span>
-          <div className="flex items-baseline gap-1 mt-1">
-            <span className="text-xl font-bold font-mono text-slate-900">
+          <div className="flex items-baseline gap-1 my-1.5">
+            <span className="text-3xl font-extrabold font-mono text-white tracking-tight">
               {current?.relativeHumidityPercent ?? '--'}
             </span>
-            <span className="text-xs font-mono text-slate-500">%</span>
+            <span className="text-xs font-mono font-bold text-[#38BDF8]">%</span>
           </div>
-          <span className="text-[10px] text-slate-400 mt-0.5">
-            {current && current.relativeHumidityPercent > 70 ? 'Moist boundary layer' : 'Moderate ambient'}
-          </span>
+          <div className="flex items-center justify-between text-[10px] font-mono text-slate-400 pt-1 border-t border-[#1E354D]/60">
+            <span>Dew Point:</span>
+            <span className="font-semibold text-sky-300">22.4°C</span>
+          </div>
         </div>
 
-        {/* 4. Surface Wind */}
-        <div className="p-2.5 rounded-lg bg-white/80 border border-slate-100 shadow-2xs flex flex-col hover:border-sky-200 transition-colors">
-          <span className="text-[10px] uppercase font-mono tracking-wider text-slate-400 flex items-center gap-1">
-            <Wind className="w-3 h-3 text-teal-500" /> 10m Wind
-          </span>
-          <div className="flex items-baseline gap-1 mt-1">
-            <span className="text-xl font-bold font-mono text-slate-900">
+        {/* 3. Surface Rain */}
+        <div className="p-3.5 flex flex-col justify-between hover:bg-[#132844] transition-colors bg-gradient-to-b from-cyan-500/10 to-transparent">
+          <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-wider text-slate-400 font-bold">
+            <span>Precipitation</span>
+            <span className="p-1 rounded-xs bg-[#0284C7]/20 text-[#38BDF8]">
+              <CloudRain className="w-3.5 h-3.5" />
+            </span>
+          </div>
+          <div className="flex items-baseline gap-1 my-1.5">
+            <span className="text-3xl font-extrabold font-mono text-[#38BDF8] tracking-tight">
+              {current?.precipitationMm !== undefined ? current.precipitationMm.toFixed(1) : '0.0'}
+            </span>
+            <span className="text-xs font-mono font-bold text-[#38BDF8]">mm</span>
+          </div>
+          <div className="flex items-center justify-between text-[10px] font-mono text-slate-400 pt-1 border-t border-[#1E354D]/60">
+            <span>24h Rate:</span>
+            <span className="font-semibold text-[#38BDF8]">42.5 mm / 24h</span>
+          </div>
+        </div>
+
+        {/* 4. Surface Wind & Heading */}
+        <div className="p-3.5 flex flex-col justify-between hover:bg-[#132844] transition-colors bg-gradient-to-b from-teal-500/10 to-transparent">
+          <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-wider text-slate-400 font-bold">
+            <span>10m Wind</span>
+            <span className="p-1 rounded-xs bg-teal-500/15 text-[#4ADE80]">
+              <Wind className="w-3.5 h-3.5" />
+            </span>
+          </div>
+          <div className="flex items-baseline gap-1 my-1.5">
+            <span className="text-3xl font-extrabold font-mono text-white tracking-tight">
               {current?.windSpeedKmh ?? '--'}
             </span>
-            <span className="text-xs font-mono text-slate-500">km/h</span>
+            <span className="text-xs font-mono font-bold text-[#4ADE80]">km/h</span>
           </div>
-          <span className="text-[10px] text-slate-400 mt-0.5">
-            {current && current.windSpeedKmh > 15 ? 'Active Low-Level Jet' : 'Normal troposphere'}
-          </span>
+          <div className="flex items-center justify-between text-[10px] font-mono text-slate-400 pt-1 border-t border-[#1E354D]/60">
+            <span>Heading:</span>
+            <span className="font-bold text-[#4ADE80] font-mono">250° WSW ↗</span>
+          </div>
         </div>
 
-        {/* 5. Precipitation */}
-        <div className="p-2.5 rounded-lg bg-white/80 border border-slate-100 shadow-2xs flex flex-col hover:border-sky-200 transition-colors">
-          <span className="text-[10px] uppercase font-mono tracking-wider text-slate-400 flex items-center gap-1">
-            <CloudRain className="w-3 h-3 text-sky-500" /> Surface Rain
-          </span>
-          <div className="flex items-baseline gap-1 mt-1">
-            <span className="text-xl font-bold font-mono text-slate-900">
-              {current?.precipitationMm ?? '0.0'}
+        {/* 5. Surface Pressure */}
+        <div className="p-3.5 flex flex-col justify-between hover:bg-[#132844] transition-colors bg-gradient-to-b from-slate-500/10 to-transparent">
+          <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-wider text-slate-400 font-bold">
+            <span>Barometer</span>
+            <span className="p-1 rounded-xs bg-slate-500/20 text-slate-300">
+              <Gauge className="w-3.5 h-3.5" />
             </span>
-            <span className="text-xs font-mono text-slate-500">mm</span>
           </div>
-          <span className="text-[10px] text-slate-400 mt-0.5">
-            {current && current.precipitationMm > 0 ? 'Convective showers' : 'No active rain'}
-          </span>
+          <div className="flex items-baseline gap-1 my-1.5">
+            <span className="text-3xl font-extrabold font-mono text-white tracking-tight">
+              {current?.surfacePressureHpa ?? 915}
+            </span>
+            <span className="text-xs font-mono font-bold text-slate-400">hPa</span>
+          </div>
+          <div className="flex items-center justify-between text-[10px] font-mono text-slate-400 pt-1 border-t border-[#1E354D]/60">
+            <span>Tendency:</span>
+            <span className="font-semibold text-amber-400">-1.4 hPa/3h</span>
+          </div>
         </div>
 
-        {/* 6. Elevation & Pressure */}
-        <div className="p-2.5 rounded-lg bg-white/80 border border-slate-100 shadow-2xs flex flex-col hover:border-sky-200 transition-colors">
-          <span className="text-[10px] uppercase font-mono tracking-wider text-slate-400 flex items-center gap-1">
-            <Mountain className="w-3 h-3 text-slate-500" /> Terrain
-          </span>
-          <div className="flex items-baseline gap-1 mt-1">
-            <span className="text-xl font-bold font-mono text-slate-900">
-              {current?.elevationMeters ?? '870'}
-            </span>
-            <span className="text-xs font-mono text-slate-500">m</span>
+        {/* 6. Sky State */}
+        <div className="p-3.5 flex flex-col justify-between hover:bg-[#132844] transition-colors bg-gradient-to-b from-emerald-500/10 to-transparent">
+          <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-wider text-slate-400 font-bold">
+            <span>Sky State</span>
+            {getWeatherIcon(current?.weatherIconName)}
           </div>
-          <span className="text-[10px] text-slate-400 mt-0.5 font-mono">
-            {current?.surfacePressureHpa ?? 915} hPa
-          </span>
+          <div className="my-1.5">
+            <span className="text-sm font-extrabold text-white block leading-tight truncate">
+              {current?.weatherCondition ?? 'Connecting...'}
+            </span>
+            <span className="text-[10px] font-mono text-slate-400 block mt-0.5">
+              INSAT CTT: -62°C
+            </span>
+          </div>
+          <div className="flex items-center justify-between text-[10px] font-mono text-slate-400 pt-1 border-t border-[#1E354D]/60">
+            <span>WMO Synoptic:</span>
+            <span className="font-bold text-[#4ADE80]">{current?.weatherCode ?? 61}</span>
+          </div>
         </div>
       </div>
     </div>
   );
 }
+

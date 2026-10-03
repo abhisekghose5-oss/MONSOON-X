@@ -17,18 +17,18 @@ export function MapLegend({ activeLayer, className }: MapLegendProps) {
     <aside
       aria-label="Map Color Legend"
       className={cn(
-        'rounded-sm border border-[#CBD5E1] bg-white/95 backdrop-blur-md p-3 shadow-gov-elevated text-xs space-y-2 select-none z-[1000] w-72 sm:w-80',
+        'rounded-lg border border-[#1E354D] bg-[#0A192F]/90 backdrop-blur-md p-3 shadow-command-panel text-xs space-y-2 select-none z-[1000] w-72 sm:w-80 text-white',
         className
       )}
     >
-      <div className="border-b border-[#F0F3F7] pb-1.5 flex items-center justify-between gap-2">
+      <div className="border-b border-[#1E354D] pb-1.5 flex items-center justify-between gap-2">
         <div className="flex items-center gap-1.5">
-          <Layers className="w-3.5 h-3.5 text-[#1479C9] shrink-0" />
-          <h4 className="text-[11px] font-bold uppercase tracking-wider text-[#0B1F33] truncate">
+          <Layers className="w-3.5 h-3.5 text-[#38BDF8] shrink-0" />
+          <h4 className="text-[11px] font-bold uppercase tracking-wider text-white font-mono truncate">
             {config.name}
           </h4>
         </div>
-        <span className="text-[10px] text-[#6E7F94] font-mono shrink-0">
+        <span className="text-[10px] text-slate-400 font-mono shrink-0">
           [{config.unit}]
         </span>
       </div>
@@ -37,7 +37,7 @@ export function MapLegend({ activeLayer, className }: MapLegendProps) {
       <RiskColorScale layer={activeLayer} orientation="horizontal" showLabels={true} />
 
       {/* Meteorological Parameter Context */}
-      <p className="text-[10px] text-[#6E7F94] leading-relaxed pt-1 border-t border-[#F0F3F7]">
+      <p className="text-[10px] text-slate-400 leading-relaxed pt-1.5 border-t border-[#1E354D]">
         {config.description}
       </p>
     </aside>

@@ -14,23 +14,23 @@ export function CropSelector({
   onSelectCrop,
 }: CropSelectorProps) {
   return (
-    <div className="bg-white rounded-md border border-[#E2E8F0] shadow-gov-card p-3 sm:p-4 space-y-2.5">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#F0F3F7] pb-2.5">
+    <div className="bg-[#0A192F] rounded-lg border border-[#1E354D] shadow-command-panel p-3.5 sm:p-4.5 space-y-3 text-white">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#1E354D] pb-3">
         <div className="flex items-center gap-2">
-          <div className="p-1 rounded-sm bg-[#247A4A] text-white">
-            <Sprout className="w-3.5 h-3.5" />
+          <div className="p-1.5 rounded-sm bg-[#10B981]/20 border border-[#10B981]/40 text-[#4ADE80]">
+            <Sprout className="w-4 h-4 text-[#4ADE80]" />
           </div>
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-wider text-[#0B1F33]">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-white font-mono">
               Active Crop Decision Selector
             </h3>
-            <span className="text-[10px] text-[#6E7F94] font-mono">
+            <span className="text-[10px] text-slate-400 font-mono">
               Dynamically configured from OUAT / KVK Koraput Agronomic Database
             </span>
           </div>
         </div>
 
-        <span className="text-[11px] font-mono text-[#6E7F94]">
+        <span className="text-[11px] font-mono text-slate-400">
           {crops.length} Crops Active in Season
         </span>
       </div>
@@ -46,10 +46,10 @@ export function CropSelector({
               role="tab"
               aria-selected={isSelected}
               onClick={() => onSelectCrop(crop.id)}
-              className={`px-3 py-2 rounded-sm border text-left transition-all flex items-center gap-2.5 focus-visible:ring-2 focus-visible:ring-[#247A4A] focus-visible:outline-hidden ${
+              className={`px-3 py-2 rounded-md border text-left transition-all flex items-center gap-2.5 cursor-pointer focus-visible:ring-2 focus-visible:ring-[#10B981] focus-visible:outline-hidden ${
                 isSelected
-                  ? 'bg-[#247A4A] text-white border-[#247A4A] shadow-xs'
-                  : 'bg-[#F8FAFC] text-[#16202A] border-[#CBD5E1] hover:bg-[#EDF7F1] hover:border-[#ABD7C0]'
+                  ? 'bg-[#10B981] text-white border-[#10B981] shadow-xs'
+                  : 'bg-[#071324] text-slate-200 border-[#1E354D] hover:bg-[#0D2038] hover:border-[#10B981]/50'
               }`}
             >
               <div>
@@ -59,7 +59,7 @@ export function CropSelector({
                   </span>
                   <span
                     className={`text-[10px] font-mono ${
-                      isSelected ? 'text-[#D5ECE0]' : 'text-[#6E7F94]'
+                      isSelected ? 'text-white/80' : 'text-slate-400'
                     }`}
                   >
                     ({crop.localName.split(' ')[0]})
@@ -67,7 +67,7 @@ export function CropSelector({
                 </div>
                 <div
                   className={`text-[9px] uppercase font-mono tracking-wider ${
-                    isSelected ? 'text-[#ABD7C0]' : 'text-[#6E7F94]'
+                    isSelected ? 'text-emerald-100' : 'text-slate-400'
                   }`}
                 >
                   {crop.category} · {crop.typicalDurationDays}d

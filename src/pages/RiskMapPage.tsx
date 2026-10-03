@@ -129,22 +129,22 @@ export function RiskMapPage() {
   if (geoError || !geoJson) {
     return (
       <div className="py-12 px-4 max-w-2xl mx-auto">
-        <div className="rounded-sm border border-[#EEA9A7] bg-white p-6 shadow-gov-card text-center space-y-4">
-          <div className="w-12 h-12 rounded-full bg-[#FCEDEC] border border-[#EEA9A7] mx-auto flex items-center justify-center">
-            <AlertCircle className="w-6 h-6 text-[#C43D3D]" />
+        <div className="rounded-2xl border border-rose-500/30 bg-[#0A192F]/90 p-8 shadow-2xl text-center space-y-4 backdrop-blur-md">
+          <div className="w-14 h-14 rounded-2xl bg-rose-950/40 border border-rose-500/40 mx-auto flex items-center justify-center">
+            <AlertCircle className="w-7 h-7 text-rose-400" />
           </div>
           <div>
-            <h2 className="text-base font-bold text-[#0B1F33]">
+            <h2 className="text-lg font-black text-white uppercase font-mono tracking-tight">
               Geographic dataset not loaded
             </h2>
-            <p className="text-xs text-[#6E7F94] font-mono mt-1">
+            <p className="text-xs text-slate-400 font-mono mt-1">
               Could not ingest Koraput block boundaries from src/data/geo/koraput-blocks.geojson.
             </p>
           </div>
           <button
             type="button"
             onClick={() => refetchGeo()}
-            className="px-4 py-2 rounded-sm bg-[#0B1F33] hover:bg-[#1479C9] text-white text-xs font-mono font-bold transition-colors"
+            className="px-5 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-mono font-bold transition-all shadow-lg shadow-cyan-600/30 cursor-pointer"
           >
             Retry GIS Ingestion
           </button>
@@ -154,51 +154,68 @@ export function RiskMapPage() {
   }
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-2.5">
       {/* =========================================================================
-          1. HEADER (Section 3)
+          1. COMPACT GIS COMMAND BAR: Horizon, Layer & Navigation
           ========================================================================= */}
-      <header className="rounded-sm border border-[#CBD5E1] bg-white p-3.5 shadow-gov-card flex flex-col md:flex-row md:items-center justify-between gap-3 select-none">
-        <div>
-          <div className="flex items-center gap-2">
-            <Compass className="w-5 h-5 text-[#1479C9]" />
-            <h1 className="text-xl font-bold tracking-tight text-[#0B1F33]">
-              HYPERLOCAL RISK MAP
-            </h1>
-            <span className="hidden sm:inline-block">
-              <MapDataStatus status={riskData?.dataStatus || 'DEMO MODEL OUTPUT'} size="xs" />
+      <div className="rounded-lg border border-[#1E354D] bg-[#0A192F] p-3.5 shadow-command-panel space-y-2.5 text-white">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-2.5">
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="p-1 rounded-xs bg-[#0284C7]/20 border border-[#0284C7]/40 text-[#38BDF8]">
+              <Compass className="w-4 h-4" />
             </span>
+            <h1 className="text-sm font-bold font-mono tracking-tight text-white uppercase">
+              KORAPUT SPATIAL RISK MAP
+            </h1>
+            <span className="text-slate-500">•</span>
+            {/* Breadcrumb Hierarchy */}
+            <LocationBreadcrumb
+              stateName={DEFAULT_STATE}
+              districtName={DEFAULT_LOCATION}
+              blockName={selectedBlock?.name ?? null}
+              panchayatName={selectedPanchayat?.name ?? null}
+              onSelectDistrict={handleResetToDistrict}
+              onSelectBlock={() => setSelectedPanchayat(null)}
+            />
           </div>
-          <p className="text-xs font-mono text-[#6E7F94] mt-0.5">
-            {DEFAULT_LOCATION} District · {DEFAULT_STATE}
-          </p>
+
+          {/* Right side: Compact Forecast Horizon (3D, 7D, 14D, 30D) */}
+          <ForecastHorizonSelector
+            value={forecastHorizon}
+            onChange={setForecastHorizon}
+          />
         </div>
 
-        {/* Right side: Forecast Horizon (7D, 14D, 21D, 30D — Default: 14D) */}
-        <ForecastHorizonSelector
-          value={forecastHorizon}
-          onChange={setForecastHorizon}
-        />
-      </header>
+        {/* Row 2: Block Selectors, Search, Reset, and Risk Layer Tabs */}
+        <div className="pt-2 border-t border-[#1E354D] flex flex-col xl:flex-row xl:items-center justify-between gap-2 text-xs">
+          <div className="flex flex-wrap items-center gap-2">
+            {/* Block Selector */}
+            <div className="flex items-center gap-1.5 bg-[#071324] border border-[#1E354D] rounded-xs px-2.5 py-1 text-white">
+              <span className="text-[10px] font-mono uppercase text-slate-400 font-bold">
+                Block:
+              </span>
+              <select
+                value={selectedBlockId}
+                onChange={(e) => handleBlockSelect(e.target.value)}
+                className="bg-transparent text-xs font-semibold text-white focus:outline-hidden cursor-pointer"
+              >
+                <option value="all" className="bg-[#0A192F] text-white">All Blocks (14 Units)</option>
+                {KORAPUT_BLOCKS.map((b) => (
+                  <option key={b.id} value={b.id} className="bg-[#0A192F] text-white">
+                    {b.name} ({b.elevationMeters}m MSL)
+                  </option>
+                ))}
+              </select>
+            </div>
 
-      {/* =========================================================================
-          2. CONTROL BAR (Section 3)
-          ========================================================================= */}
-      <div className="rounded-sm border border-[#CBD5E1] bg-white p-3 shadow-gov-card space-y-2.5">
-        {/* Row 1: Administrative Breadcrumb Hierarchy & Search */}
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-2.5">
-          {/* Breadcrumb Hierarchy: Odisha -> Koraput -> Block -> Panchayat */}
-          <LocationBreadcrumb
-            stateName={DEFAULT_STATE}
-            districtName={DEFAULT_LOCATION}
-            blockName={selectedBlock?.name ?? null}
-            panchayatName={selectedPanchayat?.name ?? null}
-            onSelectDistrict={handleResetToDistrict}
-            onSelectBlock={() => setSelectedPanchayat(null)}
-          />
+            {/* Panchayat Selector */}
+            <PanchayatSelector
+              panchayats={panchayatsList}
+              selectedPanchayatId={selectedPanchayat?.id || ''}
+              onSelectPanchayat={handlePanchayatSelect}
+            />
 
-          {/* Location Autocomplete Search (Driven by geographic data) */}
-          <div className="flex items-center gap-2">
+            {/* Location Search */}
             <LocationSearch
               onSelectBlock={handleBlockSelect}
               onSelectPanchayat={handlePanchayatSelect}
@@ -207,61 +224,15 @@ export function RiskMapPage() {
             <button
               type="button"
               onClick={handleResetToDistrict}
-              className="px-2.5 py-1.5 rounded-sm bg-[#F5F7FA] hover:bg-[#EAF0F6] border border-[#CBD5E1] text-[#0B1F33] text-xs font-mono font-medium flex items-center gap-1.5 transition-colors shadow-xs shrink-0"
+              className="px-2.5 py-1 rounded-xs bg-[#071324] hover:bg-[#0B1F33] border border-[#1E354D] text-slate-200 text-xs font-mono font-medium flex items-center gap-1.5 transition-colors shadow-2xs shrink-0 cursor-pointer"
               title={`Reset to Full ${DEFAULT_LOCATION} District Extent`}
             >
-              <RotateCcw className="w-3.5 h-3.5 text-[#1479C9]" />
-              <span className="hidden sm:inline">Reset Extent</span>
+              <RotateCcw className="w-3 h-3 text-[#38BDF8]" />
+              <span className="hidden sm:inline">Reset</span>
             </button>
           </div>
-        </div>
 
-        {/* Row 2: Cascading Administrative Selectors & Risk Layer Tabs */}
-        <div className="pt-2 border-t border-[#F0F3F7] flex flex-col xl:flex-row xl:items-center justify-between gap-3 text-xs">
-          {/* Location / Block / Panchayat Dropdowns */}
-          <div className="flex flex-wrap items-center gap-2">
-            {/* Fixed Location Pill */}
-            <div className="flex items-center gap-1 bg-[#F5F7FA] border border-[#CBD5E1] rounded-sm px-2 py-1 font-mono text-[11px]">
-              <span className="text-[#6E7F94] font-bold">Location:</span>
-              <span className="text-[#0B1F33] font-bold">{DEFAULT_LOCATION} District</span>
-            </div>
-
-            {/* Block Selector */}
-            <div className="flex items-center gap-1.5 bg-[#F5F7FA] border border-[#CBD5E1] rounded-sm px-2.5 py-1">
-              <span className="text-[10px] font-mono uppercase text-[#6E7F94] font-bold">
-                Block:
-              </span>
-              <select
-                value={selectedBlockId}
-                onChange={(e) => handleBlockSelect(e.target.value)}
-                className="bg-transparent text-xs font-semibold text-[#0B1F33] focus:outline-none cursor-pointer"
-              >
-                <option value="all">All Blocks (14 Administrative Units)</option>
-                {KORAPUT_BLOCKS.map((b) => (
-                  <option key={b.id} value={b.id}>
-                    {b.name} ({b.elevationMeters}m MSL)
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {/* Panchayat Selector (Cascading from selected block) */}
-            <PanchayatSelector
-              panchayats={panchayatsList}
-              selectedPanchayatId={selectedPanchayat?.id || ''}
-              onSelectPanchayat={handlePanchayatSelect}
-            />
-
-            {/* Missing Panchayat GeoJSON Notification */}
-            {!isPanchayatGeoAvailable && (
-              <span className="hidden 2xl:inline-flex items-center gap-1 px-2 py-0.5 rounded-sm bg-[#FDF7EB] text-[#8C5D00] border border-[#F4D79C] text-[10px] font-mono">
-                <AlertCircle className="w-3 h-3 text-[#D99000]" />
-                <span>Panchayat boundary unavailable</span>
-              </span>
-            )}
-          </div>
-
-          {/* Risk Layer Selector Tabs (Onset, Break, Heavy Rain, Rainfall Anomaly) */}
+          {/* 5-Layer Risk Layer Selector */}
           <RiskLayerSelector
             activeLayer={activeLayer}
             onLayerChange={setActiveLayer}
@@ -270,9 +241,10 @@ export function RiskMapPage() {
       </div>
 
       {/* =========================================================================
-          3. MAIN GIS WORKSPACE (Interactive Map + Detail Panel)
+          2. MAIN GIS WORKSPACE (Dominant Leaflet Map + Sleek Detail Panel)
           ========================================================================= */}
-      <div className="relative w-full h-[620px] rounded-sm border border-[#CBD5E1] overflow-hidden flex shadow-gov-card bg-[#EAF0F6]">
+      <div className="relative w-full h-[660px] rounded-lg border border-[#1E354D] overflow-hidden flex shadow-command-panel bg-[#060D17]">
+
         {/* LEAFLET MAP HERO ELEMENT (Occupies most of the screen) */}
         <div className="relative flex-1 h-full min-w-0">
           <RiskMap
@@ -293,10 +265,10 @@ export function RiskMapPage() {
           <button
             type="button"
             onClick={() => setDetailPanelOpen(!detailPanelOpen)}
-            className="hidden lg:flex absolute top-3 right-20 z-[1000] p-1.5 rounded-sm bg-white/95 border border-[#CBD5E1] text-[#0B1F33] hover:text-[#1479C9] shadow-gov-card transition-colors items-center gap-1 text-[11px] font-mono"
+            className="hidden lg:flex absolute top-3 right-20 z-[1000] p-1.5 rounded-sm bg-[#0A192F]/90 backdrop-blur-md border border-[#1E354D] text-slate-300 hover:text-white hover:bg-[#0284C7]/20 shadow-command-panel transition-all items-center gap-1.5 text-[11px] font-mono cursor-pointer"
             title={detailPanelOpen ? 'Collapse Detail Panel' : 'Expand Detail Panel'}
           >
-            {detailPanelOpen ? <PanelRightClose className="w-4 h-4" /> : <PanelRightOpen className="w-4 h-4" />}
+            {detailPanelOpen ? <PanelRightClose className="w-4 h-4 text-[#38BDF8]" /> : <PanelRightOpen className="w-4 h-4 text-[#38BDF8]" />}
             <span className="text-[10px] font-bold">{detailPanelOpen ? 'Hide' : 'Inspect'}</span>
           </button>
 
@@ -305,7 +277,7 @@ export function RiskMapPage() {
             <button
               type="button"
               onClick={() => setDetailPanelOpen(true)}
-              className="hidden lg:flex absolute top-3 right-3 z-[1000] px-3 py-1.5 rounded-sm bg-[#0B1F33] text-white text-xs font-mono font-bold uppercase shadow-gov-elevated items-center gap-1.5 transition-colors hover:bg-[#1479C9]"
+              className="hidden lg:flex absolute top-3 right-3 z-[1000] px-3 py-1.5 rounded-sm bg-[#0284C7] hover:bg-[#0369A1] text-white text-xs font-mono font-bold uppercase shadow-command-panel items-center gap-1.5 transition-all border border-[#38BDF8]/40 cursor-pointer"
             >
               <MapPin className="w-3.5 h-3.5" />
               <span>Inspect {currentRecord.locationName}</span>
@@ -316,9 +288,9 @@ export function RiskMapPage() {
           <button
             type="button"
             onClick={() => setMobileSheetOpen(true)}
-            className="lg:hidden absolute bottom-3 right-3 z-[1000] px-3 py-2 rounded-sm bg-[#0B1F33] text-white text-xs font-mono font-bold uppercase shadow-gov-elevated flex items-center gap-1.5"
+            className="lg:hidden absolute bottom-3 right-3 z-[1000] px-3 py-2 rounded-sm bg-[#0284C7] text-white text-xs font-mono font-bold uppercase shadow-command-panel flex items-center gap-1.5 border border-[#38BDF8]/40"
           >
-            <MapPin className="w-3.5 h-3.5 text-[#247A4A]" />
+            <MapPin className="w-3.5 h-3.5 text-[#4ADE80]" />
             <span>Details</span>
           </button>
         </div>
@@ -354,39 +326,39 @@ export function RiskMapPage() {
       {/* =========================================================================
           5. SCIENTIFIC TRANSPARENCY & DATA PROVENANCE (Section 20)
           ========================================================================= */}
-      <footer className="p-3 rounded-sm bg-white border border-[#CBD5E1] shadow-gov-card text-[11px] font-mono text-[#6E7F94] flex flex-col md:flex-row md:items-center justify-between gap-3">
+      <footer className="p-3 rounded-lg bg-[#0A192F]/85 backdrop-blur-md border border-[#1E354D] shadow-command-panel text-[11px] font-mono text-slate-400 flex flex-col md:flex-row md:items-center justify-between gap-3">
         <div className="flex flex-wrap items-center gap-3">
           <div className="flex items-center gap-1.5">
-            <Info className="w-3.5 h-3.5 text-[#1479C9] shrink-0" />
-            <span className="font-bold text-[#0B1F33]">Data:</span>
-            <span className="text-[#8C5D00] font-semibold">{riskData?.dataStatus || 'DEMO / MODEL OUTPUT'}</span>
+            <Info className="w-3.5 h-3.5 text-[#38BDF8] shrink-0" />
+            <span className="font-bold text-white">Data:</span>
+            <span className="text-amber-400 font-semibold">{riskData?.dataStatus || 'DEMO / MODEL OUTPUT'}</span>
           </div>
 
-          <span className="text-[#CBD5E1]">|</span>
+          <span className="text-[#1E354D]">|</span>
 
           <div>
-            <span className="font-bold text-[#0B1F33]">Forecast Horizon:</span>{' '}
-            <span className="text-[#0B1F33] font-semibold">{forecastHorizon.replace('D', ' Days')}</span>
+            <span className="font-bold text-white">Forecast Horizon:</span>{' '}
+            <span className="text-slate-200 font-semibold">{forecastHorizon.replace('D', ' Days')}</span>
           </div>
 
-          <span className="text-[#CBD5E1]">|</span>
+          <span className="text-[#1E354D]">|</span>
 
           <div>
-            <span className="font-bold text-[#0B1F33]">Model:</span>{' '}
-            <span className="text-[#0B1F33] font-semibold">{riskData?.modelVersion || 'Demo Forecast Engine'}</span>
+            <span className="font-bold text-white">Model:</span>{' '}
+            <span className="text-slate-200 font-semibold">{riskData?.modelVersion || 'Demo Forecast Engine'}</span>
           </div>
 
-          <span className="text-[#CBD5E1]">|</span>
+          <span className="text-[#1E354D]">|</span>
 
           <div>
-            <span className="font-bold text-[#0B1F33]">Last Updated:</span>{' '}
-            <span className="text-[#16202A]">{riskData?.lastUpdated || 'Demo timestamp'}</span>
+            <span className="font-bold text-white">Last Updated:</span>{' '}
+            <span className="text-slate-200">{riskData?.lastUpdated || 'Demo timestamp'}</span>
           </div>
         </div>
 
-        <div className="flex items-center gap-2 text-[10px] text-[#0B1F33] font-bold shrink-0">
+        <div className="flex items-center gap-2 text-[10px] text-slate-300 font-bold shrink-0">
           <span>Projection: EPSG:4326 (WGS84)</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-[#247A4A]" />
+          <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] telemetry-pulse" />
         </div>
       </footer>
     </div>

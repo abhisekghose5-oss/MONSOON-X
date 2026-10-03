@@ -34,16 +34,16 @@ export function MapLayerControl({
       role="toolbar"
       aria-label="Geographic Map Controls"
       className={cn(
-        'flex flex-col gap-1.5 p-1 rounded-sm bg-white/95 backdrop-blur-sm border border-[#CBD5E1] shadow-gov-card text-xs font-mono select-none z-[1000]',
+        'flex flex-col gap-1.5 p-1.5 rounded-lg bg-[#0A192F]/90 backdrop-blur-md border border-[#1E354D] shadow-command-panel text-xs font-mono select-none z-[1000] text-white',
         className
       )}
     >
       {/* Quick Location Action Buttons */}
-      <div className="flex flex-col gap-1 border-b border-[#F0F3F7] pb-1">
+      <div className="flex flex-col gap-1 border-b border-[#1E354D] pb-1.5">
         <button
           type="button"
           onClick={onLocateKoraput}
-          className="p-1.5 rounded-xs hover:bg-[#EDF6FC] text-[#0B1F33] hover:text-[#1479C9] flex items-center justify-center transition-colors"
+          className="p-1.5 rounded-sm hover:bg-[#0284C7]/20 text-slate-300 hover:text-[#38BDF8] flex items-center justify-center transition-all cursor-pointer"
           title="Locate Koraput District Center"
         >
           <LocateFixed className="w-4 h-4" />
@@ -52,7 +52,7 @@ export function MapLayerControl({
         <button
           type="button"
           onClick={onResetExtent}
-          className="p-1.5 rounded-xs hover:bg-[#EDF6FC] text-[#0B1F33] hover:text-[#1479C9] flex items-center justify-center transition-colors"
+          className="p-1.5 rounded-sm hover:bg-[#0284C7]/20 text-slate-300 hover:text-[#38BDF8] flex items-center justify-center transition-all cursor-pointer"
           title="Reset Map to District Extent"
         >
           <RotateCcw className="w-4 h-4" />
@@ -62,7 +62,7 @@ export function MapLayerControl({
           <button
             type="button"
             onClick={onToggleFullscreen}
-            className="p-1.5 rounded-xs hover:bg-[#EDF6FC] text-[#0B1F33] hover:text-[#1479C9] flex items-center justify-center transition-colors"
+            className="p-1.5 rounded-sm hover:bg-[#0284C7]/20 text-slate-300 hover:text-[#38BDF8] flex items-center justify-center transition-all cursor-pointer"
             title={isFullscreen ? 'Exit Fullscreen' : 'Enter Fullscreen'}
           >
             {isFullscreen ? <Minimize className="w-4 h-4" /> : <Maximize className="w-4 h-4" />}
@@ -72,8 +72,8 @@ export function MapLayerControl({
 
       {/* Basemap Tile Switcher */}
       <div className="flex flex-col gap-0.5 pt-0.5">
-        <span className="text-[9px] uppercase font-bold text-[#6E7F94] px-1 flex items-center gap-1">
-          <Map className="w-2.5 h-2.5" />
+        <span className="text-[9px] uppercase font-bold text-slate-400 px-1 flex items-center gap-1">
+          <Map className="w-2.5 h-2.5 text-[#38BDF8]" />
           <span>Base</span>
         </span>
         {basemaps.map((b) => (
@@ -82,10 +82,10 @@ export function MapLayerControl({
             type="button"
             onClick={() => onChangeBasemap(b.id)}
             className={cn(
-              'px-2 py-0.5 text-[10px] font-mono rounded-xs text-left transition-colors',
+              'px-2 py-1 text-[10px] font-mono rounded-xs text-left transition-all cursor-pointer',
               basemap === b.id
-                ? 'bg-[#0B1F33] text-white font-bold'
-                : 'text-[#4B5B6D] hover:bg-[#F5F7FA] hover:text-[#0B1F33]'
+                ? 'bg-[#0284C7] text-white font-bold shadow-xs border border-[#38BDF8]/40'
+                : 'text-slate-400 hover:bg-[#1E354D] hover:text-white'
             )}
           >
             {b.label}

@@ -1,7 +1,7 @@
 import React from 'react';
 import type { RiskLayer } from '../../types/riskMap';
 import { RISK_MAP_LAYERS } from '../../data/geo/layerConfigs';
-import { Compass, ShieldAlert, CloudRain, Droplets, Layers } from 'lucide-react';
+import { Compass, ShieldAlert, CloudRain, Droplets, Layers, Bug, AlertTriangle } from 'lucide-react';
 import { cn } from '../../utils/cn';
 
 interface RiskLayerSelectorProps {
@@ -17,18 +17,22 @@ export function RiskLayerSelector({
 }: RiskLayerSelectorProps) {
   const layerIcons: Record<RiskLayer, React.ElementType> = {
     onset: Compass,
+    falseOnset: AlertTriangle,
     break: ShieldAlert,
     heavyRain: CloudRain,
+    pestRisk: Bug,
     rainfallAnomaly: Droplets,
   };
 
-  const layersList: RiskLayer[] = ['onset', 'break', 'heavyRain', 'rainfallAnomaly'];
+  const layersList: RiskLayer[] = ['onset', 'falseOnset', 'break', 'heavyRain', 'pestRisk'];
 
   const activeStyles: Record<RiskLayer, string> = {
-    onset: 'bg-[#1479C9] text-white border-[#1479C9] shadow-xs',
-    break: 'bg-[#D97706] text-white border-[#D97706] shadow-xs',
-    heavyRain: 'bg-[#C43D3D] text-white border-[#C43D3D] shadow-xs',
-    rainfallAnomaly: 'bg-[#0B1F33] text-white border-[#0B1F33] shadow-xs',
+    onset: 'bg-cyan-500/20 text-cyan-300 border-cyan-500/60 shadow-[0_0_12px_rgba(56,189,248,0.3)]',
+    falseOnset: 'bg-amber-500/20 text-amber-300 border-amber-500/60 shadow-[0_0_12px_rgba(245,158,11,0.3)]',
+    break: 'bg-orange-500/20 text-orange-300 border-orange-500/60 shadow-[0_0_12px_rgba(249,115,22,0.3)]',
+    heavyRain: 'bg-blue-500/20 text-blue-300 border-blue-500/60 shadow-[0_0_12px_rgba(59,130,246,0.3)]',
+    pestRisk: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/60 shadow-[0_0_12px_rgba(16,185,129,0.3)]',
+    rainfallAnomaly: 'bg-indigo-500/20 text-indigo-300 border-indigo-500/60 shadow-[0_0_12px_rgba(99,102,241,0.3)]',
   };
 
   return (
@@ -36,16 +40,16 @@ export function RiskLayerSelector({
       role="group"
       aria-label="Risk Layer Selector"
       className={cn(
-        'rounded-sm border border-[#CBD5E1] bg-white p-1 shadow-gov-card flex flex-wrap items-center gap-1',
+        'rounded-xl border border-[#1E354D] bg-[#071324]/90 backdrop-blur-md p-1 shadow-2xl flex flex-wrap items-center gap-1',
         className
       )}
     >
-      <div className="hidden md:flex items-center gap-1.5 px-2 text-[#4B5B6D] font-mono text-[11px] font-bold uppercase border-r border-[#E2E8F0]">
-        <Layers className="w-3.5 h-3.5 text-[#1479C9]" />
+      <div className="hidden lg:flex items-center gap-1.5 px-2.5 text-slate-400 font-mono text-[10px] font-bold uppercase border-r border-[#1E354D]">
+        <Layers className="w-3.5 h-3.5 text-cyan-400" />
         <span>Risk Layer:</span>
       </div>
 
-      <div className="flex flex-wrap items-center gap-1 flex-1">
+      <div className="flex flex-wrap items-center gap-1">
         {layersList.map((layerId) => {
           const config = RISK_MAP_LAYERS[layerId];
           const Icon = layerIcons[layerId];
@@ -58,15 +62,14 @@ export function RiskLayerSelector({
               onClick={() => onLayerChange(layerId)}
               aria-pressed={isActive}
               className={cn(
-                'flex items-center gap-1.5 px-2.5 py-1.5 rounded-sm text-xs font-semibold transition-all border',
+                'flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all border cursor-pointer',
                 isActive
                   ? activeStyles[layerId]
-                  : 'bg-[#F5F7FA] text-[#4B5B6D] hover:text-[#0B1F33] hover:bg-[#EAF0F6] border-[#CBD5E1]'
+                  : 'bg-[#0A192F]/60 text-slate-400 hover:text-slate-200 hover:bg-[#0E2845] border-[#1E354D]'
               )}
             >
               <Icon className="w-3.5 h-3.5 shrink-0" />
-              <span>{config.shortName}</span>
-              <span className="text-[10px] font-mono opacity-80">({config.unit})</span>
+              <span>{config?.shortName || layerId}</span>
             </button>
           );
         })}
@@ -76,3 +79,4 @@ export function RiskLayerSelector({
 }
 
 export default RiskLayerSelector;
+

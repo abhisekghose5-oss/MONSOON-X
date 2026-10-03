@@ -98,20 +98,20 @@ export function RainfallAnomalyTimeline({
           data={chartData}
           margin={{ top: 12, right: 16, left: -8, bottom: 4 }}
         >
-          <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" vertical={false} />
+          <CartesianGrid strokeDasharray="3 3" stroke="#1E354D" vertical={false} />
 
           <XAxis
             dataKey="displayDate"
-            tick={{ fontSize: 10, fill: '#64748B', fontFamily: 'monospace' }}
+            tick={{ fontSize: 10, fill: '#94A3B8', fontFamily: 'monospace' }}
             tickLine={false}
-            axisLine={{ stroke: '#CBD5E1' }}
+            axisLine={{ stroke: '#1E354D' }}
             interval={Math.max(1, Math.floor(chartData.length / 14))}
           />
 
           <YAxis
-            tick={{ fontSize: 10, fill: '#64748B', fontFamily: 'monospace' }}
+            tick={{ fontSize: 10, fill: '#94A3B8', fontFamily: 'monospace' }}
             tickLine={false}
-            axisLine={{ stroke: '#CBD5E1' }}
+            axisLine={{ stroke: '#1E354D' }}
             domain={[-100, (dataMax: number) => Math.max(100, Math.ceil(dataMax / 50) * 50)]}
           />
 
@@ -127,13 +127,13 @@ export function RainfallAnomalyTimeline({
                     {p.date}
                   </div>
                   <div className="grid grid-cols-2 gap-x-2 text-[11px]">
-                    <span className="text-[#94A3B8]">Observed:</span>
+                    <span className="text-slate-400">Observed:</span>
                     <span className="text-right text-[#38BDF8]">
                       {p.rainfallMm !== null ? `${p.rainfallMm.toFixed(1)} mm` : 'Missing'}
                     </span>
-                    <span className="text-[#94A3B8]">Normal:</span>
-                    <span className="text-right text-[#CBD5E1]">{p.normalMm.toFixed(1)} mm</span>
-                    <span className="text-[#94A3B8]">Departure:</span>
+                    <span className="text-slate-400">Normal:</span>
+                    <span className="text-right text-slate-300">{p.normalMm.toFixed(1)} mm</span>
+                    <span className="text-slate-400">Departure:</span>
                     <span
                       className={`text-right font-bold ${
                         (p.anomalyPercent ?? 0) >= 0 ? 'text-[#34D399]' : 'text-[#F87171]'
@@ -143,7 +143,7 @@ export function RainfallAnomalyTimeline({
                         ? `${p.anomalyPercent >= 0 ? '+' : ''}${p.anomalyPercent.toFixed(1)}%`
                         : 'N/A'}
                     </span>
-                    <span className="text-[#94A3B8]">IMD Category:</span>
+                    <span className="text-slate-400">IMD Category:</span>
                     <span className="text-right text-white font-semibold">{p.category}</span>
                   </div>
                 </div>
@@ -152,11 +152,11 @@ export function RainfallAnomalyTimeline({
           />
 
           {/* Zero baseline */}
-          <ReferenceLine y={0} stroke="#0B1F33" strokeWidth={1.5} />
+          <ReferenceLine y={0} stroke="#94A3B8" strokeWidth={1.5} />
           {/* IMD Departure bands */}
-          <ReferenceLine y={20} stroke="#059669" strokeDasharray="3 3" />
+          <ReferenceLine y={20} stroke="#10B981" strokeDasharray="3 3" />
           <ReferenceLine y={-20} stroke="#F59E0B" strokeDasharray="3 3" />
-          <ReferenceLine y={-60} stroke="#EF4444" strokeDasharray="3 3" />
+          <ReferenceLine y={-60} stroke="#F43F5E" strokeDasharray="3 3" />
 
           <Bar
             dataKey="anomalyPercent"

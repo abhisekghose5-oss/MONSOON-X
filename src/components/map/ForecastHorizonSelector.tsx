@@ -14,19 +14,19 @@ export function ForecastHorizonSelector({
   onChange,
   className,
 }: ForecastHorizonSelectorProps) {
-  const horizons: ForecastHorizon[] = ['7D', '14D', '21D', '30D'];
+  const horizons: ForecastHorizon[] = ['3D', '7D', '14D', '30D'];
 
   return (
     <div className={cn('inline-flex items-center gap-1.5', className)}>
-      <span className="hidden sm:inline-flex items-center gap-1 text-[11px] font-mono font-bold uppercase text-[#6E7F94]">
-        <Calendar className="w-3.5 h-3.5 text-[#1479C9]" />
+      <span className="hidden sm:inline-flex items-center gap-1 text-[11px] font-mono font-bold uppercase text-slate-400">
+        <Calendar className="w-3.5 h-3.5 text-[#38BDF8]" />
         <span>Forecast Horizon:</span>
       </span>
 
       <div
         role="group"
         aria-label="Forecast Horizon Selector"
-        className="inline-flex rounded-sm border border-[#CBD5E1] p-0.5 bg-[#F5F7FA] shadow-xs"
+        className="inline-flex rounded-xl border border-[#1E354D] p-1 bg-[#071324]/90 backdrop-blur-md shadow-2xl gap-1"
       >
         {horizons.map((h) => {
           const isActive = value === h;
@@ -37,10 +37,10 @@ export function ForecastHorizonSelector({
               onClick={() => onChange(h)}
               aria-pressed={isActive}
               className={cn(
-                'px-2.5 py-1 text-xs font-mono font-bold rounded-xs transition-all',
+                'px-3 py-1 text-xs font-mono font-bold rounded-lg transition-all cursor-pointer border',
                 isActive
-                  ? 'bg-[#0B1F33] text-white shadow-xs'
-                  : 'text-[#4B5B6D] hover:text-[#0B1F33] hover:bg-[#EAF0F6]'
+                  ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/60 shadow-[0_0_12px_rgba(56,189,248,0.3)]'
+                  : 'bg-transparent text-slate-400 hover:text-slate-200 border-transparent hover:border-[#1E354D]'
               )}
             >
               {h}

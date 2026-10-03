@@ -28,10 +28,10 @@ export function ForecastHorizonSelector({
   ];
 
   return (
-    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-3 rounded-md border border-[#E2E8F0] shadow-gov-card">
+    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-[#0A192F]/85 p-3.5 rounded-xl border border-[#1E354D] shadow-xl backdrop-blur-md">
       <div className="flex items-center gap-2">
-        <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#0B1F33] flex items-center gap-1.5 bg-[#EAF0F6] px-2.5 py-1 rounded-sm border border-[#CBD5E1]">
-          <Calendar className="w-3.5 h-3.5 text-[#1479C9]" />
+        <span className="text-xs font-mono font-bold uppercase tracking-wider text-white flex items-center gap-1.5 bg-[#071324] px-3 py-1.5 rounded-lg border border-[#1E354D]">
+          <Calendar className="w-3.5 h-3.5 text-cyan-400" />
           <span>Forecast Horizon:</span>
         </span>
       </div>
@@ -46,16 +46,16 @@ export function ForecastHorizonSelector({
               role="tab"
               aria-selected={isActive}
               onClick={() => onSelectHorizon(h.id)}
-              className={`px-3 py-1.5 rounded-sm text-xs font-mono transition-all flex flex-col sm:flex-row items-center gap-1 sm:gap-2 border focus-visible:ring-2 focus-visible:ring-[#1479C9] focus-visible:outline-hidden ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all flex flex-col sm:flex-row items-center gap-1 sm:gap-2 border cursor-pointer ${
                 isActive
-                  ? 'bg-[#0B1F33] text-white border-[#0B1F33] font-bold shadow-xs'
-                  : 'bg-white text-[#4B5B6D] border-[#E2E8F0] hover:bg-[#F5F7FA] hover:text-[#16202A]'
+                  ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/60 font-bold shadow-[0_0_12px_rgba(56,189,248,0.25)]'
+                  : 'bg-[#071324] text-slate-400 border-[#1E354D] hover:bg-[#0E2845] hover:text-slate-200 hover:border-slate-600'
               }`}
             >
               <span>{h.label}</span>
               <span
-                className={`text-[10px] uppercase ${
-                  isActive ? 'text-[#7BBAE9]' : 'text-[#6E7F94]'
+                className={`text-[10px] uppercase font-mono ${
+                  isActive ? 'text-cyan-400' : 'text-slate-500'
                 }`}
               >
                 [{h.sublabel}]
@@ -66,15 +66,15 @@ export function ForecastHorizonSelector({
       </div>
 
       {confidenceScore !== undefined && (
-        <div className="hidden lg:flex items-center gap-2 border-l border-[#F0F3F7] pl-3 text-xs font-mono">
-          <span className="text-[#6E7F94]">Horizon Skill:</span>
+        <div className="hidden lg:flex items-center gap-2 border-l border-[#1E354D] pl-3.5 text-xs font-mono">
+          <span className="text-slate-400">Horizon Skill:</span>
           <span
-            className={`font-bold px-1.5 py-0.5 rounded-sm text-[11px] ${
+            className={`font-bold px-2 py-0.5 rounded-lg text-[11px] font-mono ${
               confidenceTier === 'High'
-                ? 'bg-[#EDF7F1] text-[#154D2F] border border-[#ABD7C0]'
+                ? 'bg-emerald-950/40 text-emerald-300 border border-emerald-500/40'
                 : confidenceTier === 'Moderate'
-                ? 'bg-[#EDF6FC] text-[#0C4E83] border border-[#ACD5F2]'
-                : 'bg-[#FDF7EB] text-[#8C5D00] border border-[#F4D79C]'
+                ? 'bg-cyan-950/40 text-cyan-300 border border-cyan-500/40'
+                : 'bg-amber-950/40 text-amber-300 border border-amber-500/40'
             }`}
           >
             {confidenceScore}% ({confidenceTier})

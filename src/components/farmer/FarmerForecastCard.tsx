@@ -16,25 +16,25 @@ export function FarmerForecastCard({ advisory, className = '' }: FarmerForecastC
     switch (level) {
       case 'high':
         return {
-          bg: 'bg-[#FCEDEC]',
-          border: 'border-[#EEA9A7]',
-          text: 'text-[#802626]',
-          indicator: 'bg-[#C43D3D]',
+          bg: 'bg-rose-950/40',
+          border: 'border-rose-500/50',
+          text: 'text-rose-400',
+          indicator: 'bg-[#F43F5E]',
         };
       case 'moderate':
         return {
-          bg: 'bg-[#FDF7EB]',
-          border: 'border-[#F4D79C]',
-          text: 'text-[#8C5D00]',
-          indicator: 'bg-[#D99000]',
+          bg: 'bg-amber-950/40',
+          border: 'border-amber-500/50',
+          text: 'text-amber-400',
+          indicator: 'bg-[#F59E0B]',
         };
       case 'low':
       default:
         return {
-          bg: 'bg-[#EDF7F1]',
-          border: 'border-[#ABD7C0]',
-          text: 'text-[#154D2F]',
-          indicator: 'bg-[#247A4A]',
+          bg: 'bg-emerald-950/40',
+          border: 'border-emerald-500/50',
+          text: 'text-emerald-400',
+          indicator: 'bg-[#4ADE80]',
         };
     }
   };
@@ -44,19 +44,19 @@ export function FarmerForecastCard({ advisory, className = '' }: FarmerForecastC
   const heavyRainStyle = getBadgeStyle(advisory.heavyRainRiskLevel);
 
   return (
-    <div className={`bg-white rounded-xl border-2 border-[#CBD5E1] p-4 shadow-sm space-y-3 ${className}`}>
+    <div className={`bg-[#0A192F]/90 backdrop-blur-md rounded-xl border border-[#1E354D] p-4 shadow-command-panel space-y-3 ${className}`}>
       {/* Title */}
       <div className="flex items-center justify-between">
-        <span className="text-xs font-bold uppercase tracking-wider text-[#0B1F33] font-mono flex items-center gap-1.5">
-          <HelpCircle className="w-4 h-4 text-[#1479C9]" />
+        <span className="text-xs font-bold uppercase tracking-wider text-slate-200 font-mono flex items-center gap-1.5">
+          <HelpCircle className="w-4 h-4 text-[#38BDF8]" />
           <span>{comingT.title}</span>
         </span>
-        <span className="text-[11px] font-mono text-[#6E7F94] bg-[#F5F7FA] px-2 py-0.5 rounded border border-[#E2E8F0]">
+        <span className="text-[11px] font-mono text-[#38BDF8] bg-[#071324] px-2 py-0.5 rounded border border-[#1E354D]">
           14 Days Horizon
         </span>
       </div>
 
-      <p className="text-xs text-[#4B5B6D]">
+      <p className="text-xs text-slate-400">
         {comingT.subtitle}
       </p>
 
@@ -64,14 +64,14 @@ export function FarmerForecastCard({ advisory, className = '' }: FarmerForecastC
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
         {/* 1. Rainfall Outlook */}
         <div
-          className={`p-3.5 rounded-xl border-2 ${rainStyle.border} ${rainStyle.bg} flex flex-col justify-between`}
+          className={`p-3.5 rounded-xl border ${rainStyle.border} ${rainStyle.bg} flex flex-col justify-between`}
         >
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-[#4B5B6D]">
+            <span className="text-xs font-bold text-slate-400">
               {comingT.rainfallOutlookLabel}
             </span>
-            <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-xs">
-              <CloudRain className="w-4 h-4 text-[#1479C9]" />
+            <div className="w-8 h-8 rounded-full bg-[#071324] border border-[#1E354D] flex items-center justify-center shadow-xs">
+              <CloudRain className="w-4 h-4 text-[#38BDF8]" />
             </div>
           </div>
           <div className="mt-2">
@@ -86,14 +86,14 @@ export function FarmerForecastCard({ advisory, className = '' }: FarmerForecastC
 
         {/* 2. Dry Spell Risk */}
         <div
-          className={`p-3.5 rounded-xl border-2 ${dryStyle.border} ${dryStyle.bg} flex flex-col justify-between`}
+          className={`p-3.5 rounded-xl border ${dryStyle.border} ${dryStyle.bg} flex flex-col justify-between`}
         >
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-[#4B5B6D]">
+            <span className="text-xs font-bold text-slate-400">
               {comingT.drySpellRiskLabel}
             </span>
-            <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-xs">
-              <Sun className="w-4 h-4 text-[#D99000]" />
+            <div className="w-8 h-8 rounded-full bg-[#071324] border border-[#1E354D] flex items-center justify-center shadow-xs">
+              <Sun className="w-4 h-4 text-[#F59E0B]" />
             </div>
           </div>
           <div className="mt-2">
@@ -108,14 +108,14 @@ export function FarmerForecastCard({ advisory, className = '' }: FarmerForecastC
 
         {/* 3. Heavy Rain Risk */}
         <div
-          className={`p-3.5 rounded-xl border-2 ${heavyRainStyle.border} ${heavyRainStyle.bg} flex flex-col justify-between`}
+          className={`p-3.5 rounded-xl border ${heavyRainStyle.border} ${heavyRainStyle.bg} flex flex-col justify-between`}
         >
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-[#4B5B6D]">
+            <span className="text-xs font-bold text-slate-400">
               {comingT.heavyRainRiskLabel}
             </span>
-            <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-xs">
-              <AlertTriangle className="w-4 h-4 text-[#247A4A]" />
+            <div className="w-8 h-8 rounded-full bg-[#071324] border border-[#1E354D] flex items-center justify-center shadow-xs">
+              <AlertTriangle className="w-4 h-4 text-[#4ADE80]" />
             </div>
           </div>
           <div className="mt-2">
@@ -130,10 +130,11 @@ export function FarmerForecastCard({ advisory, className = '' }: FarmerForecastC
       </div>
 
       {/* Plain Language Summary Box */}
-      <div className="p-3 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0] text-xs text-[#334155] leading-relaxed flex items-start gap-2">
+      <div className="p-3 rounded-lg bg-[#071324] border border-[#1E354D] text-xs text-slate-300 leading-relaxed flex items-start gap-2">
         <span className="text-base leading-none">📢</span>
         <span>{comingT.summaryNote}</span>
       </div>
     </div>
   );
 }
+export default FarmerForecastCard;

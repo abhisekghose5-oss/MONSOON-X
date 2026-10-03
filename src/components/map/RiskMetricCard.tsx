@@ -22,34 +22,34 @@ export function RiskMetricCard({
 }: RiskMetricCardProps) {
   const schemeStyles = {
     blue: {
-      card: 'border-[#ACD5F2] bg-[#EDF6FC] text-[#0C4E83]',
-      value: 'text-[#0C4E83]',
-      tag: 'bg-[#1479C9] text-white',
+      card: 'border-[#1E354D] bg-[#071324] text-white',
+      value: 'text-[#38BDF8]',
+      tag: 'bg-[#0284C7]/20 text-[#38BDF8] border border-[#0284C7]/40',
     },
     amber: {
-      card: 'border-[#F4D79C] bg-[#FDF7EB] text-[#8C5D00]',
-      value: 'text-[#8C5D00]',
-      tag: 'bg-[#D97706] text-white',
+      card: 'border-[#1E354D] bg-[#1C1608]/70 text-white',
+      value: 'text-[#FCD34D]',
+      tag: 'bg-[#F59E0B]/20 text-[#FCD34D] border border-[#F59E0B]/40',
     },
     red: {
-      card: 'border-[#EEA9A7] bg-[#FCEDEC] text-[#802626]',
-      value: 'text-[#802626]',
-      tag: 'bg-[#C43D3D] text-white',
+      card: 'border-[#1E354D] bg-[#200D0D]/70 text-white',
+      value: 'text-[#F87171]',
+      tag: 'bg-rose-950/60 text-rose-400 border border-rose-500/40',
     },
     green: {
-      card: 'border-[#ABD7C0] bg-[#EDF7F1] text-[#154D2F]',
-      value: 'text-[#154D2F]',
-      tag: 'bg-[#247A4A] text-white',
+      card: 'border-[#1E354D] bg-[#081C1B]/70 text-white',
+      value: 'text-[#4ADE80]',
+      tag: 'bg-emerald-950/60 text-emerald-400 border border-emerald-500/40',
     },
     navy: {
-      card: 'border-[#CBD5E1] bg-[#0B1F33] text-white',
+      card: 'border-[#1E354D] bg-[#071324] text-white',
       value: 'text-white',
-      tag: 'bg-[#1E354D] text-[#A4BCDA]',
+      tag: 'bg-[#1E354D] text-[#38BDF8]',
     },
     neutral: {
-      card: 'border-[#E2E8F0] bg-[#F5F7FA] text-[#0B1F33]',
-      value: 'text-[#0B1F33]',
-      tag: 'bg-[#E2E8F0] text-[#4B5B6D]',
+      card: 'border-[#1E354D] bg-[#071324] text-white',
+      value: 'text-slate-200',
+      tag: 'bg-[#0B1F33] text-slate-300 border border-[#1E354D]',
     },
   };
 

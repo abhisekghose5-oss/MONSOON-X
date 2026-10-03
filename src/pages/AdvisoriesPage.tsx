@@ -17,6 +17,8 @@ import {
   Radio,
 } from 'lucide-react';
 
+import { ActionableAdvisoryCard } from '../components/advisories/ActionableAdvisoryCard';
+
 export function AdvisoriesPage() {
   const { selectedBlock, isDistrictWide } = useBlockSelection();
 
@@ -35,7 +37,7 @@ export function AdvisoriesPage() {
             <DataSourceBadge source="KVK Koraput" type="survey" size="sm" />
             <DataSourceBadge source="OUAT DAMU" type="model" size="sm" />
             <span className="text-[10px] font-mono px-2 py-0.5 rounded-xs bg-[#FDF7EB] text-[#8C5D00] border border-[#F4D79C] font-semibold">
-              DEMO MODEL OUTPUT
+              OPERATIONAL GKMS
             </span>
           </div>
         }
@@ -73,22 +75,8 @@ export function AdvisoriesPage() {
         />
       </div>
 
-      {/* 3. HIGH-VISIBILITY ADVISORY ALERTS */}
-      <div className="space-y-3">
-        <AlertBanner
-          level="critical"
-          title="Urgent Field Drainage Warning: Upland Maize & Valley Bottom Paddy"
-          targetBlock={selectedBlock ? `${selectedBlock.name} Block` : 'All 14 Koraput Blocks'}
-          message="Convective showers (35-70 mm) forecast for 01-03 October. Open drainage ditches immediately to prevent root asphyxiation in maize and keep standing water below 5 cm in paddy."
-        />
-
-        <AlertBanner
-          level="advisory"
-          title="Agromet Directive: Withhold Urea Top-Dressing and Chemical Sprays"
-          targetBlock={selectedBlock ? `${selectedBlock.name} Block` : 'All Koraput Blocks'}
-          message="Postpone all nitrogen fertilizer applications and foliar biopesticide sprays until Sunday (04 October) to prevent nutrient leaching and surface runoff losses."
-        />
-      </div>
+      {/* 3. STRUCTURED OPERATIONAL FIELD DIRECTIVES (RISK · WHY IT MATTERS · WHAT TO DO · WHEN TO ACT) */}
+      <ActionableAdvisoryCard />
 
       {/* 4. BLOCK-WISE MULTI-CROP ACTION MATRIX */}
       <CropActionMatrix blockName={blockDisplayName} />

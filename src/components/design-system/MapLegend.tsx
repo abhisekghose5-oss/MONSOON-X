@@ -27,17 +27,17 @@ export function MapLegend({
   return (
     <div
       className={cn(
-        'rounded-md border border-[#CBD5E1] bg-white/95 backdrop-blur-sm p-3 shadow-gov-card text-[#16202A]',
+        'rounded-xl border border-cyan-500/30 bg-[#0A192F]/90 backdrop-blur-md p-3.5 shadow-2xl text-slate-200',
         className
       )}
       {...props}
     >
-      <div className="border-b border-[#F0F3F7] pb-1.5 mb-2">
-        <h4 className="text-[11px] font-bold uppercase tracking-wider text-[#0B1F33]">
+      <div className="border-b border-[#1E354D] pb-2 mb-2">
+        <h4 className="text-[11px] font-bold uppercase tracking-wider text-white font-mono">
           {title}
         </h4>
         {subtitle && (
-          <p className="text-[10px] text-[#6E7F94] font-mono">{subtitle}</p>
+          <p className="text-[10px] text-cyan-400 font-mono">{subtitle}</p>
         )}
       </div>
 
@@ -68,11 +68,11 @@ export function MapLegend({
             )}
 
             <div className="flex-1 min-w-0">
-              <span className="font-medium text-[#16202A] block truncate text-[11px]">
+              <span className="font-medium text-slate-200 block truncate text-[11px]">
                 {item.label}
               </span>
               {item.description && (
-                <span className="text-[10px] text-[#6E7F94] block truncate font-mono">
+                <span className="text-[10px] text-slate-400 block truncate font-mono">
                   {item.description}
                 </span>
               )}

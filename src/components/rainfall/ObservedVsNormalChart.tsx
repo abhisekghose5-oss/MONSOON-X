@@ -78,14 +78,14 @@ export function ObservedVsNormalChart({ data, isLoading = false }: ObservedVsNor
   const depFinal = normalFinal > 0 ? ((observedFinal - normalFinal) / normalFinal) * 100 : 0;
 
   let statusText = 'Near Normal';
-  let statusBadgeClass = 'bg-[#ECFDF5] text-[#059669] border-[#A7F3D0]';
+  let statusBadgeClass = 'bg-emerald-950/60 text-emerald-400 border-emerald-500/40 shadow-xs';
 
   if (depFinal >= 20) {
     statusText = 'Above Normal';
-    statusBadgeClass = 'bg-[#EFF6FF] text-[#0284C7] border-[#BAE6FD]';
+    statusBadgeClass = 'bg-sky-950/60 text-[#38BDF8] border-[#38BDF8]/40 shadow-xs';
   } else if (depFinal <= -20) {
     statusText = 'Below Normal';
-    statusBadgeClass = 'bg-[#FEF2F2] text-[#DC2626] border-[#FECACA]';
+    statusBadgeClass = 'bg-rose-950/60 text-rose-400 border-rose-500/40 shadow-xs';
   }
 
   return (
@@ -104,21 +104,21 @@ export function ObservedVsNormalChart({ data, isLoading = false }: ObservedVsNor
         <div className="flex flex-wrap items-center justify-between w-full text-xs font-mono">
           <div className="flex items-center gap-4 flex-wrap">
             <span className="flex items-center gap-1.5">
-              <span className="w-4 h-0.5 bg-[#0284C7]" />
-              <span className="text-[#0B1F33] font-semibold">Observed Cumulative Rainfall</span>
+              <span className="w-4 h-0.5 bg-[#38BDF8] shadow-[0_0_6px_rgba(56,189,248,0.8)]" />
+              <span className="text-slate-200 font-semibold">Observed Cumulative Rainfall</span>
             </span>
             <span className="flex items-center gap-1.5">
-              <span className="w-4 h-0.5 bg-[#475569] border-t border-dashed" />
-              <span className="text-[#475569] font-semibold">Historical Cumulative Normal (1971–2020)</span>
+              <span className="w-4 h-0.5 bg-[#94A3B8] border-t border-dashed" />
+              <span className="text-slate-400 font-semibold">Historical Cumulative Normal (1971–2020)</span>
             </span>
           </div>
-          <span className="text-[#64748B] text-[11px]">
+          <span className="text-slate-400 text-[11px]">
             Final Normal: {normalFinal.toFixed(1)} mm
           </span>
         </div>
       }
       footer={
-        <div className="text-[11px] text-[#64748B] font-mono">
+        <div className="text-[11px] text-slate-400 font-mono">
           Normal trajectory dynamically generated from official IMD monthly normals (Jun: 221.8mm, Jul: 382.4mm, Aug: 366.1mm, Sep: 242.6mm).
         </div>
       }
@@ -128,20 +128,20 @@ export function ObservedVsNormalChart({ data, isLoading = false }: ObservedVsNor
           data={data}
           margin={{ top: 12, right: 16, left: -8, bottom: 4 }}
         >
-          <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" vertical={false} />
+          <CartesianGrid strokeDasharray="3 3" stroke="#1E354D" vertical={false} />
 
           <XAxis
             dataKey="displayDate"
-            tick={{ fontSize: 10, fill: '#64748B', fontFamily: 'monospace' }}
+            tick={{ fontSize: 10, fill: '#94A3B8', fontFamily: 'monospace' }}
             tickLine={false}
-            axisLine={{ stroke: '#CBD5E1' }}
+            axisLine={{ stroke: '#1E354D' }}
             interval={Math.max(1, Math.floor(data.length / 12))}
           />
 
           <YAxis
-            tick={{ fontSize: 10, fill: '#64748B', fontFamily: 'monospace' }}
+            tick={{ fontSize: 10, fill: '#94A3B8', fontFamily: 'monospace' }}
             tickLine={false}
-            axisLine={{ stroke: '#CBD5E1' }}
+            axisLine={{ stroke: '#1E354D' }}
             domain={[0, (dataMax: number) => Math.ceil(dataMax / 100) * 100]}
           />
 
@@ -152,7 +152,7 @@ export function ObservedVsNormalChart({ data, isLoading = false }: ObservedVsNor
             type="monotone"
             dataKey="cumulativeNormalMm"
             name="Historical Normal"
-            stroke="#475569"
+            stroke="#94A3B8"
             strokeWidth={2}
             strokeDasharray="4 4"
             dot={false}
@@ -164,7 +164,7 @@ export function ObservedVsNormalChart({ data, isLoading = false }: ObservedVsNor
             type="monotone"
             dataKey="cumulativeObservedMm"
             name="Observed Cumulative"
-            stroke="#0284C7"
+            stroke="#38BDF8"
             strokeWidth={2.5}
             dot={false}
             isAnimationActive={false}

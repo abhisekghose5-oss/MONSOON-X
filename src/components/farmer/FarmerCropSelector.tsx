@@ -31,19 +31,19 @@ export function FarmerCropSelector({
   const cropKeys: FarmerCropKey[] = ['paddy', 'ragi', 'maize', 'groundnut', 'pulses', 'cotton', 'vegetables'];
 
   return (
-    <div className={`bg-white rounded-xl border-2 border-[#CBD5E1] p-4 shadow-sm space-y-3 ${className}`}>
+    <div className={`bg-[#0A192F]/90 backdrop-blur-md rounded-xl border border-[#1E354D] p-4 shadow-command-panel space-y-3 ${className}`}>
       {/* Title & Help Text */}
       <div className="flex items-center justify-between">
-        <span className="text-xs font-bold uppercase tracking-wider text-[#247A4A] font-mono flex items-center gap-1.5">
-          <Sprout className="w-4 h-4 text-[#247A4A]" />
+        <span className="text-xs font-bold uppercase tracking-wider text-[#4ADE80] font-mono flex items-center gap-1.5">
+          <Sprout className="w-4 h-4 text-[#4ADE80]" />
           <span>{cropT.title}</span>
         </span>
-        <span className="text-[11px] font-mono text-[#6E7F94] bg-[#EDF7F1] text-[#154D2F] px-2 py-0.5 rounded border border-[#ABD7C0] font-semibold">
+        <span className="text-[11px] font-mono text-[#4ADE80] bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/40 font-semibold">
           7 Kharif Crops
         </span>
       </div>
 
-      <p className="text-xs text-[#4B5B6D]">
+      <p className="text-xs text-slate-400">
         {cropT.subtitle}
       </p>
 
@@ -59,10 +59,10 @@ export function FarmerCropSelector({
               key={key}
               type="button"
               onClick={() => onSelectCrop(key)}
-              className={`p-3 rounded-xl text-left transition-all relative flex flex-col justify-between min-h-[72px] touch-manipulation select-none active:scale-95 border-2 ${
+              className={`p-3 rounded-xl text-left transition-all relative flex flex-col justify-between min-h-[72px] touch-manipulation select-none active:scale-95 border-2 cursor-pointer ${
                 isSelected
-                  ? 'bg-[#EAF5FC] border-[#1479C9] text-[#0B1F33] ring-2 ring-[#1479C9]/20 shadow-sm'
-                  : 'bg-[#F8FAFC] border-[#E2E8F0] text-[#334155] hover:bg-slate-100 hover:border-[#CBD5E1]'
+                  ? 'bg-[#15803D]/25 border-[#4ADE80] text-white ring-2 ring-[#4ADE80]/30 shadow-[0_0_12px_rgba(74,222,128,0.35)]'
+                  : 'bg-[#071324] border-[#1E354D] text-slate-300 hover:bg-[#0D2038] hover:border-slate-600'
               }`}
               aria-pressed={isSelected}
             >
@@ -72,7 +72,7 @@ export function FarmerCropSelector({
                   {icon}
                 </span>
                 {isSelected && (
-                  <span className="w-5 h-5 rounded-full bg-[#1479C9] text-white flex items-center justify-center shrink-0">
+                  <span className="w-5 h-5 rounded-full bg-[#4ADE80] text-slate-950 flex items-center justify-center shrink-0 shadow-xs">
                     <Check className="w-3.5 h-3.5 stroke-[3]" />
                   </span>
                 )}
@@ -80,10 +80,10 @@ export function FarmerCropSelector({
 
               {/* Localized and Subtext Names */}
               <div className="mt-1">
-                <span className="text-base font-extrabold block leading-tight text-[#0B1F33]">
+                <span className="text-base font-extrabold block leading-tight text-white">
                   {info.name}
                 </span>
-                <span className="text-[11px] text-[#6E7F94] font-medium block">
+                <span className="text-[11px] text-slate-400 font-medium block">
                   {info.localName}
                 </span>
               </div>
@@ -94,3 +94,4 @@ export function FarmerCropSelector({
     </div>
   );
 }
+export default FarmerCropSelector;

@@ -15,14 +15,14 @@ export function CropRiskMatrixTable({
   onSelectCrop,
 }: CropRiskMatrixTableProps) {
   const getRiskBadge = (level: string, prob?: number) => {
-    let classes = 'bg-[#EDF7F1] text-[#154D2F] border-[#ABD7C0]';
+    let classes = 'bg-[#10B981]/15 text-[#4ADE80] border-[#10B981]/30';
 
     if (level === 'Moderate') {
-      classes = 'bg-[#EDF6FC] text-[#0C4E83] border-[#ACD5F2]';
+      classes = 'bg-[#0284C7]/15 text-[#38BDF8] border-[#0284C7]/30';
     } else if (level === 'High') {
-      classes = 'bg-[#FDF7EB] text-[#8C5D00] border-[#F4D79C]';
+      classes = 'bg-[#F59E0B]/15 text-[#FCD34D] border-[#F59E0B]/30';
     } else if (level === 'Severe' || level === 'Critical') {
-      classes = 'bg-[#FCEDEC] text-[#802626] border-[#EEA9A7]';
+      classes = 'bg-[#EF4444]/15 text-[#F87171] border-[#EF4444]/30';
     }
 
     return (
@@ -34,16 +34,16 @@ export function CropRiskMatrixTable({
   };
 
   return (
-    <div className="rounded-md border border-[#E2E8F0] bg-white shadow-gov-card overflow-hidden">
+    <div className="rounded-md border border-[#1E354D] bg-[#0A192F]/90 shadow-command-panel overflow-hidden backdrop-blur-md">
       {/* Header */}
-      <div className="px-4 py-3 border-b border-[#E2E8F0] bg-[#F5F7FA]/70 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+      <div className="px-4 py-3 border-b border-[#1E354D] bg-[#071324] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
         <div className="flex items-center gap-2">
-          <Layers className="w-4 h-4 text-[#1479C9]" />
+          <Layers className="w-4 h-4 text-[#38BDF8]" />
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-wider text-[#0B1F33]">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-white">
               Crop Risk Matrix
             </h3>
-            <p className="text-[11px] text-[#4B5B6D] font-mono mt-0.5">
+            <p className="text-[11px] text-slate-400 font-mono mt-0.5">
               Cross-commodity meteorological risk comparison across all major Koraput Kharif crops.
             </p>
           </div>
@@ -54,38 +54,38 @@ export function CropRiskMatrixTable({
       {/* Table */}
       <div className="overflow-x-auto">
         <table className="w-full text-left text-xs font-sans">
-          <thead className="bg-[#F0F3F7] text-[#4B5B6D] uppercase text-[10px] tracking-wider font-mono border-b border-[#E2E8F0]">
+          <thead className="bg-[#071324] text-slate-300 uppercase text-[10px] tracking-wider font-mono border-b border-[#1E354D]">
             <tr>
-              <th className="px-4 py-2.5 font-bold text-[#0B1F33]">Crop</th>
-              <th className="px-3 py-2.5 font-bold text-[#0B1F33]">Onset Risk</th>
-              <th className="px-3 py-2.5 font-bold text-[#0B1F33]">Dry Spell Risk</th>
-              <th className="px-3 py-2.5 font-bold text-[#0B1F33]">Heavy Rain Risk</th>
-              <th className="px-4 py-2.5 font-bold text-[#0B1F33]">Recommendation</th>
-              <th className="px-3 py-2.5 text-center font-bold text-[#0B1F33]">Inspect</th>
+              <th className="px-4 py-2.5 font-bold text-white">Crop</th>
+              <th className="px-3 py-2.5 font-bold text-white">Onset Risk</th>
+              <th className="px-3 py-2.5 font-bold text-white">Dry Spell Risk</th>
+              <th className="px-3 py-2.5 font-bold text-white">Heavy Rain Risk</th>
+              <th className="px-4 py-2.5 font-bold text-white">Recommendation</th>
+              <th className="px-3 py-2.5 text-center font-bold text-white">Inspect</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-[#F0F3F7]">
+          <tbody className="divide-y divide-[#1E354D]/60">
             {matrix.map((row) => {
               const isSelected = selectedCropId === row.cropId;
 
               return (
                 <tr
                   key={row.cropId}
-                  className={`transition-colors hover:bg-[#F5F7FA] ${
-                    isSelected ? 'bg-[#EDF7F1]/70 border-l-4 border-l-[#247A4A]' : ''
+                  className={`transition-colors hover:bg-[#132844] ${
+                    isSelected ? 'bg-[#10B981]/10 border-l-4 border-l-[#10B981]' : ''
                   }`}
                 >
                   {/* Column 1: Crop */}
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-1.5">
-                      <span className="font-bold text-[#0B1F33] text-sm">
+                      <span className="font-bold text-white text-sm">
                         {row.cropName}
                       </span>
-                      <span className="text-[11px] font-mono text-[#247A4A] bg-[#EDF7F1] px-1.5 py-0.2 rounded-xs border border-[#ABD7C0]">
+                      <span className="text-[11px] font-mono text-[#4ADE80] bg-[#10B981]/15 px-1.5 py-0.5 rounded-xs border border-[#10B981]/30">
                         {row.localName}
                       </span>
                     </div>
-                    <span className="text-[10px] font-mono uppercase text-[#6E7F94]">
+                    <span className="text-[10px] font-mono uppercase text-slate-400">
                       {row.category}
                     </span>
                   </td>
@@ -93,7 +93,7 @@ export function CropRiskMatrixTable({
                   {/* Column 2: Onset Risk */}
                   <td className="px-3 py-3">
                     {getRiskBadge(row.onsetRisk.level)}
-                    <span className="block text-[10px] text-[#6E7F94] font-mono mt-0.5">
+                    <span className="block text-[10px] text-slate-400 font-mono mt-0.5">
                       {row.onsetRisk.detail}
                     </span>
                   </td>
@@ -109,7 +109,7 @@ export function CropRiskMatrixTable({
                   </td>
 
                   {/* Column 5: Recommendation */}
-                  <td className="px-4 py-3 text-xs text-[#16202A] leading-relaxed max-w-md">
+                  <td className="px-4 py-3 text-xs text-slate-200 leading-relaxed max-w-md">
                     {row.recommendation}
                   </td>
 
@@ -117,10 +117,10 @@ export function CropRiskMatrixTable({
                   <td className="px-3 py-3 text-center">
                     <button
                       onClick={() => onSelectCrop(row.cropId)}
-                      className={`text-[11px] font-mono px-2 py-0.5 rounded-sm border transition-all inline-flex items-center gap-1 ${
+                      className={`text-[11px] font-mono px-2.5 py-1 rounded-sm border transition-all inline-flex items-center gap-1 ${
                         isSelected
-                          ? 'bg-[#247A4A] text-white border-[#247A4A] font-bold'
-                          : 'bg-white text-[#4B5B6D] border-[#CBD5E1] hover:bg-[#EDF7F1] hover:text-[#154D2F]'
+                          ? 'bg-[#10B981] text-[#062419] border-[#10B981] font-bold shadow-xs'
+                          : 'bg-[#0A192F] text-slate-300 border-[#1E354D] hover:bg-[#10B981]/20 hover:text-[#4ADE80] hover:border-[#10B981]/40'
                       }`}
                     >
                       <span>{isSelected ? 'Active' : 'Select'}</span>

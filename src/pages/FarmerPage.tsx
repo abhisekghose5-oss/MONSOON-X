@@ -9,6 +9,7 @@ import { FarmerForecastCard } from '../components/farmer/FarmerForecastCard';
 import { FarmerActionCard } from '../components/farmer/FarmerActionCard';
 import { FarmerAudioHelper } from '../components/farmer/FarmerAudioHelper';
 import { FarmerHelplineCard } from '../components/farmer/FarmerHelplineCard';
+import { FarmerGlanceStrip } from '../components/farmer/FarmerGlanceStrip';
 import { Sprout, LayoutDashboard, ArrowLeft, Shield } from 'lucide-react';
 
 export function FarmerPage() {
@@ -74,10 +75,16 @@ export function FarmerPage() {
       {/* 2. LANGUAGE SELECTOR (Top Touch Target) */}
       <FarmerLanguageSelector />
 
-      {/* 3. MY LOCATION */}
+      {/* 3. 5-PILLAR SIMPLE GLANCE STRIP: 🌧 Rain, 🌱 Crop, 📅 Sowing, ⚠️ Warning, ✅ Action */}
+      <FarmerGlanceStrip
+        advisory={currentAdvisory}
+        cropName={currentCropInfo.name}
+      />
+
+      {/* 4. MY LOCATION */}
       <FarmerLocationCard />
 
-      {/* 4. MY CROP */}
+      {/* 5. MY CROP */}
       <FarmerCropSelector
         selectedCrop={selectedCrop}
         onSelectCrop={setSelectedCrop}
@@ -102,13 +109,13 @@ export function FarmerPage() {
       <FarmerHelplineCard />
 
       {/* 9. INSTITUTIONAL SIMULATION NOTICE & SWITCH */}
-      <div className="p-3 rounded-lg bg-[#F5F7FA] border border-[#CBD5E1] text-center space-y-2">
-        <p className="text-[11px] text-[#6E7F94] font-mono">
-          {t.common.simulationNotice} · Block: {selectedBlockId.toUpperCase()}
+      <div className="p-3 rounded-lg bg-[#0A192F]/90 border border-[#1E354D] text-center space-y-2 shadow-command-panel">
+        <p className="text-[11px] text-slate-400 font-mono">
+          {t.common.simulationNotice} · Block: <span className="text-[#38BDF8] font-bold">{selectedBlockId.toUpperCase()}</span>
         </p>
         <Link
           to="/officer"
-          className="inline-flex items-center gap-1.5 text-xs text-[#1479C9] hover:underline font-bold"
+          className="inline-flex items-center gap-1.5 text-xs text-[#38BDF8] hover:text-[#7DD3FC] hover:underline font-bold font-mono"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           <span>{t.meta.switchToOfficerMode}</span>

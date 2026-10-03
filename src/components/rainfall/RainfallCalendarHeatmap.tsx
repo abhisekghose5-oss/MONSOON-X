@@ -15,20 +15,20 @@ export function RainfallCalendarHeatmap({
 
   if (isLoading) {
     return (
-      <div className="bg-white border border-[#CBD5E1] rounded-sm p-4 animate-pulse h-64" />
+      <div className="bg-[#0A192F]/85 border border-[#1E354D] rounded-xl p-4 animate-pulse h-64 shadow-2xl" />
     );
   }
 
   // Helper for color intensity
   const getCellColor = (point: DailyRainfallPoint) => {
     const mm = point.rainfallMm;
-    if (mm === null) return 'bg-[#CBD5E1] border-dashed border-[#94A3B8]'; // Missing
-    if (mm === 0) return 'bg-[#F1F5F9] border-[#E2E8F0]';
-    if (mm < 2.5) return 'bg-[#BAE6FD] border-[#7DD3FC]'; // Trace / Dry
-    if (mm <= 15.5) return 'bg-[#38BDF8] border-[#0284C7] text-white'; // Light
-    if (mm <= 64.4) return 'bg-[#0284C7] border-[#0369A1] text-white'; // Moderate
-    if (mm <= 115.5) return 'bg-[#F59E0B] border-[#D97706] text-white'; // Heavy
-    return 'bg-[#DC2626] border-[#B91C1C] text-white'; // Very Heavy
+    if (mm === null) return 'bg-[#1E354D]/50 border-dashed border-slate-600 text-slate-500'; // Missing
+    if (mm === 0) return 'bg-[#071324] border-[#1E354D] text-slate-500 hover:border-slate-500';
+    if (mm < 2.5) return 'bg-[#0C2942] border-[#0284C7]/40 text-[#7DD3FC] hover:border-[#38BDF8]'; // Trace / Dry
+    if (mm <= 15.5) return 'bg-[#0369A1] border-[#0284C7] text-white hover:border-[#38BDF8]'; // Light
+    if (mm <= 64.4) return 'bg-[#0284C7] border-[#38BDF8] text-white shadow-xs'; // Moderate
+    if (mm <= 115.5) return 'bg-amber-600 border-amber-400 text-white shadow-xs'; // Heavy
+    return 'bg-rose-600 border-rose-400 text-white shadow-xs animate-pulse'; // Very Heavy
   };
 
   const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -61,32 +61,32 @@ export function RainfallCalendarHeatmap({
   }
 
   return (
-    <div className="bg-white border border-[#CBD5E1] rounded-sm p-4 space-y-3.5 shadow-xs">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#F1F5F9] pb-2.5">
+    <div className="bg-[#0A192F]/85 backdrop-blur-md border border-[#1E354D] rounded-lg p-4 space-y-3.5 shadow-command-panel text-white">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#1E354D] pb-2.5">
         <div>
           <div className="flex items-center gap-2">
-            <Calendar className="w-4 h-4 text-[#0284C7]" />
-            <h4 className="font-bold font-mono text-sm tracking-tight text-[#0B1F33]">
+            <Calendar className="w-4 h-4 text-[#38BDF8]" />
+            <h4 className="font-bold font-mono text-sm tracking-tight text-white uppercase">
               RAINFALL CALENDAR HEATMAP
             </h4>
           </div>
-          <p className="text-xs text-[#64748B] mt-0.5">
+          <p className="text-xs text-slate-400 font-mono mt-0.5">
             Daily hyetograph matrix illustrating persistent monsoon spells, dry gaps, and extreme cloudburst events.
           </p>
         </div>
 
         {/* Legend */}
-        <div className="flex items-center gap-2 text-[10px] font-mono flex-wrap">
+        <div className="flex items-center gap-2 text-[10px] font-mono flex-wrap text-slate-300">
           <span className="flex items-center gap-1">
-            <span className="w-2.5 h-2.5 rounded-xs bg-[#F1F5F9] border border-[#CBD5E1]" />
+            <span className="w-2.5 h-2.5 rounded-xs bg-[#071324] border border-[#1E354D]" />
             <span>0 mm</span>
           </span>
           <span className="flex items-center gap-1">
-            <span className="w-2.5 h-2.5 rounded-xs bg-[#BAE6FD]" />
-            <span>&lt;2.5 mm (Dry)</span>
+            <span className="w-2.5 h-2.5 rounded-xs bg-[#0C2942] border border-[#0284C7]/40" />
+            <span>&lt;2.5 mm</span>
           </span>
           <span className="flex items-center gap-1">
-            <span className="w-2.5 h-2.5 rounded-xs bg-[#38BDF8]" />
+            <span className="w-2.5 h-2.5 rounded-xs bg-[#0369A1]" />
             <span>2.5–15 mm</span>
           </span>
           <span className="flex items-center gap-1">
@@ -94,11 +94,11 @@ export function RainfallCalendarHeatmap({
             <span>15–64 mm</span>
           </span>
           <span className="flex items-center gap-1">
-            <span className="w-2.5 h-2.5 rounded-xs bg-[#F59E0B]" />
-            <span>≥64.5 mm (Heavy)</span>
+            <span className="w-2.5 h-2.5 rounded-xs bg-amber-600" />
+            <span>≥64.5 mm</span>
           </span>
           <span className="flex items-center gap-1">
-            <span className="w-2.5 h-2.5 rounded-xs bg-[#CBD5E1] border-dashed border-[#94A3B8]" />
+            <span className="w-2.5 h-2.5 rounded-xs bg-[#1E354D]/50 border-dashed border-slate-600" />
             <span>Missing</span>
           </span>
         </div>
@@ -108,7 +108,7 @@ export function RainfallCalendarHeatmap({
       <div className="overflow-x-auto">
         <div className="min-w-[640px] space-y-1">
           {/* Day of week headers */}
-          <div className="grid grid-cols-7 gap-1 text-center font-mono text-[11px] font-bold text-[#64748B] pb-1">
+          <div className="grid grid-cols-7 gap-1 text-center font-mono text-[11px] font-bold text-slate-400 pb-1">
             {daysOfWeek.map((day) => (
               <div key={day}>{day}</div>
             ))}
@@ -122,7 +122,7 @@ export function RainfallCalendarHeatmap({
                   return (
                     <div
                       key={`empty-${wIdx}-${dIdx}`}
-                      className="h-10 rounded-xs bg-[#F8FAFC]/50 border border-transparent"
+                      className="h-10 rounded-xs bg-[#071324]/30 border border-transparent"
                     />
                   );
                 }
@@ -134,7 +134,7 @@ export function RainfallCalendarHeatmap({
                     key={point.date}
                     onMouseEnter={() => setHoveredPoint(point)}
                     onMouseLeave={() => setHoveredPoint(null)}
-                    className={`h-10 rounded-xs p-1 border text-xs font-mono flex flex-col justify-between cursor-pointer transition-transform hover:scale-105 hover:z-10 hover:shadow-md ${cellClasses}`}
+                    className={`h-10 rounded-xs p-1 border text-xs font-mono flex flex-col justify-between cursor-pointer transition-transform hover:scale-105 hover:z-10 hover:shadow-lg ${cellClasses}`}
                   >
                     <div className="flex items-center justify-between text-[10px] opacity-90 leading-none">
                       <span>{point.displayDate.split(' ')[0]}</span>
@@ -156,24 +156,24 @@ export function RainfallCalendarHeatmap({
       </div>
 
       {/* Interactive Tooltip Card at Bottom of Calendar */}
-      <div className="p-2.5 rounded-xs bg-[#F8FAFC] border border-[#CBD5E1] flex items-center justify-between text-xs font-mono min-h-[42px]">
+      <div className="p-2.5 rounded-lg bg-[#071324] border border-[#1E354D] flex items-center justify-between text-xs font-mono min-h-[42px] text-white">
         {hoveredPoint ? (
           <div className="flex items-center justify-between w-full">
-            <span className="font-bold text-[#0B1F33]">
+            <span className="font-bold text-white">
               {hoveredPoint.date} ({hoveredPoint.dayOfWeek}):{' '}
-              <strong className="text-[#0284C7]">
+              <strong className="text-[#38BDF8]">
                 {hoveredPoint.rainfallMm !== null ? `${hoveredPoint.rainfallMm.toFixed(1)} mm` : 'Missing Data'}
               </strong>
             </span>
-            <span className="text-[#64748B]">
+            <span className="text-slate-400">
               Status:{' '}
               <strong
                 className={
                   hoveredPoint.rainfallMm === null
-                    ? 'text-[#DC2626]'
+                    ? 'text-rose-400'
                     : hoveredPoint.rainfallMm < 2.5
-                    ? 'text-[#D97706]'
-                    : 'text-[#059669]'
+                    ? 'text-amber-400'
+                    : 'text-[#4ADE80]'
                 }
               >
                 {hoveredPoint.rainfallMm === null
@@ -182,12 +182,12 @@ export function RainfallCalendarHeatmap({
                   ? 'Dry Day (<2.5mm)'
                   : 'Rainy Day (≥2.5mm)'}
               </strong>{' '}
-              · Category: <strong className="text-[#0B1F33]">{hoveredPoint.imdCategory}</strong>
+              · Category: <strong className="text-white">{hoveredPoint.imdCategory}</strong>
             </span>
           </div>
         ) : (
-          <span className="text-[#94A3B8] italic flex items-center gap-1.5">
-            <HelpCircle className="w-3.5 h-3.5" />
+          <span className="text-slate-400 italic flex items-center gap-1.5">
+            <HelpCircle className="w-3.5 h-3.5 text-[#38BDF8]" />
             Hover over any calendar cell to inspect daily precipitation, dry spell status, and IMD intensity.
           </span>
         )}

@@ -95,31 +95,31 @@ export function DailyRainfallChart({ data, isLoading = false }: DailyRainfallCha
         <div className="flex flex-wrap items-center justify-between w-full text-xs font-mono">
           <div className="flex items-center gap-4 flex-wrap">
             <span className="flex items-center gap-1.5">
-              <span className="w-3 h-3 bg-[#0284C7] rounded-xs" />
-              <span className="text-[#0B1F33] font-semibold">Observed Daily Rainfall (&lt;64.5 mm)</span>
+              <span className="w-3 h-3 bg-[#38BDF8] rounded-xs shadow-[0_0_8px_rgba(56,189,248,0.4)]" />
+              <span className="text-slate-200 font-semibold">Observed Daily Rainfall (&lt;64.5 mm)</span>
             </span>
             <span className="flex items-center gap-1.5">
-              <span className="w-3 h-3 bg-[#F59E0B] rounded-xs" />
-              <span className="text-[#0B1F33] font-semibold">Heavy Rainfall (≥64.5 mm)</span>
+              <span className="w-3 h-3 bg-[#F59E0B] rounded-xs shadow-[0_0_8px_rgba(245,158,11,0.4)]" />
+              <span className="text-slate-200 font-semibold">Heavy Rainfall (≥64.5 mm)</span>
             </span>
             <span className="flex items-center gap-1.5">
-              <span className="w-4 h-0.5 bg-[#475569]" />
-              <span className="text-[#475569]">IMD Daily Normal Climatology</span>
+              <span className="w-4 h-0.5 bg-[#94A3B8]" />
+              <span className="text-slate-400">IMD Daily Normal Climatology</span>
             </span>
             <span className="flex items-center gap-1.5">
-              <span className="w-4 h-0.5 bg-[#EF4444] border-t border-dashed" />
-              <span className="text-[#EF4444]">IMD Heavy Rain Threshold (64.5 mm)</span>
+              <span className="w-4 h-0.5 bg-[#F43F5E] border-t border-dashed" />
+              <span className="text-[#F43F5E]">IMD Heavy Rain Threshold (64.5 mm)</span>
             </span>
           </div>
-          <span className="text-[#64748B] text-[11px]">
+          <span className="text-slate-400 text-[11px]">
             {data.length} Observation Days
           </span>
         </div>
       }
       footer={
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between w-full gap-1 text-[11px] text-[#64748B] font-mono">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between w-full gap-1 text-[11px] text-slate-400 font-mono">
           <span>Source: IMD 0.25° Gridded Daily Rainfall Dataset · Missing records rendered as visual gaps.</span>
-          <span className="font-semibold text-[#0B1F33]">Koraput Station 42963</span>
+          <span className="font-semibold text-slate-200">Koraput Station 42963</span>
         </div>
       }
     >
@@ -128,20 +128,20 @@ export function DailyRainfallChart({ data, isLoading = false }: DailyRainfallCha
           data={data}
           margin={{ top: 12, right: 16, left: -8, bottom: 4 }}
         >
-          <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" vertical={false} />
+          <CartesianGrid strokeDasharray="3 3" stroke="#1E354D" vertical={false} />
 
           <XAxis
             dataKey="displayDate"
-            tick={{ fontSize: 10, fill: '#64748B', fontFamily: 'monospace' }}
+            tick={{ fontSize: 10, fill: '#94A3B8', fontFamily: 'monospace' }}
             tickLine={false}
-            axisLine={{ stroke: '#CBD5E1' }}
+            axisLine={{ stroke: '#1E354D' }}
             interval={Math.max(1, Math.floor(data.length / 14))}
           />
 
           <YAxis
-            tick={{ fontSize: 10, fill: '#64748B', fontFamily: 'monospace' }}
+            tick={{ fontSize: 10, fill: '#94A3B8', fontFamily: 'monospace' }}
             tickLine={false}
-            axisLine={{ stroke: '#CBD5E1' }}
+            axisLine={{ stroke: '#1E354D' }}
             domain={[0, (dataMax: number) => Math.max(80, Math.ceil(dataMax / 10) * 10)]}
           />
 
@@ -150,7 +150,7 @@ export function DailyRainfallChart({ data, isLoading = false }: DailyRainfallCha
           {/* Reference Line for IMD Heavy Rain (>64.5 mm) */}
           <ReferenceLine
             y={64.5}
-            stroke="#EF4444"
+            stroke="#F43F5E"
             strokeDasharray="4 4"
             strokeWidth={1.5}
           />
@@ -160,7 +160,7 @@ export function DailyRainfallChart({ data, isLoading = false }: DailyRainfallCha
             type="monotone"
             dataKey="normalMm"
             name="IMD Daily Normal"
-            stroke="#475569"
+            stroke="#94A3B8"
             strokeWidth={1.5}
             dot={false}
             isAnimationActive={false}
@@ -178,7 +178,7 @@ export function DailyRainfallChart({ data, isLoading = false }: DailyRainfallCha
               return (
                 <Cell
                   key={`cell-${index}`}
-                  fill={isHeavy ? '#F59E0B' : '#0284C7'}
+                  fill={isHeavy ? '#F59E0B' : '#38BDF8'}
                   fillOpacity={entry.rainfallMm === null ? 0 : 0.9}
                 />
               );
