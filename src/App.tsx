@@ -1,10 +1,11 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AppLayout } from './layouts/AppLayout';
 import { LanguageProvider } from './i18n';
 
 // Page Views
+import { LandingPage } from './pages/LandingPage';
 import { OverviewPage } from './pages/OverviewPage';
 import { RiskMapPage } from './pages/RiskMapPage';
 import { ForecastPage } from './pages/ForecastPage';
@@ -38,10 +39,11 @@ export function App() {
       <LanguageProvider>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<AppLayout />}>
-              {/* Default redirect to /overview */}
-              <Route index element={<Navigate to="/overview" replace />} />
-              
+            {/* Landing Page — standalone, no sidebar/navbar */}
+            <Route path="/" element={<LandingPage />} />
+
+            {/* Dashboard Routes — wrapped in AppLayout with sidebar & navbar */}
+            <Route element={<AppLayout />}>
               {/* Core System Routes */}
               <Route path="overview" element={<OverviewPage />} />
               <Route path="risk-map" element={<RiskMapPage />} />
